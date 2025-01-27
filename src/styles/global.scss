@@ -1,0 +1,146 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url(https://fonts.googleapis.com/css2?family=Alumni+Sans:wght@400&display=swap);
+$alumni-sans: 'Alumni Sans', sans-serif;
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  // font-family: "Unica One", sans-serif;
+  font-family: $alumni-sans;
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  color: #cd5d28;
+}
+body {
+  background-color: #fffffa;
+  overflow-x: hidden;
+  line-height: 1;
+  // background-image: repeating-linear-gradient(
+  //     #e9c3a780 0 0.625px,
+  //     #0000 0.625px 27.5px
+  //   ),
+  //   repeating-linear-gradient(#0000 0 9.375px, #e9c3a7 9.375px 10.3125px),
+  //   repeating-linear-gradient(to right, #e9c3a780 0 3px, #0000 3px 132px),
+  //   repeating-linear-gradient(to right, #efd6bf80 0 32px, #e9c3a780 32px 33px);
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+:root {
+  font-size: 16px;
+}
