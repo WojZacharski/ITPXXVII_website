@@ -44,12 +44,12 @@ const Container = styled.div`
 
   position: relative;
   display: grid;
-  top: 1rem;
+  top: 0rem;
 
   width: 80%;
 
   margin: 0 auto;
-  margin-top: 8em;
+  margin-top: 1em;
   margin-bottom: 4em;
 
   aspect-ratio: 1;
@@ -70,137 +70,89 @@ const Gear = styled.img`
 `;
 
 const Gear1 = styled(Gear)`
-  width: 18%;
-  height: 9%;
-  top: -4%;
-  bottom: 0;
-  left: 63%;
-  right: 0;
-  // @media (max-width: 768px) {
-  //   display:none;
-  // } ;
+  width: 12%;
+  height: auto;
+  top: 10%;
+  left: -5%;
 `;
 
 const Gear2 = styled(Gear)`
-  width: 33%;
-  height: 23%;
-  top: 0%;
-  bottom: 0;
-  left: 44%;
-  right: 0;
+  width: 15%;
+  height: auto;
+  top: 22%;
+  left: 0%;
 `;
 
 const Gear3 = styled(Gear)`
-  width: 35%;
-  height: 35%;
-  top: 10%;
-  bottom: 0;
-  left: 68%;
-  right: 0;
+  width: 20%;
+  height: auto;
+  top: 35%;
+  left: -10%;
 `;
 
 const Gear4 = styled(Gear)`
   width: 10%;
-  height: 14%;
-  top: 20.5%;
-  bottom: 0;
-  left: 51%;
-  right: 0;
+  height: auto;
+  top: 50%;
+  left: 5%;
 `;
 
 const Gear5 = styled(Gear)`
-  width: 19%;
-  height: 19%;
-  top: 36%;
-  bottom: 0;
-  left: 55%;
-  right: 0;
+  width: 18%;
+  height: auto;
+  top: 60%;
+  left: -5%;
 `;
 
 const Gear6 = styled(Gear)`
-  width: 24%;
-  height: 25%;
-  top: 45%;
-  bottom: 0;
-  left: 71.5%;
-  right: 0;
-  // @media (max-width: 768px) {
-  //   display: none;
-  // } ;
+  width: 25%;
+  height: auto;
+  top: 5%;
+  right: 0%;
 `;
 
 const Gear7 = styled(Gear)`
-  width: 18%;
-  height: 18%;
-  top: 44%;
-  bottom: 0;
-  left: 38%;
-  right: 0;
-  // @media (max-width: 768px) {
-  //   display: none;
-  // } ;
+  width: 14%;
+  height: auto;
+  top: 26%;
+  right: -5%;
 `;
 
 const Gear8 = styled(Gear)`
-  width: 11%;
-  height: 11%;
-  top: 61.5%;
-  bottom: 0;
-  left: 47%;
-  right: 0;
-  // @media (max-width: 768px) {
-  //   display: none;
-  // } ;
+  width: 10%;
+  height: auto;
+  top: 36%;
+  right: 5%;
 `;
 
 const Gear9 = styled(Gear)`
-  width: 27.5%;
-  height: 27.5%;
-  top: 50%;
-  bottom: 0;
-  left: 12%;
-  right: 0;
-  // @media (max-width: 768px) {
-  //   display: none;
-  // } ;
+  width: 22%;
+  height: auto;
+  top: 45%;
+  right: -5%;
 `;
 
 const Gear10 = styled(Gear)`
-  width: 17%;
-  height: 17%;
-  top: 54%;
-  bottom: 0;
-  left: -5%;
-  right: 0;
-  // @media (max-width: 768px) {
-  //   display: none;
-  // } ;
+  width: 16%;
+  height: auto;
+  top: 65%;
+  right: -6%;
 `;
 
 const Gear11 = styled(Gear)`
   width: 20%;
-  height: 20%;
+  height: auto;
   top: 75%;
-  bottom: 0;
-  left: 4%;
-  right: 0;
-  @media (max-width: 768px) {
-    display: none;
-  } ;
+  right: 5%;
 `;
 
 const Gear12 = styled(Gear)`
   width: 12%;
-  height: 12%;
-  top: 92%;
-  bottom: 0;
-  left: -3%;
-  right: 0;
-  @media (max-width: 768px) {
-    display: none;
-    // top:72%;
-  } ;
+  height: auto;
+  top: 85%;
+  right: -5%;
 `;
+
 
 const gearIds = Array.from({ length: 24 }, (_, index) => `#gear${index + 1}`);
 const rotationDirections = Array.from({ length: 24 }, (_, index) => (index % 2 === 0 ? 1 : -1));

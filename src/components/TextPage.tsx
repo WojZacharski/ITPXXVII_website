@@ -10,35 +10,31 @@ const Container = styled.div`
 `;
 
 const H2 = styled.h2`
-  font-size: 4rem;
+  font-size: 7rem;
   font-weight: bold;
   color: #000;
 `;
 
 const H3 = styled.h3`
-  font-size: 2rem;
+  font-size: 3rem;
   color: #D2764A;
   font-weight: bold;
 `;
 
 const TextBox1 = styled.div`
   width: 38%;
-  height: 12%;
-  top: 15%;
-  left: 30%;
+  height: auto;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
 
   position: absolute;
-  display: flexbox;
   text-align: justify;
-  align-items: center;
-  justify-content: center;
-
   font-size: 2.32vw;
   color: #d2764a;
 
   @media (max-width: 768px) {
     width: 80%;
-    left: 10%;
     top: clamp(5em, 50vh, 4rem);
     height: clamp(7em, 20vh, 6rem);
     font-size: 3vw;
@@ -56,11 +52,9 @@ const TextBox2 = styled(TextBox1)`
 
 const TextBox3 = styled(TextBox1)`
   top: 40%;
-  left: 30%;
   @media (max-width: 768px) {
     height: 8.4%;
     top: 38%;
-    left: 10%;
   }
 `;
 
@@ -77,7 +71,7 @@ const TextBox4 = styled(TextBox3)`
 const HeroTextContainer = styled.div`
   position: absolute;
   left: 50%;
-  top: 2%;
+  top: 15%;
   transform: translateX(-50%);
   width: clamp(6rem, 80vw, 36rem);
   text-align: center;
@@ -92,8 +86,8 @@ const HeroTextContainer = styled.div`
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 300%;
-    height: 8%;
+    width: 400%;
+    height: 100%;
     background-color: #ffd191; // Kolor tła
     z-index: -1;  // Umieszczenie w tle
     border-radius: 5px;

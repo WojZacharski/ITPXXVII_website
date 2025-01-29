@@ -21,7 +21,6 @@ const socialLinks = {
 const NavContainer = styled.div`
   position: relative;
   height: 60vh;
-
   min-height: 12em;
 
   @media (max-width: 768px) {
@@ -78,27 +77,32 @@ const LinkContainer = styled.div`
 const ITPLogo = styled.img`
   position: absolute;
   width: clamp(16rem, 32vw, 24rem);
-  top: 18%;
-  left: 6%;
+;
+  left: 10%;
   user-select: none;
   @media (max-width: 768px) {
     width: clamp(8rem, 32vw, 24rem);
     top: 22%;
+  }
+  @media (min-width: 769px) {
+    top: calc(30.5% + 0.9vw);
   }
 `;
 
 const BESTLogoContainer = styled.img`
   position: absolute;
   width: clamp(13rem, 24vw, 20rem);
-  right: 6%;
-  top: 6%;
+  left: 70%;  /* Zmiana z 100% na 70%, aby było lepiej widoczne */
+  //top: 20%; /* Ustawienie na niższą wartość */
   user-select: none;
+
   @media (max-width: 768px) {
     width: clamp(8rem, 24vw, 20rem);
     top: 14%;
   }
+
   @media (min-width: 769px) {
-    top: calc(5.5% + 0.9vw);
+    top: calc(20.5% + 0.9vw);
   }
 `;
 
@@ -108,9 +112,9 @@ const SocialsContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   
-  top: 55%;
+  top: 65%;
   gap: 1rem;
-  left: 6%;
+  left: 43.5%;
 
   a {
     min-height: 2rem;
