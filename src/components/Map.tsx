@@ -2,7 +2,7 @@ import React from "react";
 //@ts-ignore
 import map_24 from "../images/map/map-24_final.svg";
 //@ts-ignore
-import legend_24 from "../images/map/legend-24_new.svg";
+import legend_24 from "../images/map/legend-25_new.svg";
 //@ts-ignore
 import styled from "styled-components";
 
@@ -28,7 +28,7 @@ const MapText = styled.p`
 `;
 
 const Container = styled.div`
-  background-color: #fce8cf; 
+  background-color: #f7e0cb; 
   position: relative;
   display: grid;
   top: 1.75rem;
