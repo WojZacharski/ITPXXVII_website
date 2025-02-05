@@ -1,9 +1,5 @@
 import React from "react";
 //@ts-ignore
-import img3_desktop from "../images/desktop_backgrounds/map_gears.svg";
-//@ts-ignore
-import img3_mobile from "../images/mobile_backgrounds/3_fix.png";
-//@ts-ignore
 import map_24 from "../images/map/map-24_final.svg";
 //@ts-ignore
 import legend_24 from "../images/map/legend-24_new.svg";
@@ -15,32 +11,29 @@ function importAll(r: any) {
 }
 
 const mapImages = importAll(
-  require.context("../images/map", false, /\.(png|jpe?g|svg)$/)
+    require.context("../images/map", false, /\.(png|jpe?g|svg)$/)
 );
-
-const Img = styled.img`
-  width: 100%;
-  height: 100%;
-  position: relative;
-`;
 
 const MapText = styled.p`
   position: absolute;
-  top: 10%;
-  right: 12%;
-  color: #fffffa;
-  font-size: 5vw;
+  top: 8%;
+  left: 33%;
+  color: #f08e17;
+  font-weight: bold;
+  font-size: 7vw;
   @media (max-width: 769px) {
-    font-size:4.25vw;
+    font-size: 4.25vw;
     right: 7.5%;
   }
 `;
 
 const Container = styled.div`
-  background-color: #e5821a; 
+  background-color: #fce8cf; 
   position: relative;
   display: grid;
   top: 1.75rem;
+  width: 100%;
+  height: 100vh;
 `;
 
 const MapImg = styled.img`
@@ -52,7 +45,7 @@ const MapImg = styled.img`
   z-index: 2;
   @media (max-width: 769px) {
     width: 90%;
-}
+  }
 `;
 
 const MapLegend = styled.img`
@@ -63,22 +56,16 @@ const MapLegend = styled.img`
   z-index: 2;
   @media (max-width: 769px) {
     left: 7.5%;
-}
+  }
 `;
 
 const Map: React.FC = () => {
   return (
-    <>
       <Container id="map">
-        <picture>
-          <source srcSet={img3_desktop} media="(min-width: 769px)" />
-          <Img src={img3_desktop} alt="last page" />
-        </picture>
         <MapText>Mapa wydarzenia</MapText>
         <MapImg src={map_24} alt="map" />
         <MapLegend src={legend_24} alt="list1" />
       </Container>
-    </>
   );
 };
 

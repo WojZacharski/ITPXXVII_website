@@ -39,12 +39,15 @@ const Nav = styled.nav`
   min-height: 2rem;
 
   background-color: #e5821a;
+  left: 0;
+  right: 0;
+  
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 5;
   
-  border-radius: 20vh;
+  border-radius: 0;
 
   a {
     text-decoration: none;

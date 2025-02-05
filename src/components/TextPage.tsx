@@ -88,7 +88,7 @@ const HeroTextContainer = styled.div`
     transform: translateX(-50%);
     width: 400%;
     height: 100%;
-    background-color: #ffd191; // Kolor tła
+    background-color: #fce8cf; // Kolor tła
     z-index: -1;  // Umieszczenie w tle
     border-radius: 5px;
   }
@@ -122,7 +122,8 @@ const TextPage: React.FC = () => {
           pod kątem waszego doświadczenia i umiejętności.
         </TextBox3>
 
-        <Gears> </Gears>
+        <Gears>
+        </Gears>
       </Container>
     </>
   );

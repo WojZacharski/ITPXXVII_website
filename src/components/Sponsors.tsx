@@ -29,7 +29,7 @@ const ChildDiv = styled.div`
   flex: 1;
 `;
 
-const LeftDiv = styled(ChildDiv)`
+const CenterDiv = styled(ChildDiv)`
   position: relative;
   padding: 0 0.5rem 0 0.5rem;
   display:grid;
@@ -38,15 +38,18 @@ const LeftDiv = styled(ChildDiv)`
 
 const RightDiv = styled(ChildDiv)`
 `;
+const LeftDiv = styled(ChildDiv)`
+`;
+
 
 const Card = styled.div`
-  height: 80vh;
+  height: 60vh;
   background: #fffffa;
   display:flex;
   flex-direction: column;
   position:sticky;
   top:0;
-  // border: solid 2px black;
+   border: solid 2px black;
 
   @media (max-width: 768px) {
     height:clamp(18em, 50vw, 60vh);
@@ -185,9 +188,12 @@ const PodPrad = styled(ParentLink)`
   }
 `;
 const PreviousSponsorsText = styled(SabreText)`
-  font-size: 1.8vw;
+  font-size: 4vw;
   margin-bottom: 1rem;
-  font-weight: 500;
+  left: 50%;
+  top: 1%;
+  font-weight: bold;
+  color: #ee8b10;
   @media (max-width: 768px) {
     font-size: clamp(0.8rem, 5vw, 1rem);
   }
@@ -199,10 +205,16 @@ const Sponsors: React.FC = () => {
   return (
     <Container id="sponsors">
       <ParentDiv>
+        <PreviousSponsorsText style={{marginBottom: '0.5rem' }}>Sponsorzy poprzedniej edycji</PreviousSponsorsText>
         <LeftDiv>
+
+        </LeftDiv>
+
+        <CenterDiv>
+
                   <Card>
                       <div style={{ textAlign: 'center', marginBottom: '0.5rem' }}>
-                          <SabreText style={{ position: 'static', marginBottom: '0.5rem' }}>Sponsorzy poprzedniej edycji</SabreText>
+
                           <SabreText>Sponsor główny</SabreText>
                       </div>
                       <Sabre href="https://www.sabre.com/locations/poland/" target="_blank">
@@ -289,7 +301,7 @@ const Sponsors: React.FC = () => {
               </FXMAG>
             </SponsorsPanel>
           </Card>
-          
+
           <Card>
             <SponsorsPanel>
               <PartnershipText>Partnerzy medialni</PartnershipText>
@@ -316,9 +328,9 @@ const Sponsors: React.FC = () => {
               </PodPrad>
             </SponsorsPanel>
           </Card>
-        </LeftDiv>
+        </CenterDiv>
         <RightDiv>
-          <PartnerGears />
+
         </RightDiv>
       </ParentDiv>
     </Container>
