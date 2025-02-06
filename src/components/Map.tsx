@@ -1,6 +1,6 @@
 import React from "react";
 //@ts-ignore
-import map_24 from "../images/map/map-24_final.svg";
+import map_24 from "../images/map/map-25_final.svg";
 //@ts-ignore
 import legend_24 from "../images/map/legend-25_new.svg";
 //@ts-ignore
@@ -16,11 +16,12 @@ const mapImages = importAll(
 
 const MapText = styled.p`
   position: absolute;
-  top: 8%;
-  left: 33%;
+  top: 6%;
+  left: 32.5%;
   color: #f08e17;
   font-weight: bold;
   font-size: 7vw;
+  letter-spacing: 0.03em;  
   @media (max-width: 769px) {
     font-size: 4.25vw;
     right: 7.5%;
@@ -50,7 +51,7 @@ const MapImg = styled.img`
 
 const MapLegend = styled.img`
   position: absolute;
-  left: 12%;
+  left: 9%;
   top: 77.5%;
   width: 25%;
   z-index: 2;

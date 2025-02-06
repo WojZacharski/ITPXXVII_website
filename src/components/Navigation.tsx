@@ -66,7 +66,7 @@ const LinkContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-  gap: 0.5em;
+  gap: 2.5em;
   flex-direction: inherit;
   text-align: center;
   text-transform: none;
@@ -118,7 +118,7 @@ const SocialsContainer = styled.div`
   top: 65%;
   gap: 1rem;
   left: 43.5%;
-
+;
   a {
     min-height: 2rem;
     height: 8vh;
