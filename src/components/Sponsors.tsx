@@ -72,8 +72,8 @@ const CraneLeft = styled.img<{ isFixed: boolean; topOffset: number }>`
 const CraneRight = styled.img<{ isFixed: boolean; topOffset: number }>`
   position: ${({ isFixed }) => (isFixed ? "fixed" : "absolute")};
   top: ${({ isFixed, topOffset }) => (isFixed ? "0px" : `${topOffset}px`)};
-  left: 50%;
-  width: 50%;
+  right: 5%;
+  width: 42%;
   height: auto;
   z-index: 2;
 `;
@@ -82,22 +82,20 @@ const RightDiv = styled(ChildDiv)`
 const LeftDiv = styled(ChildDiv)`
 `;
 
-const Card = styled.div<{ isFixed: boolean; topOffset: number }>`
-
+const Card = styled.div<{ isFixed: boolean; reachedEnd: boolean }>`
   height: 50vh;
   background: #fffffa;
-  display:flex;
+  display: flex;
   flex-direction: column;
-  position: sticky; /* Sticky powinno być zawsze */
-  top: ${({ isFixed, topOffset }) => (isFixed ? `10rem` : `${topOffset}px`)}; /* Top ustawione dynamicznie */
+  position: ${({ isFixed, reachedEnd }) => (reachedEnd ? 'relative' : isFixed ? 'sticky' : 'static')};
+  top: ${({ isFixed, reachedEnd }) => (reachedEnd ? 'auto' : isFixed ? '10rem' : 'auto')};
   border: solid 2px black;
   z-index: 3;
 
   @media (max-width: 768px) {
-    height:clamp(18em, 50vw, 60vh);
-  } ;
+    height: clamp(18em, 50vw, 60vh);
+  }
 `;
-
 const EmptyCard = styled.div`
   height: 50vh;
   //background: ;
@@ -112,22 +110,34 @@ const EmptyCard = styled.div`
   } ;
 `;
 
-const EmptyCardLast = styled.div<{ isFixed: boolean }>`
-  height: 50vh;
-  background: #d2764a;
+const EmptyCardLast = styled.div<{ isFixed: boolean; reachedEnd: boolean }>`
+  height: 17vh;
+  background: none;
   display: flex;
   flex-direction: column;
-  position: ${({ isFixed }) => (isFixed ? 'absolute' : 'sticky')};
-  top: ${({ isFixed }) => (isFixed ? '12rem' : 'auto')};
+  position: ${({ isFixed, reachedEnd }) => (reachedEnd ? "relative" : "sticky")};
+  top: ${({ isFixed, reachedEnd }) => (reachedEnd ? "auto" : "10rem")};
   border: solid 2px black;
-  z-index: 2;
+  z-index: 3;
+  margin-bottom: 10rem;
 
   @media (max-width: 768px) {
     height: clamp(18em, 50vw, 60vh);
   }
 `;
 
+const Ground = styled.div`
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10rem;
+    background: #fce8cf;
+    z-index: 1;
+    `;
 
+
+    // CONTAINER
 const Container = styled.div`
   position: relative;
   display: grid;
@@ -273,7 +283,8 @@ const Sponsors: React.FC = () => {
 
       const { top, bottom } = parentRef.current.getBoundingClientRect();
 
-      if (top <= 0 && bottom > 720) {
+      //zamienić sprawdzanie wartości na procent
+      if (top <= 0 && bottom > 630) {
         setIsFixed(true);
         setTopOffset(Math.abs(top));; // Obliczanie topOffset w zależności od scrollowania
       } else {
@@ -289,6 +300,40 @@ const Sponsors: React.FC = () => {
     };
   }, []);
 
+  const [reachedEnd, setReachedEnd] = useState(false);
+  const [isFixedCard, setIsFixedCard] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!parentRef.current) return;
+
+      const { top, bottom } = parentRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Sprawdzenie, czy sekcja kończy się przed dolną krawędzią ekranu
+      // zamienić sprawdzanie wartości na procent
+      if (bottom <= windowHeight - 1500) {
+        setReachedEnd(true);
+      } else {
+        setReachedEnd(false);
+      }
+
+      //zamienić sprawdzanie wartości na procent
+      if (top <= 10000 && !reachedEnd) {
+        setIsFixedCard(true);
+      } else {
+        setIsFixedCard(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [reachedEnd]);
+
   return (
     <Container id="sponsors">
       <PreviousSponsorsText style={{marginBottom: '0.5rem' }}>Sponsorzy poprzedniej edycji</PreviousSponsorsText>
@@ -296,12 +341,13 @@ const Sponsors: React.FC = () => {
         <Background isFixed={isFixed} topOffset={topOffset}  />
           <LeftDiv>
             <CraneLeft src={crane_left} isFixed={isFixed} topOffset={topOffset} />
+
           </LeftDiv>
 
           <CenterDiv ref={parentRef}>
             <EmptyCard></EmptyCard>
 
-            <Card isFixed={isFixed} topOffset={topOffset}>
+            <Card isFixed={isFixedCard} reachedEnd={reachedEnd} >
               <div style={{textAlign: 'center', marginBottom: '0.5rem'}}>
 
                 <SabreText>Sponsor główny</SabreText>
@@ -310,7 +356,7 @@ const Sponsors: React.FC = () => {
                 <SabreImg src={logos[0].default} alt="Sabre"/>
               </Sabre>
             </Card>
-            <Card isFixed={isFixed} topOffset={topOffset}>
+            <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
               <SponsorsPanel>
                 <PartnershipText>Sponsorzy</PartnershipText>
                 <Pega href="https://www.pega.com/" target="_blank">
@@ -339,32 +385,32 @@ const Sponsors: React.FC = () => {
 
               </SponsorsPanel>
             </Card>
-            <Card isFixed={isFixed} topOffset={topOffset}>
+            <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
               <PMIText>Partner Strefy Studenta</PMIText>
               <PMI href="https://www.pmi.com/markets/poland/pl/about-us/overview" target="_blank">
                 <PMIImg src={logos[17].default} alt="PMI"/>
               </PMI>
             </Card>
-            <Card isFixed={isFixed} topOffset={topOffset}>
+            <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
               <KMSText>Partner merytoryczny</KMSText>
               <KMS href="https://kms.org.pl/" target="_blank">
                 <KMSImg src={logos[13].default} alt="KMS"/>
               </KMS>
             </Card>
-            <Card isFixed={isFixed} topOffset={topOffset}>
+            <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
               <SatrentText>Partner techniczny</SatrentText>
               <Satrent href="https://satrent.pl/" target="_blank">
                 <SatrentImg src={logos[20].default} alt="Satrent"/>
               </Satrent>
             </Card>
-            <Card isFixed={isFixed} topOffset={topOffset}>
+            <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
               <DKMSText>Fundacja charytatywna</DKMSText>
               <DKMS href="https://www.dkms.pl/" target="_blank">
                 <DKMSImg src={logos[18].default} alt="DKMS"/>
               </DKMS>
             </Card>
 
-            <Card isFixed={isFixed} topOffset={topOffset}>
+            <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
               <SponsorsPanel>
                 <PartnershipText>Patroni medialni</PartnershipText>
                 <ParentLink href="http://www.podajdalej.info.pl/" target="_blank">
@@ -391,7 +437,7 @@ const Sponsors: React.FC = () => {
               </SponsorsPanel>
             </Card>
 
-            <Card isFixed={isFixed} topOffset={topOffset}>
+            <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
               <SponsorsPanel>
                 <PartnershipText>Partnerzy medialni</PartnershipText>
                 <ParentLink href="https://www.facebook.com/AllInUJ/" target="_blank">
@@ -417,14 +463,13 @@ const Sponsors: React.FC = () => {
                 </PodPrad>
               </SponsorsPanel>
             </Card>
-
+            <EmptyCardLast isFixed={isFixedCard} reachedEnd={reachedEnd}></EmptyCardLast>
           </CenterDiv>
 
           <RightDiv>
-
+          <CraneRight src={crane_right} isFixed={isFixed} topOffset={topOffset}></CraneRight>
           </RightDiv>
       </ParentDiv>
-
     </Container>
 
 );
