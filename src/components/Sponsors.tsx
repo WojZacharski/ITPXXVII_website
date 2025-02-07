@@ -4,6 +4,8 @@ import useMediaQuery from "../utils/UseMediaQuery";
 import PartnerGears from "./PartnerGears";
 
 import background from "../images/desktop_backgrounds/buildings_bg.svg";
+import crane_left from "../images/desktop_backgrounds/crane-left.svg";
+import crane_right from "../images/desktop_backgrounds/crane-right.svg";
 
 function importAll(r: any) {
   return r.keys().map(r);
@@ -23,7 +25,6 @@ const logos = importAll(
 
 // Style dla tła
 const Background = styled.div<{ isFixed: boolean; topOffset: number }>`
-  //nie wiem czy to jest porzebne, ale po długim czasie walki z tłem zostawiam 
   position: ${({ isFixed }) => (isFixed ? "fixed" : "absolute")};
   top: ${({ isFixed, topOffset }) => (isFixed ? "0px" : `${topOffset}px`)};
   left: 0;
@@ -33,51 +34,106 @@ const Background = styled.div<{ isFixed: boolean; topOffset: number }>`
   background-size: cover;
   background-repeat: no-repeat;
   z-index: -1;
+  //transition: top 0.3s ease; /* Dodanie płynnego przejścia dla tła */
 `;
 
 const ParentDiv = styled.div`
   margin-top: clamp(3rem, 10vw, 12em);
   width: 100%;
   display: flex;
-  position: relative; 
+  position: relative;
+  //height: auto;
+  //margin-bottom: 20rem; // Dodajemy margines dolny (dostosuj wartość)
+  
 `;
 
 const ChildDiv = styled.div`
-  flex: 1;
+  flex: 1; 
 `;
 
 const CenterDiv = styled(ChildDiv)`
   position: relative;
-  top: 5rem;
+  //top: 5rem;
   padding: 0 0.5rem 0 0.5rem;
   display:grid;
   grid-template-rows: auto 1fr;
+  //height: auto;
 `;
 
+const CraneLeft = styled.img<{ isFixed: boolean; topOffset: number }>`
+  position: ${({ isFixed }) => (isFixed ? "fixed" : "absolute")};
+  top: ${({ isFixed, topOffset }) => (isFixed ? "0px" : `${topOffset}px`)};
+  left: 5%;
+  width: 42%;
+  height: auto;
+  z-index: 2;
+`;
+
+const CraneRight = styled.img<{ isFixed: boolean; topOffset: number }>`
+  position: ${({ isFixed }) => (isFixed ? "fixed" : "absolute")};
+  top: ${({ isFixed, topOffset }) => (isFixed ? "0px" : `${topOffset}px`)};
+  left: 50%;
+  width: 50%;
+  height: auto;
+  z-index: 2;
+`;
 const RightDiv = styled(ChildDiv)`
 `;
 const LeftDiv = styled(ChildDiv)`
 `;
 
-const Card = styled.div`
-  height: 60vh;
+const Card = styled.div<{ isFixed: boolean; topOffset: number }>`
+
+  height: 50vh;
   background: #fffffa;
   display:flex;
   flex-direction: column;
-  position:sticky;
-  top:5rem;
+  position: sticky; /* Sticky powinno być zawsze */
+  top: ${({ isFixed, topOffset }) => (isFixed ? `10rem` : `${topOffset}px`)}; /* Top ustawione dynamicznie */
   border: solid 2px black;
+  z-index: 3;
 
   @media (max-width: 768px) {
     height:clamp(18em, 50vw, 60vh);
   } ;
 `;
 
+const EmptyCard = styled.div`
+  height: 50vh;
+  //background: ;
+  display:flex;
+  flex-direction: column;
+  position:sticky;
+  //top:10rem;
+  //border: solid 2px black;
+
+  @media (max-width: 768px) {
+    height:clamp(18em, 50vw, 60vh);
+  } ;
+`;
+
+const EmptyCardLast = styled.div<{ isFixed: boolean }>`
+  height: 50vh;
+  background: #d2764a;
+  display: flex;
+  flex-direction: column;
+  position: ${({ isFixed }) => (isFixed ? 'absolute' : 'sticky')};
+  top: ${({ isFixed }) => (isFixed ? '12rem' : 'auto')};
+  border: solid 2px black;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    height: clamp(18em, 50vw, 60vh);
+  }
+`;
+
+
 const Container = styled.div`
   position: relative;
   display: grid;
   top: 1.75rem;
   aspect-ratio:1;
+  
 `;
 
 const SponsorsPanel = styled.div`
@@ -209,17 +265,17 @@ const Sponsors: React.FC = () => {
   const [isFixed, setIsFixed] = useState(false);
   const [topOffset, setTopOffset] = useState(0);
   const parentRef = useRef<HTMLDivElement>(null);
+  const nextSectionRef = useRef<HTMLDivElement>(null); // Ref do następnej sekcji
 
   useEffect(() => {
     const handleScroll = () => {
       if (!parentRef.current) return;
 
       const { top, bottom } = parentRef.current.getBoundingClientRect();
-      const scrollTop = window.scrollY;
 
-      if (top <= 0 && bottom > window.innerHeight) {
+      if (top <= 0 && bottom > 720) {
         setIsFixed(true);
-        setTopOffset(parentRef.current.offsetTop);
+        setTopOffset(Math.abs(top));; // Obliczanie topOffset w zależności od scrollowania
       } else {
         setIsFixed(false);
       }
@@ -235,17 +291,17 @@ const Sponsors: React.FC = () => {
 
   return (
     <Container id="sponsors">
-      
       <PreviousSponsorsText style={{marginBottom: '0.5rem' }}>Sponsorzy poprzedniej edycji</PreviousSponsorsText>
       <ParentDiv ref={parentRef}>
-        <Background isFixed={isFixed}  />
+        <Background isFixed={isFixed} topOffset={topOffset}  />
           <LeftDiv>
-
+            <CraneLeft src={crane_left} isFixed={isFixed} topOffset={topOffset} />
           </LeftDiv>
 
-          <CenterDiv>
+          <CenterDiv ref={parentRef}>
+            <EmptyCard></EmptyCard>
 
-            <Card>
+            <Card isFixed={isFixed} topOffset={topOffset}>
               <div style={{textAlign: 'center', marginBottom: '0.5rem'}}>
 
                 <SabreText>Sponsor główny</SabreText>
@@ -254,7 +310,7 @@ const Sponsors: React.FC = () => {
                 <SabreImg src={logos[0].default} alt="Sabre"/>
               </Sabre>
             </Card>
-            <Card>
+            <Card isFixed={isFixed} topOffset={topOffset}>
               <SponsorsPanel>
                 <PartnershipText>Sponsorzy</PartnershipText>
                 <Pega href="https://www.pega.com/" target="_blank">
@@ -283,32 +339,32 @@ const Sponsors: React.FC = () => {
 
               </SponsorsPanel>
             </Card>
-            <Card>
+            <Card isFixed={isFixed} topOffset={topOffset}>
               <PMIText>Partner Strefy Studenta</PMIText>
               <PMI href="https://www.pmi.com/markets/poland/pl/about-us/overview" target="_blank">
                 <PMIImg src={logos[17].default} alt="PMI"/>
               </PMI>
             </Card>
-            <Card>
+            <Card isFixed={isFixed} topOffset={topOffset}>
               <KMSText>Partner merytoryczny</KMSText>
               <KMS href="https://kms.org.pl/" target="_blank">
                 <KMSImg src={logos[13].default} alt="KMS"/>
               </KMS>
             </Card>
-            <Card>
+            <Card isFixed={isFixed} topOffset={topOffset}>
               <SatrentText>Partner techniczny</SatrentText>
               <Satrent href="https://satrent.pl/" target="_blank">
                 <SatrentImg src={logos[20].default} alt="Satrent"/>
               </Satrent>
             </Card>
-            <Card>
+            <Card isFixed={isFixed} topOffset={topOffset}>
               <DKMSText>Fundacja charytatywna</DKMSText>
               <DKMS href="https://www.dkms.pl/" target="_blank">
                 <DKMSImg src={logos[18].default} alt="DKMS"/>
               </DKMS>
             </Card>
 
-            <Card>
+            <Card isFixed={isFixed} topOffset={topOffset}>
               <SponsorsPanel>
                 <PartnershipText>Patroni medialni</PartnershipText>
                 <ParentLink href="http://www.podajdalej.info.pl/" target="_blank">
@@ -335,7 +391,7 @@ const Sponsors: React.FC = () => {
               </SponsorsPanel>
             </Card>
 
-            <Card>
+            <Card isFixed={isFixed} topOffset={topOffset}>
               <SponsorsPanel>
                 <PartnershipText>Partnerzy medialni</PartnershipText>
                 <ParentLink href="https://www.facebook.com/AllInUJ/" target="_blank">
@@ -361,12 +417,16 @@ const Sponsors: React.FC = () => {
                 </PodPrad>
               </SponsorsPanel>
             </Card>
+
           </CenterDiv>
+
           <RightDiv>
 
           </RightDiv>
       </ParentDiv>
+
     </Container>
+
 );
 };
 

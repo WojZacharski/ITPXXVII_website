@@ -7,6 +7,7 @@ const Container = styled.div`
   display: grid;
   top: 2rem;
   aspect-ratio:1;
+  //height: 300vh;
 `;
 
 const H2 = styled.h2`
@@ -77,7 +78,7 @@ const HeroTextContainer = styled.div`
   text-align: center;
   position: relative;
   text-align: center;
-  margin-bottom: 1.5rem;
+  //margin-bottom: 1.5rem;
 
   //tło
   &::before {

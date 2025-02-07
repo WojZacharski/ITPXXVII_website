@@ -1,29 +1,29 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 // @ts-ignore
-import gear_1 from "../images/gears/d1.svg";
+import gear_1 from "../images/gears/g1.svg";
 // @ts-ignore
-import gear_2 from "../images/gears/d2.svg";
+import gear_2 from "../images/gears/g2.svg";
 // @ts-ignore
-import gear_3 from "../images/gears/d3.svg";
+import gear_3 from "../images/gears/g3.svg";
 // @ts-ignore
-import gear_4 from "../images/gears/d4.svg";
+import gear_4 from "../images/gears/g4.svg";
 // @ts-ignore
-import gear_5 from "../images/gears/d5.svg";
+import gear_5 from "../images/gears/g5.svg";
 // @ts-ignore
-import gear_6 from "../images/gears/d6.svg";
+import gear_6 from "../images/gears/g6.svg";
 // @ts-ignore
-import gear_7 from "../images/gears/d7.svg";
+import gear_7 from "../images/gears/g7.svg";
 // @ts-ignore
-import gear_8 from "../images/gears/d8.svg";
+import gear_8 from "../images/gears/g8.svg";
 // @ts-ignore
-import gear_9 from "../images/gears/d9.svg";
+import gear_9 from "../images/gears/g9.svg";
 // @ts-ignore
-import gear_10 from "../images/gears/d10.svg";
+import gear_10 from "../images/gears/g10.svg";
 // @ts-ignore
-import gear_11 from "../images/gears/d11.svg";
+import gear_11 from "../images/gears/g11.svg";
 // @ts-ignore
-import gear_12 from "../images/gears/d12.svg";
+import gear_12 from "../images/gears/g12.svg";
 // import gear_13 from "../images/gears/d13.svg";
 // import gear_14 from "../images/gears/d14.svg";
 // import gear_15 from "../images/gears/d15.svg";
@@ -61,6 +61,7 @@ const Container = styled.div`
 `;
 
 const Gear = styled.img`
+    
   position: absolute;
   object-fit: contain;
   background-position: center;
@@ -72,36 +73,36 @@ const Gear = styled.img`
 const Gear1 = styled(Gear)`
   width: 12%;
   height: auto;
-  top: 10%;
+  top: 11%;
   left: -5%;
 `;
 
 const Gear2 = styled(Gear)`
   width: 15%;
   height: auto;
-  top: 22%;
+  top: 18%;
   left: 0%;
 `;
 
 const Gear3 = styled(Gear)`
   width: 20%;
   height: auto;
-  top: 35%;
+  top: 27%;
   left: -10%;
 `;
 
 const Gear4 = styled(Gear)`
-  width: 10%;
+  width: 14%;
   height: auto;
-  top: 50%;
-  left: 5%;
+  top: 39.5%;
+  left: 3%;
 `;
 
 const Gear5 = styled(Gear)`
   width: 18%;
   height: auto;
-  top: 60%;
-  left: -5%;
+  top: 49%;
+  left: -4%;
 `;
 
 const Gear6 = styled(Gear)`
@@ -112,45 +113,45 @@ const Gear6 = styled(Gear)`
 `;
 
 const Gear7 = styled(Gear)`
-  width: 14%;
+  width: 17%;
   height: auto;
-  top: 26%;
-  right: -5%;
+  top: 21%;
+  right: -6.7%;
 `;
 
 const Gear8 = styled(Gear)`
   width: 10%;
   height: auto;
-  top: 36%;
-  right: 5%;
+  top: 32%;
+  right: 4.7%;
 `;
 
 const Gear9 = styled(Gear)`
-  width: 22%;
+  width: 15%;
   height: auto;
-  top: 45%;
-  right: -5%;
+  top: 37%;
+  right: -3%;
 `;
 
 const Gear10 = styled(Gear)`
   width: 16%;
   height: auto;
-  top: 65%;
+  top: 49%;
   right: -6%;
 `;
 
 const Gear11 = styled(Gear)`
   width: 20%;
   height: auto;
-  top: 75%;
-  right: 5%;
+  top: 55.5%;
+  right: 2.5%;
 `;
 
 const Gear12 = styled(Gear)`
-  width: 12%;
+  width: 14%;
   height: auto;
-  top: 85%;
-  right: -5%;
+  top: 69%;
+  right: -1.5%;
 `;
 
 
