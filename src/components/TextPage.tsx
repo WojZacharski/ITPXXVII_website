@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Gears from './Gears';
+import GearsMobile from "./GearsMobile";
 
 const Container = styled.div`
   position: relative;
@@ -8,17 +9,47 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
+    min-height: 130vh;
   padding-top: 2rem;
+    @media (max-width: 768px){
+        min-height: 100vh;
+    }
 `;
+
+const DesktopGears = styled.div`
+    position: absolute;
+    width: 100%;
+    top: 20vh;
+    left: 0;
+    z-index: -1; /* Ustawia zębatki w tle */
+
+  @media (max-width: 768px) {
+    display: none; /* Ukryj na mobilnych */
+  }
+`;
+
+const MobileGears = styled.div`
+    position: absolute;
+    width: 100%;
+    top: 25%;
+    right: 10%;
+    z-index: -1; /* Ustawia zębatki w tle */
+
+  @media (min-width: 768px) {
+      display: none;
+  }
+`;
+
 
 const HeroTextContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: clamp(8rem, 75vw, 40rem);
+  width: clamp(8rem, 80vw, 40rem);
   margin-top: 2rem;
   position: relative;
+    padding: 1rem 0;
 
   &::before {
     content: "";
@@ -26,13 +57,21 @@ const HeroTextContainer = styled.div`
     top: 0; 
     left: 50%;
     transform: translateX(-50%);
-    width: 300%;
-    height: 100%;
+    width: 100vw;
+    height: 80%;
     background-color: #fce8cf;
     z-index: -1;
     border-radius: 5px;
     padding: 1rem;
   }
+    @media (max-width: 768px) {
+        //width: 50%;
+        margin-top: 1rem;
+
+        &::before {
+            padding: 1rem 0;
+        }
+    }
 `;
 
 const H2 = styled.h2`
@@ -40,6 +79,9 @@ const H2 = styled.h2`
     top: 2vh;
   font-weight: bold;
   color: #000;
+    @media (max-width: 768px){
+        
+    }
 `;
 
 const H3 = styled.h3`
@@ -49,17 +91,23 @@ const H3 = styled.h3`
   font-weight: bold;
 `;
 
+
 const TextContainer = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 90%;
-    top: 40vh; 
+  top: 40vh; 
   max-width: 1200px;
   text-align: center;
   gap: 1.5rem;
   margin-top: 2rem;
+    
+  @media (max-width: 768px){
+      top: 20%;
+      gap: 20rem;
+  }
 `;
 
 const TextBox = styled.div`
@@ -67,7 +115,13 @@ const TextBox = styled.div`
   font-size: clamp(1.5rem, 4vw, 2.5rem);
   color: #d2764a;
   text-align: justify;
+
+    @media (max-width: 768px){
+        width: 80vw;
+    }
 `;
+
+
 
 const TextPage: React.FC = () => {
     return (
@@ -92,7 +146,15 @@ const TextPage: React.FC = () => {
                 </TextBox>
             </TextContainer>
 
-            <Gears />
+            {/* Zębatki na komputerach */}
+            <DesktopGears>
+                <Gears />
+            </DesktopGears>
+
+            {/* Zębatki na urządzeniach mobilnych */}
+            <MobileGears>
+                <GearsMobile />
+            </MobileGears>
         </Container>
     );
 };
