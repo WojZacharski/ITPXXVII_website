@@ -2,201 +2,100 @@ import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 // @ts-ignore
 import gear_1 from "../images/gears/g1.svg";
-// @ts-ignore
 import gear_2 from "../images/gears/g2.svg";
-// @ts-ignore
 import gear_3 from "../images/gears/g3.svg";
-// @ts-ignore
 import gear_4 from "../images/gears/g4.svg";
-// @ts-ignore
 import gear_5 from "../images/gears/g5.svg";
-// @ts-ignore
 import gear_6 from "../images/gears/g6.svg";
-// @ts-ignore
 import gear_7 from "../images/gears/g7.svg";
-// @ts-ignore
 import gear_8 from "../images/gears/g8.svg";
-// @ts-ignore
 import gear_9 from "../images/gears/g9.svg";
-// @ts-ignore
 import gear_10 from "../images/gears/g10.svg";
-// @ts-ignore
 import gear_11 from "../images/gears/g11.svg";
-// @ts-ignore
 import gear_12 from "../images/gears/g12.svg";
-// import gear_13 from "../images/gears/d13.svg";
-// import gear_14 from "../images/gears/d14.svg";
-// import gear_15 from "../images/gears/d15.svg";
-// import gear_16 from "../images/gears/d16.svg";
-// import gear_17 from "../images/gears/d17.svg";
-// import gear_18 from "../images/gears/d18.svg";
-// import gear_19 from "../images/gears/d19.svg";
-// import gear_20 from "../images/gears/d20.svg";
-// import gear_21 from "../images/gears/d21.svg";
-// import gear_22 from "../images/gears/d22.svg";
-// import gear_23 from "../images/gears/d23.svg";
-// import gear_24 from "../images/gears/d24.svg";
 
-
+// 📌 Styl kontenera
 const Container = styled.div`
-
-  // background-color: rgba(0,0,0,0.15);
-
   position: relative;
-  display: grid;
-  top: 0rem;
-
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   width: 80%;
-
-  margin: 0 auto;
-  margin-top: 1em;
-  margin-bottom: 1em;
-
+  max-width: 1200px;
+  margin: 2rem auto;
   aspect-ratio: 1;
 
   @media (max-width: 768px) {
-    margin-top: 38%;
-    margin-bottom: 30%;
-  } ;
+    width: 95%;
+    margin-top: 20%;
+    margin-bottom: 20%;
+  }
 `;
 
-const Gear = styled.img`
-    
+//Uniwersalny styl dla zębatek
+const Gear = styled.img<{ size: string; top: string; left?: string; right?: string }>`
   position: absolute;
   object-fit: contain;
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  transition: 0.65s ease-out;
-`;
-
-const Gear1 = styled(Gear)`
-  width: 12%;
+  width: ${({ size }) => size};
   height: auto;
-  top: 11%;
-  left: -5%;
+  top: ${({ top }) => top};
+  left: ${({ left }) => (left ? left : "auto")};
+  right: ${({ right }) => (right ? right : "auto")};
+  transition: transform 0.3s ease-out;
 `;
 
-const Gear2 = styled(Gear)`
-  width: 15%;
-  height: auto;
-  top: 18%;
-  left: 0%;
-`;
+//Definicje pozycji i rozmiarów zębatek
+const gearsData = [
+    { src: gear_1, size: "clamp(8%, 12vw, 12%)", top: "11%", left: "-5%" },
+    { src: gear_2, size: "clamp(10%, 15vw, 15%)", top: "18%", left: "0%" },
+    { src: gear_3, size: "clamp(12%, 20vw, 20%)", top: "27%", left: "-10%" },
+    { src: gear_4, size: "clamp(10%, 14vw, 14%)", top: "39.5%", left: "3%" },
+    { src: gear_5, size: "clamp(12%, 18vw, 18%)", top: "49%", left: "-4%" },
+    { src: gear_6, size: "clamp(15%, 25vw, 25%)", top: "5%", right: "0%" },
+    { src: gear_7, size: "clamp(10%, 17vw, 17%)", top: "21%", right: "-6.7%" },
+    { src: gear_8, size: "clamp(7%, 10vw, 10%)", top: "32%", right: "4.7%" },
+    { src: gear_9, size: "clamp(10%, 15vw, 15%)", top: "37%", right: "-3%" },
+    { src: gear_10, size: "clamp(10%, 16vw, 16%)", top: "49%", right: "-6%" },
+    { src: gear_11, size: "clamp(12%, 20vw, 20%)", top: "55.5%", right: "2.5%" },
+    { src: gear_12, size: "clamp(10%, 14vw, 14%)", top: "69%", right: "-1.5%" },
+];
 
-const Gear3 = styled(Gear)`
-  width: 20%;
-  height: auto;
-  top: 27%;
-  left: -10%;
-`;
+// 📌 Komponent Gears
+const Gears: React.FC<React.PropsWithChildren<{}>> = (props) => {
+    const gearRefs = useRef<(HTMLImageElement | null)[]>([]);
 
-const Gear4 = styled(Gear)`
-  width: 14%;
-  height: auto;
-  top: 39.5%;
-  left: 3%;
-`;
-
-const Gear5 = styled(Gear)`
-  width: 18%;
-  height: auto;
-  top: 49%;
-  left: -4%;
-`;
-
-const Gear6 = styled(Gear)`
-  width: 25%;
-  height: auto;
-  top: 5%;
-  right: 0%;
-`;
-
-const Gear7 = styled(Gear)`
-  width: 17%;
-  height: auto;
-  top: 21%;
-  right: -6.7%;
-`;
-
-const Gear8 = styled(Gear)`
-  width: 10%;
-  height: auto;
-  top: 32%;
-  right: 4.7%;
-`;
-
-const Gear9 = styled(Gear)`
-  width: 15%;
-  height: auto;
-  top: 37%;
-  right: -3%;
-`;
-
-const Gear10 = styled(Gear)`
-  width: 16%;
-  height: auto;
-  top: 49%;
-  right: -6%;
-`;
-
-const Gear11 = styled(Gear)`
-  width: 20%;
-  height: auto;
-  top: 55.5%;
-  right: 2.5%;
-`;
-
-const Gear12 = styled(Gear)`
-  width: 14%;
-  height: auto;
-  top: 69%;
-  right: -1.5%;
-`;
-
-
-const gearIds = Array.from({ length: 24 }, (_, index) => `#gear${index + 1}`);
-const rotationDirections = Array.from({ length: 24 }, (_, index) => (index % 2 === 0 ? 1 : -1));
-
-const rotateGearOnScroll = () => {
-  gearIds.forEach((gearId, index) => {
-    const gear = document.querySelector(gearId)?.style;
-
-    if (gear) {
-      const rotationFactor = 0.12;
-      const rotationDirection = rotationDirections[index];
-      gear.transform = `rotate(${window.scrollY * rotationFactor * rotationDirection}deg)`;
-    }
-  });
-};
-
-const Gears: React.FC = (props) => {
     useEffect(() => {
-        window.addEventListener('scroll', rotateGearOnScroll);
-
-        return () => {
-            window.removeEventListener('scroll', rotateGearOnScroll);
+        const handleScroll = () => {
+            gearRefs.current.forEach((gear, index) => {
+                if (gear) {
+                    const rotationFactor = 0.12;
+                    const rotationDirection = index % 2 === 0 ? 1 : -1;
+                    gear.style.transform = `rotate(${window.scrollY * rotationFactor * rotationDirection}deg)`;
+                }
+            });
         };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
     return (
-        <>
-            <Container>
-              {props.children}
-                <Gear1 src={gear_1} id="gear1" />
-                <Gear2 src={gear_2} id="gear2" />
-                <Gear3 src={gear_3} id="gear3" />
-                <Gear4 src={gear_4} id="gear4" />
-                <Gear5 src={gear_5} id="gear5" />
-                <Gear6 src={gear_6} id="gear6" />
-                <Gear7 src={gear_7} id="gear7" />
-                <Gear8 src={gear_8} id="gear8" />
-                <Gear9 src={gear_9} id="gear9" />
-                <Gear10 src={gear_10} id="gear10" />
-                <Gear11 src={gear_11} id="gear11" />
-                <Gear12 src={gear_12} id="gear12" />
-            </Container>
-        </>
-    )
-}
+        <Container>
+            {props.children}
+            {gearsData.map((gear, index) => (
+                <Gear
+                    key={index}
+                    src={gear.src}
+                    size={gear.size}
+                    top={gear.top}
+                    left={gear.left}
+                    right={gear.right}
+                    ref={(el) => (gearRefs.current[index] = el)}
+                />
+            ))}
+        </Container>
+    );
+};
 
 export default Gears;
