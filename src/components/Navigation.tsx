@@ -84,8 +84,8 @@ const ITPLogo = styled.img`
   left: 10%;
   user-select: none;
   @media (max-width: 768px) {
-    width: clamp(8rem, 32vw, 24rem);
-    top: 22%;
+    width: clamp(8rem, 40vw, 24rem);
+    top: 25%;
   }
   @media (min-width: 769px) {
     top: calc(30.5% + 0.9vw);
@@ -95,13 +95,12 @@ const ITPLogo = styled.img`
 const BESTLogoContainer = styled.img`
   position: absolute;
   width: clamp(13rem, 24vw, 20rem);
-  left: 70%;  /* Zmiana z 100% na 70%, aby było lepiej widoczne */
-  //top: 20%; /* Ustawienie na niższą wartość */
+  left: 60%;
   user-select: none;
 
   @media (max-width: 768px) {
     width: clamp(8rem, 24vw, 20rem);
-    top: 14%;
+    top: 20%;
   }
 
   @media (min-width: 769px) {
@@ -117,7 +116,9 @@ const SocialsContainer = styled.div`
   
   top: 65%;
   gap: 1rem;
-  left: 43.5%;
+  left: 50%;
+  transform: translateX(-50%);
+
 ;
   a {
     min-height: 2rem;
@@ -204,7 +205,7 @@ const PopUpContainer = styled.div`
   }`;
 
 const LinkStyled = styled(Link)`
-  font-size: clamp(0.7rem, 1.9vw, 1.9rem);
+  font-size: clamp(0.7rem, 2.2vw, 1.9rem);
   flex-basis: auto;
   align-self: center;
   white-space: nowrap;
