@@ -32,20 +32,18 @@ const Background = styled.div<{ isFixed: boolean; topOffset: number }>`
   height: 100vh;
   background-image: url(${background});
   background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
   z-index: -1;
-  //transition: top 0.3s ease; /* Dodanie płynnego przejścia dla tła */
 `;
-
 const ParentDiv = styled.div`
-  margin-top: clamp(3rem, 10vw, 12em);
   width: 100%;
   display: flex;
+  flex-direction: column;
   position: relative;
-  //height: auto;
-  //margin-bottom: 20rem; // Dodajemy margines dolny (dostosuj wartość)
-  
+  align-items: center;
 `;
+
 
 const ChildDiv = styled.div`
   flex: 1; 
@@ -60,40 +58,52 @@ const CenterDiv = styled(ChildDiv)`
   //height: auto;
 `;
 
-const CraneLeft = styled.img<{ isFixed: boolean; topOffset: number }>`
-  position: ${({ isFixed }) => (isFixed ? "fixed" : "absolute")};
-  top: ${({ isFixed, topOffset }) => (isFixed ? "0px" : `${topOffset}px`)};
-  left: 5%;
-  width: 42%;
+
+const CraneLeft = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset: number }>`
+  position: ${({ isFixed, reachedEnd }) => (reachedEnd ? "absolute" : isFixed ? "fixed" : "absolute")};
+  top: ${({ isFixed, reachedEnd, topOffset }) =>
+      reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3.5vh" : `${topOffset}px`};
+  left: 5vw;
+  width: clamp(25vw, 40vw, 50vw);
   height: auto;
   z-index: 2;
+  //transition: top 0.3s ease-in-out, width 0.3s ease-in-out;
 `;
 
-const CraneRight = styled.img<{ isFixed: boolean; topOffset: number }>`
-  position: ${({ isFixed }) => (isFixed ? "fixed" : "absolute")};
-  top: ${({ isFixed, topOffset }) => (isFixed ? "0px" : `${topOffset}px`)};
-  right: 5%;
-  width: 42%;
+const CraneRight = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset: number }>`
+  position: ${({ isFixed, reachedEnd }) => (reachedEnd ? "absolute" : isFixed ? "fixed" : "absolute")};
+  top: ${({ isFixed, reachedEnd, topOffset }) =>
+    reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3vh" : `${topOffset}px`};
+  right: 5vw;
+  width: clamp(25vw, 40vw, 50vw);
   height: auto;
   z-index: 2;
+  //transition: top 0.1s ease-in-out, width 0.1s ease-in-out;
 `;
+
+
 const RightDiv = styled(ChildDiv)`
 `;
 const LeftDiv = styled(ChildDiv)`
 `;
 
 const Card = styled.div<{ isFixed: boolean; reachedEnd: boolean }>`
-  height: 50vh;
+  width: 90vw;
+  max-width: 600px;
+  height: clamp(20vh, 50vh, 70vh); // Skaluje się do ekranu
   background: #fffffa;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: ${({ isFixed, reachedEnd }) => (reachedEnd ? 'relative' : isFixed ? 'sticky' : 'static')};
-  top: ${({ isFixed, reachedEnd }) => (reachedEnd ? 'auto' : isFixed ? '10rem' : 'auto')};
+  top: ${({ isFixed, reachedEnd }) => (reachedEnd ? '30vh' : '23vh')};
   border: solid 2px black;
   z-index: 3;
+  transition: top 0.3s ease-in-out;
 
   @media (max-width: 768px) {
-    height: clamp(18em, 50vw, 60vh);
+    width: 95vw;
   }
 `;
 const EmptyCard = styled.div`
@@ -117,33 +127,38 @@ const EmptyCardLast = styled.div<{ isFixed: boolean; reachedEnd: boolean }>`
   flex-direction: column;
   position: ${({ isFixed, reachedEnd }) => (reachedEnd ? "relative" : "sticky")};
   top: ${({ isFixed, reachedEnd }) => (reachedEnd ? "auto" : "10rem")};
-  //border: solid 2px black;
+  border: solid 2px black;
   z-index: 3;
-  margin-bottom: 10rem;
+  //margin-bottom: 10rem;
 
   @media (max-width: 768px) {
     height: clamp(18em, 50vw, 60vh);
   }
 `;
 
-const Ground = styled.div`
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 10rem;
-    background: #fce8cf;
-    z-index: 1;
-    `;
+const Ground = styled.div<{ isVisible: boolean }>`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 18vh;
+  background: #fce8cf;
+  z-index: 1;
+  opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
+  visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
+  transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out;
+`;
 
 
-    // CONTAINER
+
+// CONTAINER
 const Container = styled.div`
   position: relative;
-  display: grid;
-  top: 1.75rem;
-  aspect-ratio:1;
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding-top: 5vh;
 `;
 
 const SponsorsPanel = styled.div`
@@ -274,19 +289,23 @@ const PreviousSponsorsText = styled(SabreText)`
 const Sponsors: React.FC = () => {
   const [isFixed, setIsFixed] = useState(false);
   const [topOffset, setTopOffset] = useState(0);
+  const [reachedEnd, setReachedEnd] = useState(false);
   const parentRef = useRef<HTMLDivElement>(null);
-  const nextSectionRef = useRef<HTMLDivElement>(null); // Ref do następnej sekcji
 
   useEffect(() => {
     const handleScroll = () => {
       if (!parentRef.current) return;
-
       const { top, bottom } = parentRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
 
-      //zamienić sprawdzanie wartości na procent
-      if (top <= 0 && bottom > 630) {
+      // Sprawdzenie, czy sekcja dotarła do dolnej krawędzi ekranu
+      if (bottom <= windowHeight *0.7 ) {
+        setReachedEnd(true);
+        setIsFixed(false); // Element zaczyna się scrollować swobodnie
+      } else if (top <= 0 && bottom > windowHeight * 0.7) {
+        setReachedEnd(false);
         setIsFixed(true);
-        setTopOffset(Math.abs(top));; // Obliczanie topOffset w zależności od scrollowania
+        setTopOffset(Math.abs(top)); // Ustawiamy przesunięcie
       } else {
         setIsFixed(false);
       }
@@ -294,13 +313,10 @@ const Sponsors: React.FC = () => {
 
     window.addEventListener("scroll", handleScroll);
     handleScroll();
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const [reachedEnd, setReachedEnd] = useState(false);
+
   const [isFixedCard, setIsFixedCard] = useState(false);
 
   useEffect(() => {
@@ -334,13 +350,28 @@ const Sponsors: React.FC = () => {
     };
   }, [reachedEnd]);
 
+  const [isVisibleGround, setIsVisibleGround] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!parentRef.current) return;
+      const { top, bottom } = parentRef.current.getBoundingClientRect();
+      setIsVisibleGround(top <= 40 && bottom > window.innerHeight * 0.7);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+
   return (
-    <Container id="sponsors">
-      <PreviousSponsorsText style={{marginBottom: '0.5rem' }}>Sponsorzy poprzedniej edycji</PreviousSponsorsText>
-      <ParentDiv ref={parentRef}>
-        <Background isFixed={isFixed} topOffset={topOffset}  />
+      <Container id="sponsors">
+        <PreviousSponsorsText style={{marginBottom: '0.5rem' }}>Sponsorzy poprzedniej edycji</PreviousSponsorsText>
+        <ParentDiv ref={parentRef}>
+          <Background isFixed={isFixed} topOffset={topOffset}  />
           <LeftDiv>
-            <CraneLeft src={crane_left} isFixed={isFixed} topOffset={topOffset} />
+            <CraneLeft src={crane_left} isFixed={isFixed} reachedEnd={reachedEnd} topOffset={topOffset} />
 
           </LeftDiv>
 
@@ -467,12 +498,13 @@ const Sponsors: React.FC = () => {
           </CenterDiv>
 
           <RightDiv>
-          <CraneRight src={crane_right} isFixed={isFixed} topOffset={topOffset}></CraneRight>
+            <CraneRight src={crane_right} isFixed={isFixed} reachedEnd={reachedEnd} topOffset={topOffset} />
+            <Ground isVisible={isVisibleGround}> </Ground>
           </RightDiv>
-      </ParentDiv>
-    </Container>
+        </ParentDiv>
+      </Container>
 
-);
+  );
 };
 
 export default Sponsors;
