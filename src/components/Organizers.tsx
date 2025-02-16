@@ -8,7 +8,7 @@ import styled from "styled-components";
 
 const EmptyElement = styled.div`
   width: 100%;
-  height: 10rem; // Możesz dostosować wysokość
+  height: 6vh;
 `;
 
 const Img = styled.img`
@@ -64,19 +64,19 @@ const NameText = styled.span`
 const TextBoxLG = styled(TextBox)`
   left: 33.33%;
   transform: translate(-50%, -50%);
-  top: clamp(75%, 70vw, 81.25%);
+  top: clamp(60%, 65vw, 81.25%);
 `;
 
 const TextBoxMO = styled(TextBox)`
   left: 50%;
   transform: translate(-50%, -50%);
-  top: clamp(65%, 70vw, 77.25%);
+  top: clamp(60%, 65vw, 81.25%);
 `;
 
 const TextBoxFR = styled(TextBox)`
-  left: 66.66%;
+  left: 80%;
   transform: translate(-50%, -50%);
-  top: clamp(75%, 70vw, 81.25%);
+  top: clamp(60%, 65vw, 81.25%);
 `;
 
 const Organizers: React.FC = () => {
