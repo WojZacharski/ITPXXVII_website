@@ -1,6 +1,5 @@
 import React from "react";
 //@ts-ignore
-//import img8_desktop from "../images/desktop_backgrounds/CT_bg.jpg";
 import img8_desktop from "../images/desktop_backgrounds/organizatorzy bez napisow 2_Obszar roboczy 1.jpg";
 //@ts-ignore
 import img6_mobile from "../images/mobile_backgrounds/CT_mobile_fix.png";
@@ -24,7 +23,7 @@ const Container = styled.div`
 
 const ContactBoxTitle = styled.h2`
   position: absolute;
-  top: 13%;
+  top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: clamp(5rem, 2vw, 8rem);
@@ -37,15 +36,17 @@ const ContactBoxTitle = styled.h2`
 
 const TextBox = styled.div`
   position: absolute;
-  width: 17%;
-  height: 10%;
+  width: 22%;
+  height: auto;
   font-size: 1.15vw;
   line-height: 130%;
   color: #d2764a;
   text-align: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  display: flexbox;
   justify-content: center;
+  
   @media (max-width: 768px) {
     display: none;
   } ;
@@ -56,13 +57,24 @@ const Picture = styled.picture`
   top: 1.75rem;
 `;
 
-const NameText = styled.span`
-  font-size: 120%;
+const NameText = styled.div`
+  font-size: 3vw;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1vh;
+`;
+
+const DescText = styled.div`
+  font-size: 1.5vw;
   font-weight: 600;
+  color: #d2764a;
+  text-align: center;
+  line-height: 1.4;
 `;
 
 const TextBoxLG = styled(TextBox)`
-  left: 33.33%;
+  left: 20%;
   transform: translate(-50%, -50%);
   top: clamp(60%, 65vw, 81.25%);
 `;
@@ -79,6 +91,19 @@ const TextBoxFR = styled(TextBox)`
   top: clamp(60%, 65vw, 81.25%);
 `;
 
+// stylizacja stopki
+const FooterContainer = styled.div`
+  width: 100%;
+  background-color: #c8beb3; // Kolor tła
+  color: white; //Kolor tekstu
+  text-align: center;
+  font-size: clamp(1rem, 2vw, 2rem);
+  padding: 2rem 0;
+  font-weight: 400;
+  line-height: 1.5;
+  //margin-top: 5rem;
+`;
+
 const Organizers: React.FC = () => {
   return (
       <>
@@ -89,34 +114,42 @@ const Organizers: React.FC = () => {
             <source srcSet={img6_mobile} media="(max-width: 768px)" />
             <Img src={img8_desktop} alt="last page" />
           </Picture>
+
           <ContactBoxTitle>
             Kontakt z organizatorami
           </ContactBoxTitle>
           <TextBoxLG>
-            <NameText>
-              TOMASZ KOLBUSZ <br />{" "}
-            </NameText>
-            KOORDYNATOR DS. LOGISTYKI <br />
-            881 682 816 <br />
-            TOMASZ.KOLBUSZ@BEST.KRAKOW.PL <br />
+            <NameText>TOMASZ KOLBUSZ</NameText>
+            <DescText>
+              KOORDYNATOR DS. LOGISTYKI <br />
+              881 682 816 <br />
+              TOMASZ.KOLBUSZ@BEST.KRAKOW.PL
+            </DescText>
           </TextBoxLG>
           <TextBoxMO>
-            <NameText>
-              PATRYK MOTYLSKI <br />{" "}
-            </NameText>
-            GŁÓWNY KOORDYNATOR <br />
-            531 767 164 <br />
-            PATRYK.MOTYLSKI@BEST.KRAKOW.PL <br />
+            <NameText>PATRYK MOTYLSKI</NameText>
+            <DescText>
+              GŁÓWNY KOORDYNATOR <br />
+              531 767 164 <br />
+              PATRYK.MOTYLSKI@BEST.KRAKOW.PL
+            </DescText>
           </TextBoxMO>
           <TextBoxFR>
-            <NameText>
-              BARTOSZ AMALIO <br />{" "}
-            </NameText>
-            KOORDYNATOR DS. KONTAKTU Z FIRMAMI <br />
-            531 490 520 <br />
-            BARTOSZ.AMALIO@BEST.KRAKOW.PL <br />
+            <NameText>BARTOSZ AMALIO</NameText>
+            <DescText>
+              KOORDYNATOR DS. KONTAKTU Z FIRMAMI <br />
+              531 490 520 <br />
+              BARTOSZ.AMALIO@BEST.KRAKOW.PL
+            </DescText>
           </TextBoxFR>
         </Container>
+
+        <FooterContainer>
+          STOWARZYSZENIE STUDENTÓW BEST AGH KRAKÓW <br />
+          DS 1 "ALFA" BLOK 1 <br />
+          UL. REYMONTA 17/E14 <br />
+          30-059 KRAKÓW
+        </FooterContainer>
       </>
   );
 };
