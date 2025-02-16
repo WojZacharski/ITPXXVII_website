@@ -133,7 +133,7 @@ const SocialsContainer = styled.div`
 
   @media (max-width: 768px) {
     & {
-      top: 57.5%;
+      top: 70%;
       width: clamp(20vw, 30vw, 50vw);
       a {
         height: 4vh;
