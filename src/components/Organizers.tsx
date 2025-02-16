@@ -1,9 +1,16 @@
 import React from "react";
 //@ts-ignore
-import img8_desktop from "../images/desktop_backgrounds/CT_bg.jpg";
+//import img8_desktop from "../images/desktop_backgrounds/CT_bg.jpg";
+import img8_desktop from "../images/desktop_backgrounds/organizatorzy bez napisow 2_Obszar roboczy 1.jpg";
 //@ts-ignore
 import img6_mobile from "../images/mobile_backgrounds/CT_mobile_fix.png";
 import styled from "styled-components";
+
+const EmptyElement = styled.div`
+  width: 100%;
+  height: 10rem; // Możesz dostosować wysokość
+`;
+
 const Img = styled.img`
   width: 100%;
   height: 100%;
@@ -17,16 +24,15 @@ const Container = styled.div`
 
 const ContactBoxTitle = styled.h2`
   position: absolute;
-  top: 42%;
+  top: 13%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: clamp(1rem, 2vw, 2.4rem);
+  font-size: clamp(5rem, 2vw, 8rem);
   text-align: center;
   line-height: 1.2;
   @media (max-width: 768px) {
     display: none;
   } ;
-};
 `;
 
 const TextBox = styled.div`
@@ -75,42 +81,43 @@ const TextBoxFR = styled(TextBox)`
 
 const Organizers: React.FC = () => {
   return (
-    <>
-      <Container id="organizers">
-        <Picture>
-          <source srcSet={img8_desktop} media="(min-width: 769px)" />
-          <source srcSet={img6_mobile} media="(max-width: 768px)" />
-          <Img src={img8_desktop} alt="last page" />
-        </Picture>
-        <ContactBoxTitle>
-          Kontakt z organizatorami
-        </ContactBoxTitle>
-        <TextBoxLG>
-          <NameText>
-            TOMASZ KOLBUSZ <br />{" "}
-          </NameText>
-          KOODRYNATOR DS. LOGISTYKI <br />
-          881 682 816 <br />
-          TOMASZ.KOLBUSZ@BEST.KRAKOW.PL <br />
-        </TextBoxLG>
-        <TextBoxMO>
-          <NameText>
-            PATRYK MOTYLSKI <br />{" "}
-          </NameText>
-          GŁÓWNY KOORDYNATOR <br />
-          531 767 164 <br />
-          PATRYK.MOTYLSKI@BEST.KRAKOW.PL <br />
-        </TextBoxMO>
-        <TextBoxFR>
-          <NameText>
-            BARTOSZ AMALIO <br />{" "}
-          </NameText>
-          KOODRYNATOR DS. KONTAKTU Z FIRMAMI <br />
-          531 490 520 <br />
-          BARTOSZ.AMALIO@BEST.KRAKOW.PL <br />
-        </TextBoxFR>
-      </Container>
-    </>
+      <>
+        <EmptyElement />
+        <Container id="organizers">
+          <Picture>
+            <source srcSet={img8_desktop} media="(min-width: 769px)" />
+            <source srcSet={img6_mobile} media="(max-width: 768px)" />
+            <Img src={img8_desktop} alt="last page" />
+          </Picture>
+          <ContactBoxTitle>
+            Kontakt z organizatorami
+          </ContactBoxTitle>
+          <TextBoxLG>
+            <NameText>
+              TOMASZ KOLBUSZ <br />{" "}
+            </NameText>
+            KOORDYNATOR DS. LOGISTYKI <br />
+            881 682 816 <br />
+            TOMASZ.KOLBUSZ@BEST.KRAKOW.PL <br />
+          </TextBoxLG>
+          <TextBoxMO>
+            <NameText>
+              PATRYK MOTYLSKI <br />{" "}
+            </NameText>
+            GŁÓWNY KOORDYNATOR <br />
+            531 767 164 <br />
+            PATRYK.MOTYLSKI@BEST.KRAKOW.PL <br />
+          </TextBoxMO>
+          <TextBoxFR>
+            <NameText>
+              BARTOSZ AMALIO <br />{" "}
+            </NameText>
+            KOORDYNATOR DS. KONTAKTU Z FIRMAMI <br />
+            531 490 520 <br />
+            BARTOSZ.AMALIO@BEST.KRAKOW.PL <br />
+          </TextBoxFR>
+        </Container>
+      </>
   );
 };
 

@@ -50,7 +50,7 @@ const Container = styled.div`
 
   margin: 0 auto;
   margin-top: 1em;
-  margin-bottom: 4em;
+  margin-bottom: 1em;
 
   aspect-ratio: 1;
 

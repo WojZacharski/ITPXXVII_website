@@ -62,7 +62,7 @@ const CenterDiv = styled(ChildDiv)`
 
 const CraneLeft = styled.img<{ isFixed: boolean; topOffset: number }>`
   position: ${({ isFixed }) => (isFixed ? "fixed" : "absolute")};
-  top: ${({ isFixed, topOffset }) => (isFixed ? "0px" : `${topOffset}px`)};
+  top: ${({ isFixed, topOffset }) => (isFixed ? "7px" : `${topOffset + 7}px`)};
   left: 5%;
   width: 42%;
   height: auto;
@@ -117,27 +117,32 @@ const EmptyCardLast = styled.div<{ isFixed: boolean; reachedEnd: boolean }>`
   flex-direction: column;
   position: ${({ isFixed, reachedEnd }) => (reachedEnd ? "relative" : "sticky")};
   top: ${({ isFixed, reachedEnd }) => (reachedEnd ? "auto" : "10rem")};
-  //border: solid 2px black;
+ //border: solid 2px black;
   z-index: 3;
-  margin-bottom: 10rem;
+  //margin-bottom: 10rem;
 
   @media (max-width: 768px) {
     height: clamp(18em, 50vw, 60vh);
   }
 `;
 
-const Ground = styled.div`
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 10rem;
-    background: #fce8cf;
-    z-index: 1;
-    `;
+const Ground = styled.div<{ isVisible: boolean }>`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 18vh;
+  background: #fce8cf;
+  z-index: 1;
+
+  opacity: ${({ isVisible }) => (isVisible ? "1" : "0")}; // Zanik
+  visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")}; // Ukrycie elementu bez usuwania go z DOM
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+`;
 
 
-    // CONTAINER
+
+// CONTAINER
 const Container = styled.div`
   position: relative;
   display: grid;
@@ -282,6 +287,7 @@ const Sponsors: React.FC = () => {
       if (!parentRef.current) return;
 
       const { top, bottom } = parentRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
 
       //zamienić sprawdzanie wartości na procent
       if (top <= 0 && bottom > 630) {
@@ -334,11 +340,37 @@ const Sponsors: React.FC = () => {
     };
   }, [reachedEnd]);
 
+  const [isVisibleGround, setIsVisibleGround] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!parentRef.current) return;
+
+      const {top, bottom } = parentRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      // Jeśli sekcja jest w widoku, Ground jest widoczny, inaczej znika
+      if(top <= 40 && bottom > windowHeight * 0.7) {
+        setIsVisibleGround(true);// Znika, gdy użytkownik przewinie 20% wysokości okna
+      }
+      else {
+        setIsVisibleGround(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <Container id="sponsors">
-      <PreviousSponsorsText style={{marginBottom: '0.5rem' }}>Sponsorzy poprzedniej edycji</PreviousSponsorsText>
-      <ParentDiv ref={parentRef}>
-        <Background isFixed={isFixed} topOffset={topOffset}  />
+      <Container id="sponsors">
+        <PreviousSponsorsText style={{marginBottom: '0.5rem' }}>Sponsorzy poprzedniej edycji</PreviousSponsorsText>
+        <ParentDiv ref={parentRef}>
+          <Background isFixed={isFixed} topOffset={topOffset}  />
           <LeftDiv>
             <CraneLeft src={crane_left} isFixed={isFixed} topOffset={topOffset} />
 
@@ -467,12 +499,13 @@ const Sponsors: React.FC = () => {
           </CenterDiv>
 
           <RightDiv>
-          <CraneRight src={crane_right} isFixed={isFixed} topOffset={topOffset}></CraneRight>
+            <CraneRight src={crane_right} isFixed={isFixed} topOffset={topOffset}></CraneRight>
+            <Ground isVisible={isVisibleGround}> </Ground>
           </RightDiv>
-      </ParentDiv>
-    </Container>
+        </ParentDiv>
+      </Container>
 
-);
+  );
 };
 
 export default Sponsors;
