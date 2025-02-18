@@ -21,8 +21,8 @@ const Container = styled.div`
 
   @media (max-width: 768px) {
     width: 95%;
-    margin-top: 20%;
-    margin-bottom: 20%;
+    //margin-top: 5%;
+    //margin-bottom: 5%;
   }
 `;
 

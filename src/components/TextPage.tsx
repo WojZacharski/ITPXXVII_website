@@ -12,7 +12,9 @@ const Container = styled.div`
     min-height: 130vh;
   padding-top: 2rem;
     @media (max-width: 768px){
-        min-height: 100vh;
+        min-height: auto;
+        height: auto;
+        padding-bottom: 3rem;
     }
 `;
 
@@ -21,23 +23,25 @@ const DesktopGears = styled.div`
     width: 100%;
     top: 20vh;
     left: 0;
-    z-index: -1; /* Ustawia zębatki w tle */
+    z-index: -1;
 
   @media (max-width: 768px) {
-    display: none; /* Ukryj na mobilnych */
+    display: none; 
   }
 `;
 
 const MobileGears = styled.div`
-    position: absolute;
-    width: 80%;
-    top: 20%;
-    right: 20%;
-    z-index: -1; /* Ustawia zębatki w tle */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140%;
+    max-width: 300px;
+    //margin: 1rem 0;
+    z-index: -1;
 
-  @media (min-width: 768px) {
-      display: none;
-  }
+    @media (min-width: 768px) {
+        display: none;
+    }
 `;
 
 
@@ -93,21 +97,19 @@ const H3 = styled.h3`
 
 
 const TextContainer = styled.div`
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 90%;
-  top: 40vh; 
-  max-width: 1200px;
-  text-align: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
-    
-  @media (max-width: 768px){
-      top: 20%;
-      gap: 20rem;
-  }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    text-align: center;
+    gap: 3rem;
+    margin-top: 2rem;
+    margin-bottom: 5rem;
+
+    @media (max-width: 768px) {
+        gap: 1rem;
+    }
 `;
 
 const TextBox = styled.div`
@@ -137,7 +139,10 @@ const TextPage: React.FC = () => {
                     Inżynierskie Targi Pracy organizowane przez Stowarzyszenie Studentów BEST AGH Kraków to projekt, który już od 27 lat łączy środowisko akademickie i biznesowe. <br />
                     Naszym głównym celem jest zapewnienie wszystkim uczestnikom Targów jak najwyższej jakości wydarzenia oraz pełnej satysfakcji.
                 </TextBox>
-
+                {/* Zębatki na urządzeniach mobilnych */}
+                <MobileGears>
+                    <GearsMobile />
+                </MobileGears>
                 <TextBox>
                     W dniu 19 marca spotkają się pracodawcy szukający przyszłych pracowników oraz studenci starający się o wymarzoną pracę lub staż.
                     Na naszej stronie internetowej znajdziecie informacje o naszych wystawcach i ich ofertach pracy. <br />
@@ -151,10 +156,7 @@ const TextPage: React.FC = () => {
                 <Gears />
             </DesktopGears>
 
-            {/* Zębatki na urządzeniach mobilnych */}
-            <MobileGears>
-                <GearsMobile />
-            </MobileGears>
+
         </Container>
     );
 };
