@@ -2,7 +2,7 @@ import React from "react";
 //@ts-ignore
 import img8_desktop from "../images/desktop_backgrounds/organizatorzy bez napisow 2_Obszar roboczy 1.jpg";
 //@ts-ignore
-import img6_mobile from "../images/mobile_backgrounds/CT_mobile_fix.png";
+import img6_mobile from "../images/mobile_backgrounds/organizatorzy grafika z napisami 2_Obszar roboczy 1.jpg";
 import styled from "styled-components";
 
 const EmptyElement = styled.div`
