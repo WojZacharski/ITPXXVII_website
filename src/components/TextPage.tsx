@@ -30,9 +30,9 @@ const DesktopGears = styled.div`
 
 const MobileGears = styled.div`
     position: absolute;
-    width: 100%;
-    top: 25%;
-    right: 10%;
+    width: 80%;
+    top: 20%;
+    right: 20%;
     z-index: -1; /* Ustawia zębatki w tle */
 
   @media (min-width: 768px) {
