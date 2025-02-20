@@ -16,7 +16,7 @@ const mapImages = importAll(
 
 const MapText = styled.p`
     position: absolute;
-    top: 6%;
+    top: 4%;
     left: 50%;
     transform: translateX(-50%);
     color: #f08e17;
@@ -29,7 +29,8 @@ const MapText = styled.p`
     text-align: center;
 
     @media (max-width: 769px) {
-        font-size: clamp(1rem, 10vw, 2.5rem); /* Zwiększenie rozmiaru tekstu dla mobilnych */
+        font-size: clamp(1rem, 12vw, 3rem); /* Zwiększenie rozmiaru czcionki dla mobilnych */
+        padding-bottom: 10%; /* Dopasowanie przestrzeni do ekranu */
     }
 `;
 
@@ -59,8 +60,9 @@ const MapImg = styled.img`
   z-index: 2;
   @media (max-width: 769px) {
       top: 30%;
-    width: 100%;
-      height: 140%;
+      width: 100%;
+      //height: 140%;
+      height: auto;
   }
 `;
 
@@ -72,8 +74,10 @@ const MapLegend = styled.img`
   z-index: 2;
   @media (max-width: 769px) {
     left: 7.5%;
-      top: 50%;
+      top: 55%;
       width: 80%;
+      width: 80vw;  /* Dostosowanie szerokości legendy do szerokości ekranu */
+      height: auto;  /* Dostosowanie wysokości legendy */
   }
 `;
 
