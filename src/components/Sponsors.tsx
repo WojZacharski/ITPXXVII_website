@@ -6,6 +6,8 @@ import PartnerGears from "./PartnerGears";
 import background from "../images/desktop_backgrounds/buildings_bg.svg";
 import crane_left from "../images/desktop_backgrounds/crane-left.svg";
 import crane_right from "../images/desktop_backgrounds/crane-right.svg";
+import useResponsiveScroll from "./SponsorsScroll";
+
 
 function importAll(r: any) {
   return r.keys().map(r);
@@ -35,7 +37,15 @@ const Background = styled.div<{ isFixed: boolean; topOffset: number }>`
   background-position: center;
   background-repeat: no-repeat;
   z-index: -1;
+
+  @media (max-width: 768px) {
+    background-size: contain; /* Ustawienie tła w "contain" na urządzenia mobilne, aby dopasowało się do ekranu */
+    background-position: top center; /* Ustawienie tła na górze ekranu na urządzeniach mobilnych */
+    //height: auto; /* Wysokość tła dostosowuje się do zawartości */
+  }
 `;
+
+
 const ParentDiv = styled.div`
   width: 100%;
   display: flex;
@@ -67,7 +77,18 @@ const CraneLeft = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset:
   width: clamp(25vw, 40vw, 50vw);
   height: auto;
   z-index: 2;
-  //transition: top 0.3s ease-in-out, width 0.3s ease-in-out;
+  object-fit: cover; /* To make sure image fills the area properly */
+  
+  @media (max-width: 768px) {
+    left: -42%;
+    top: ${({ isFixed, reachedEnd, topOffset }) =>
+        reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3.5vh" : `${topOffset}px`};
+    width: 90vw; /* Ustalenie szerokości obrazu na urządzeniach mobilnych */
+    height: auto; /* Zachowanie proporcji obrazu */
+    object-position: left center; /* Zapewnienie, że część obrazu zaczyna się od lewej strony */
+    clip-path: inset(0 0 0 45%); /* Przycięcie dolnej części obrazu na urządzeniach mobilnych */
+    transition: top 0.1s ease-in-out, width 0.1s ease-in-out;
+  }
 `;
 
 const CraneRight = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset: number }>`
@@ -78,7 +99,18 @@ const CraneRight = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset
   width: clamp(25vw, 40vw, 50vw);
   height: auto;
   z-index: 2;
-  //transition: top 0.1s ease-in-out, width 0.1s ease-in-out;
+  object-fit: cover;
+  
+  @media (max-width: 768px) {
+    right: -40%;
+    top: ${({ isFixed, reachedEnd, topOffset }) =>
+        reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3vh" : `${topOffset}px`};
+    width: 90vw; /* Ustalenie szerokości obrazu na urządzeniach mobilnych */
+    height: auto; /* Zachowanie proporcji obrazu */
+    object-position: left center; /* Zapewnienie, że część obrazu zaczyna się od lewej strony */
+    clip-path: inset(0 45% 0 0); /* Przycięcie dolnej części obrazu na urządzeniach mobilnych */
+    transition: top 0.1s ease-in-out, width 0.1s ease-in-out;
+  }
 `;
 
 
@@ -101,22 +133,22 @@ const Card = styled.div<{ isFixed: boolean; reachedEnd: boolean }>`
   border: solid 2px black;
   z-index: 3;
   transition: top 0.3s ease-in-out;
+  padding: 1rem;
 
   @media (max-width: 768px) {
-    width: 95vw;
+    width: 80vw;  /* Zmniejszenie szerokości karty na urządzenia mobilne */
+    height: 250px;  /* Ustalenie stałej wysokości karty dla mobilnych urządzeń */
+    padding: 0.5rem;  /* Zmniejszenie paddingu na mobilnych */
   }
 `;
 const EmptyCard = styled.div`
   height: 50vh;
-  //background: ;
   display:flex;
   flex-direction: column;
   position:sticky;
-  //top:10rem;
-  //border: solid 2px black;
 
   @media (max-width: 768px) {
-    height:clamp(18em, 50vw, 60vh);
+    height:clamp(18em, 40vw, 60vh);
   } ;
 `;
 
@@ -133,6 +165,7 @@ const EmptyCardLast = styled.div<{ isFixed: boolean; reachedEnd: boolean }>`
 
   @media (max-width: 768px) {
     height: clamp(18em, 50vw, 60vh);
+    display: none
   }
 `;
 
@@ -147,6 +180,10 @@ const Ground = styled.div<{ isVisible: boolean }>`
   opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
   visibility: ${({ isVisible }) => (isVisible ? "visible" : "hidden")};
   transition: opacity 0.1s ease-in-out, visibility 0.1s ease-in-out;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 
@@ -159,6 +196,9 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   padding-top: 5vh;
+  @media (max-width: 768px) {
+    padding-top: 10vh; /* Adjust for mobile */
+  }
 `;
 
 const SponsorsPanel = styled.div`
@@ -173,6 +213,7 @@ const SponsorsPanel = styled.div`
   gap: 2.5%;
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 50%);
+    
   };
 `;
 
@@ -184,8 +225,9 @@ const PartnershipText = styled.span`
   grid-column: span 3;
   justify-self: center;
   @media (max-width: 768px) {
-    grid-column: span 2;
-    font-size: clamp(0.8rem, 5vw, 1.2rem);
+    font-size: clamp(1rem, 5vw, 1.5rem); /* Zmniejszenie rozmiaru czcionki na urządzeniach mobilnych */
+    //margin-bottom: 1.5rem; /* Zwiększenie marginesu na mobilnych urządzeniach */
+    padding: 0 1rem; /* Dodanie paddingu dla tekstu, aby zapewnić przestrzeń */
   } ;
 `;
 
@@ -194,6 +236,11 @@ const SponsorImg = styled.img`
   display: block;
   aspect-ratio: 3/2;
   object-fit: contain;
+  
+  @media (max-width: 768px) {
+    max-width: 80%;  /* Zmniejszenie szerokości obrazu na urządzenia mobilne */
+    height: auto;  /* Zapewnienie, że obraz zachowa proporcje */
+  }
 `;
 
 const SabreText = styled.span`
@@ -281,89 +328,18 @@ const PreviousSponsorsText = styled(SabreText)`
   top: 1%;
   font-weight: bold;
   color: #ee8b10;
+  white-space: nowrap;
+  text-align: center;
+  
   @media (max-width: 768px) {
-    font-size: clamp(0.8rem, 5vw, 1rem);
+    font-size: clamp(1rem, 10vw, 3rem);
+    width: auto;
   }
 `;
 
 const Sponsors: React.FC = () => {
-  const [isFixed, setIsFixed] = useState(false);
-  const [topOffset, setTopOffset] = useState(0);
-  const [reachedEnd, setReachedEnd] = useState(false);
   const parentRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!parentRef.current) return;
-      const { top, bottom } = parentRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      // Sprawdzenie, czy sekcja dotarła do dolnej krawędzi ekranu
-      if (bottom <= windowHeight *0.7 ) {
-        setReachedEnd(true);
-        setIsFixed(false); // Element zaczyna się scrollować swobodnie
-      } else if (top <= 0 && bottom > windowHeight * 0.7) {
-        setReachedEnd(false);
-        setIsFixed(true);
-        setTopOffset(Math.abs(top)); // Ustawiamy przesunięcie
-      } else {
-        setIsFixed(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-
-  const [isFixedCard, setIsFixedCard] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!parentRef.current) return;
-
-      const { top, bottom } = parentRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      // Sprawdzenie, czy sekcja kończy się przed dolną krawędzią ekranu
-      // zamienić sprawdzanie wartości na procent
-      if (bottom <= windowHeight - 1500) {
-        setReachedEnd(true);
-      } else {
-        setReachedEnd(false);
-      }
-
-      //zamienić sprawdzanie wartości na procent
-      if (top <= 10000 && !reachedEnd) {
-        setIsFixedCard(true);
-      } else {
-        setIsFixedCard(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [reachedEnd]);
-
-  const [isVisibleGround, setIsVisibleGround] = useState(true);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!parentRef.current) return;
-      const { top, bottom } = parentRef.current.getBoundingClientRect();
-      setIsVisibleGround(top <= 80 && bottom > window.innerHeight * 0.7);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
+  const { isFixed, topOffset, reachedEnd, isFixedCard, isVisibleGround } = useResponsiveScroll(parentRef);
 
   return (
       <Container id="sponsors">
@@ -372,7 +348,6 @@ const Sponsors: React.FC = () => {
           <Background isFixed={isFixed} topOffset={topOffset}  />
           <LeftDiv>
             <CraneLeft src={crane_left} isFixed={isFixed} reachedEnd={reachedEnd} topOffset={topOffset} />
-
           </LeftDiv>
 
           <CenterDiv ref={parentRef}>
