@@ -2,7 +2,7 @@ import React from "react";
 //@ts-ignore
 import img8_desktop from "../images/desktop_backgrounds/organizatorzy bez napisow 2_Obszar roboczy 1.jpg";
 //@ts-ignore
-import img6_mobile from "../images/mobile_backgrounds/CT_mobile_fix.png";
+import img6_mobile from "../images/mobile_backgrounds/organizatorzy grafika z napisami 2_Obszar roboczy 1.jpg";
 import styled from "styled-components";
 
 const EmptyElement = styled.div`
@@ -76,19 +76,19 @@ const DescText = styled.div`
 const TextBoxLG = styled(TextBox)`
   left: 20%;
   transform: translate(-50%, -50%);
-  top: clamp(60%, 65vw, 81.25%);
+  top: clamp(60%, 65vw, 85%);
 `;
 
 const TextBoxMO = styled(TextBox)`
   left: 50%;
   transform: translate(-50%, -50%);
-  top: clamp(60%, 65vw, 81.25%);
+  top: clamp(60%, 65vw, 85%);
 `;
 
 const TextBoxFR = styled(TextBox)`
   left: 80%;
   transform: translate(-50%, -50%);
-  top: clamp(60%, 65vw, 81.25%);
+  top: clamp(60%, 85vw, 85%);
 `;
 
 // stylizacja stopki
