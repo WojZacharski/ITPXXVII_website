@@ -76,19 +76,19 @@ const DescText = styled.div`
 const TextBoxLG = styled(TextBox)`
   left: 20%;
   transform: translate(-50%, -50%);
-  top: clamp(60%, 65vw, 81.25%);
+  top: clamp(60%, 65vw, 85%);
 `;
 
 const TextBoxMO = styled(TextBox)`
   left: 50%;
   transform: translate(-50%, -50%);
-  top: clamp(60%, 65vw, 81.25%);
+  top: clamp(60%, 65vw, 85%);
 `;
 
 const TextBoxFR = styled(TextBox)`
   left: 80%;
   transform: translate(-50%, -50%);
-  top: clamp(60%, 65vw, 81.25%);
+  top: clamp(60%, 85vw, 85%);
 `;
 
 // stylizacja stopki

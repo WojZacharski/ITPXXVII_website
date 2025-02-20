@@ -356,7 +356,7 @@ const Sponsors: React.FC = () => {
     const handleScroll = () => {
       if (!parentRef.current) return;
       const { top, bottom } = parentRef.current.getBoundingClientRect();
-      setIsVisibleGround(top <= 40 && bottom > window.innerHeight * 0.7);
+      setIsVisibleGround(top <= 80 && bottom > window.innerHeight * 0.7);
     };
 
     window.addEventListener("scroll", handleScroll);
