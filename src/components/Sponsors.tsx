@@ -30,7 +30,8 @@ const Background = styled.div<{ isFixed: boolean; topOffset: number }>`
   position: ${({ isFixed }) => (isFixed ? "fixed" : "absolute")};
   top: ${({ isFixed, topOffset }) => (isFixed ? "0px" : `${topOffset}px`)};
   left: 0;
-  width: 100vw;
+  width: 100%;
+  max-width: 100vw;
   height: 100vh;
   background-image: url(${background});
   background-size: cover;
@@ -39,9 +40,9 @@ const Background = styled.div<{ isFixed: boolean; topOffset: number }>`
   z-index: -1;
 
   @media (max-width: 768px) {
-    background-size: contain; /* Ustawienie tła w "contain" na urządzenia mobilne, aby dopasowało się do ekranu */
-    background-position: top center; /* Ustawienie tła na górze ekranu na urządzeniach mobilnych */
-    //height: auto; /* Wysokość tła dostosowuje się do zawartości */
+    background-size: contain; 
+    background-position: top center; 
+    //height: auto; 
   }
 `;
 
@@ -52,6 +53,14 @@ const ParentDiv = styled.div`
   flex-direction: column;
   position: relative;
   align-items: center;
+  //border: solid 2px black; //debug
+
+
+  @media (max-width: 768px) {
+    min-height: auto;
+    height: auto;
+    //padding: 0 1rem;
+  }
 `;
 
 
@@ -61,11 +70,17 @@ const ChildDiv = styled.div`
 
 const CenterDiv = styled(ChildDiv)`
   position: relative;
-  //top: 5rem;
   padding: 0 0.5rem 0 0.5rem;
   display:grid;
   grid-template-rows: auto 1fr;
-  //height: auto;
+
+  @media (max-width: 768px) {
+    padding: 0; 
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 
@@ -77,16 +92,17 @@ const CraneLeft = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset:
   width: clamp(25vw, 40vw, 50vw);
   height: auto;
   z-index: 2;
-  object-fit: cover; /* To make sure image fills the area properly */
+  object-fit: cover;
+  max-width: 100%;
   
   @media (max-width: 768px) {
     left: -42%;
     top: ${({ isFixed, reachedEnd, topOffset }) =>
         reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3.5vh" : `${topOffset}px`};
-    width: 90vw; /* Ustalenie szerokości obrazu na urządzeniach mobilnych */
-    height: auto; /* Zachowanie proporcji obrazu */
-    object-position: left center; /* Zapewnienie, że część obrazu zaczyna się od lewej strony */
-    clip-path: inset(0 0 0 45%); /* Przycięcie dolnej części obrazu na urządzeniach mobilnych */
+    width: 90vw; 
+    height: auto; 
+    object-position: left center; 
+    clip-path: inset(0 0 0 45%); 
     transition: top 0.1s ease-in-out, width 0.1s ease-in-out;
   }
 `;
@@ -100,22 +116,26 @@ const CraneRight = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset
   height: auto;
   z-index: 2;
   object-fit: cover;
+  max-width: 100%;
   
   @media (max-width: 768px) {
     right: -40%;
     top: ${({ isFixed, reachedEnd, topOffset }) =>
         reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3vh" : `${topOffset}px`};
-    width: 90vw; /* Ustalenie szerokości obrazu na urządzeniach mobilnych */
-    height: auto; /* Zachowanie proporcji obrazu */
-    object-position: left center; /* Zapewnienie, że część obrazu zaczyna się od lewej strony */
-    clip-path: inset(0 45% 0 0); /* Przycięcie dolnej części obrazu na urządzeniach mobilnych */
+    width: 90vw; 
+    height: auto; 
+    object-position: left center;
+    clip-path: inset(0 50% 0 0);
     transition: top 0.1s ease-in-out, width 0.1s ease-in-out;
+    overflow-x: hidden;
   }
 `;
 
 
 const RightDiv = styled(ChildDiv)`
+
 `;
+
 const LeftDiv = styled(ChildDiv)`
 `;
 
@@ -133,12 +153,12 @@ const Card = styled.div<{ isFixed: boolean; reachedEnd: boolean }>`
   border: solid 2px black;
   z-index: 3;
   transition: top 0.3s ease-in-out;
-  padding: 1rem;
+  //padding: 1rem;
 
   @media (max-width: 768px) {
-    width: 80vw;  /* Zmniejszenie szerokości karty na urządzenia mobilne */
-    height: 250px;  /* Ustalenie stałej wysokości karty dla mobilnych urządzeń */
-    padding: 0.5rem;  /* Zmniejszenie paddingu na mobilnych */
+    width: 80vw;  
+    height: 250px;  
+    //padding: 0.5rem;  
   }
 `;
 const EmptyCard = styled.div`
@@ -146,6 +166,7 @@ const EmptyCard = styled.div`
   display:flex;
   flex-direction: column;
   position:sticky;
+  //border: solid 2px black;
 
   @media (max-width: 768px) {
     height:clamp(18em, 40vw, 60vh);
@@ -197,7 +218,8 @@ const Container = styled.div`
   width: 100%;
   padding-top: 5vh;
   @media (max-width: 768px) {
-    padding-top: 10vh; /* Adjust for mobile */
+    min-height: auto;
+    height: auto;
   }
 `;
 
@@ -227,7 +249,7 @@ const PartnershipText = styled.span`
   @media (max-width: 768px) {
     font-size: clamp(1rem, 5vw, 1.5rem); /* Zmniejszenie rozmiaru czcionki na urządzeniach mobilnych */
     //margin-bottom: 1.5rem; /* Zwiększenie marginesu na mobilnych urządzeniach */
-    padding: 0 1rem; /* Dodanie paddingu dla tekstu, aby zapewnić przestrzeń */
+    //padding: 0 1rem; /* Dodanie paddingu dla tekstu, aby zapewnić przestrzeń */
   } ;
 `;
 
@@ -334,6 +356,7 @@ const PreviousSponsorsText = styled(SabreText)`
   @media (max-width: 768px) {
     font-size: clamp(1rem, 10vw, 3rem);
     width: auto;
+    display: none;  
   }
 `;
 
@@ -350,7 +373,12 @@ const Sponsors: React.FC = () => {
             <CraneLeft src={crane_left} isFixed={isFixed} reachedEnd={reachedEnd} topOffset={topOffset} />
           </LeftDiv>
 
-          <CenterDiv ref={parentRef}>
+          <RightDiv>
+            *{/*<CraneRight src={crane_right} isFixed={isFixed} reachedEnd={reachedEnd} topOffset={topOffset} /> */}
+            <Ground isVisible={isVisibleGround}> </Ground>
+          </RightDiv>
+
+          <CenterDiv>
             <EmptyCard></EmptyCard>
 
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd} >
@@ -472,10 +500,7 @@ const Sponsors: React.FC = () => {
             <EmptyCardLast isFixed={isFixedCard} reachedEnd={reachedEnd}></EmptyCardLast>
           </CenterDiv>
 
-          <RightDiv>
-            <CraneRight src={crane_right} isFixed={isFixed} reachedEnd={reachedEnd} topOffset={topOffset} />
-            <Ground isVisible={isVisibleGround}> </Ground>
-          </RightDiv>
+
         </ParentDiv>
       </Container>
 

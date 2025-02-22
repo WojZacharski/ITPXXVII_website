@@ -1,8 +1,8 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 //@ts-ignore
 import img8_desktop from "../images/desktop_backgrounds/organizatorzy bez napisow 2_Obszar roboczy 1.jpg";
 //@ts-ignore
-import img6_mobile from "../images/mobile_backgrounds/organizatorzy grafika z napisami 2_Obszar roboczy 1.jpg";
+import img6_mobile from "../images/mobile_backgrounds/organizatorzy grafika z napisami_Obszar roboczy 1.jpg";
 import styled from "styled-components";
 
 const EmptyElement = styled.div`
@@ -102,17 +102,31 @@ const FooterContainer = styled.div`
   font-weight: 400;
   line-height: 1.5;
   //margin-top: 5rem;
+
+  @media (max-width: 768px) {
+    display: none;
+  } ;
 `;
 
 const Organizers: React.FC = () => {
+  const [selectedImage, setSelectedImage] = useState(window.innerWidth <= 768 ? img6_mobile : img8_desktop);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setSelectedImage(window.innerWidth <= 768 ? img6_mobile : img8_desktop);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+
   return (
       <>
         <EmptyElement />
         <Container id="organizers">
           <Picture>
-            <source srcSet={img8_desktop} media="(min-width: 769px)" />
-            <source srcSet={img6_mobile} media="(max-width: 768px)" />
-            <Img src={img8_desktop} alt="last page" />
+            <Img src={selectedImage} alt="last page" />
           </Picture>
 
           <ContactBoxTitle>
