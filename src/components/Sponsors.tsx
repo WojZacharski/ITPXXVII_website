@@ -159,7 +159,7 @@ const EmptyCardLast = styled.div<{ isFixed: boolean; reachedEnd: boolean }>`
   flex-direction: column;
   position: ${({ isFixed, reachedEnd }) => (reachedEnd ? "relative" : "sticky")};
   top: ${({ isFixed, reachedEnd }) => (reachedEnd ? "auto" : "10rem")};
-  border: solid 2px black;
+  //border: solid 2px black;
   z-index: 3;
   //margin-bottom: 10rem;
 
