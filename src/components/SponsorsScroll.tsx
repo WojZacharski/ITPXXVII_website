@@ -9,6 +9,7 @@ const useResponsiveScroll = (parentRef: React.RefObject<HTMLDivElement>) => {
     const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
     //DEBUG
+    /*
     useEffect(() => {
         const handleScroll = () => {
             if (!parentRef.current) return;
@@ -29,109 +30,108 @@ const useResponsiveScroll = (parentRef: React.RefObject<HTMLDivElement>) => {
             window.removeEventListener("resize", handleScroll);
         };
     }, []);
+*/
 
+useEffect(() => {
+    const handleResize = () => {
+        setIsMobile(window.innerWidth < 768);
+    };
 
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+}, []);
 
-    useEffect(() => {
-        const handleResize = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
+useEffect(() => {
+    const handleScroll = () => {
+        if (!parentRef.current) return;
+        const { top, bottom, height } = parentRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
 
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (!parentRef.current) return;
-            const { top, bottom, height } = parentRef.current.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-
-            if (isMobile) {
-                // Dostosowane wartości dla wersji mobilnej
-                if (bottom <= windowHeight * 0.7) {
-                    setReachedEnd(true);
-                    setIsFixed(false);
-                } else if (top <= 0 && bottom > windowHeight * 0.7) {
-                    setReachedEnd(false);
-                    setIsFixed(true);
-                    setTopOffset(Math.abs(top));
-                } else {
-                    setIsFixed(false);
-                }
+        if (isMobile) {
+            // Dostosowane wartości dla wersji mobilnej
+            if (bottom <= windowHeight * 0.3) {
+                setReachedEnd(true);
+                setIsFixed(false);
+            } else if (top <= 0 && bottom > windowHeight * 0.3) {
+                setReachedEnd(false);
+                setIsFixed(true);
+                setTopOffset(Math.abs(top));
             } else {
-                // Logika dla desktopu
-                if (bottom <= windowHeight * 0.7) {
-                    setReachedEnd(true);
-                    setIsFixed(false);
-                } else if (top <= 0 && bottom > windowHeight * 0.7) {
-                    setReachedEnd(false);
-                    setIsFixed(true);
-                    setTopOffset(Math.abs(top));
-                } else {
-                    setIsFixed(false);
-                }
+                setIsFixed(false);
             }
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        handleScroll();
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [isMobile]);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            if (!parentRef.current) return;
-            const { top, bottom, height } = parentRef.current.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-
-            if (isMobile) {
-                // Dostosowanie logiki dla mobilnych
-                if (bottom <= windowHeight * 0.4) {
-                    setReachedEnd(true);
-                } else {
-                    setReachedEnd(false);
-                }
-
-                if (top <= 10000 && !reachedEnd) {
-                    setIsFixedCard(true);
-                } else {
-                    setIsFixedCard(false);
-                }
+        } else {
+            // Logika dla desktopu
+            if (bottom <= windowHeight * 0.7) {
+                setReachedEnd(true);
+                setIsFixed(false);
+            } else if (top <= 0 && bottom > windowHeight * 0.7) {
+                setReachedEnd(false);
+                setIsFixed(true);
+                setTopOffset(Math.abs(top));
             } else {
-                if (bottom <= windowHeight - 1500) {
-                    setReachedEnd(true);
-                } else {
-                    setReachedEnd(false);
-                }
-
-                if (top <= 10000 && !reachedEnd) {
-                    setIsFixedCard(true);
-                } else {
-                    setIsFixedCard(false);
-                }
+                setIsFixed(false);
             }
-        };
+        }
+    };
 
-        window.addEventListener("scroll", handleScroll);
-        handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+}, [isMobile]);
 
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [isMobile, reachedEnd]);
+useEffect(() => {
+    const handleScroll = () => {
+        if (!parentRef.current) return;
+        const { top, bottom, height } = parentRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (!parentRef.current) return;
-            const { top, bottom } = parentRef.current.getBoundingClientRect();
-            setIsVisibleGround(top <= 80 && bottom > window.innerHeight * (isMobile ? 0.4 : 0.7));
-        };
+        if (isMobile) {
+            // Dostosowanie logiki dla mobilnych
+            if (bottom <= windowHeight * 0.5) {
+                setReachedEnd(true);
+            } else {
+                setReachedEnd(false);
+            }
 
-        window.addEventListener("scroll", handleScroll);
-        handleScroll();
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [isMobile]);
+            if (top <= 0 && !reachedEnd) {
+                setIsFixedCard(true);
+            } else {
+                setIsFixedCard(false);
+            }
+        } else {
+            if (bottom <= windowHeight - 1500) {
+                setReachedEnd(true);
+            } else {
+                setReachedEnd(false);
+            }
 
-    return { isFixed, topOffset, reachedEnd, isFixedCard, isVisibleGround };
+            if (top <= 10000 && !reachedEnd) {
+                setIsFixedCard(true);
+            } else {
+                setIsFixedCard(false);
+            }
+        }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+}, [isMobile, reachedEnd]);
+
+useEffect(() => {
+    const handleScroll = () => {
+        if (!parentRef.current) return;
+        const { top, bottom } = parentRef.current.getBoundingClientRect();
+        setIsVisibleGround(top <= 80 && bottom > window.innerHeight * (isMobile ? 0.4 : 0.7));
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+}, [isMobile]);
+
+return { isFixed, topOffset, reachedEnd, isFixedCard, isVisibleGround };
 };
 
 export default useResponsiveScroll;

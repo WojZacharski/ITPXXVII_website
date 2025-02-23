@@ -6,6 +6,8 @@ import PartnerGears from "./PartnerGears";
 import background from "../images/desktop_backgrounds/buildings_bg.svg";
 import crane_left from "../images/desktop_backgrounds/crane-left.svg";
 import crane_right from "../images/desktop_backgrounds/crane-right.svg";
+import crane_left_mobile from "../images/mobile_backgrounds/crane-left-mobile.svg";
+import crane_right_mobile from "../images/mobile_backgrounds/crane-right-mobile.svg";
 import useResponsiveScroll from "./SponsorsScroll";
 
 
@@ -131,7 +133,37 @@ const CraneRight = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset
   }
 `;
 
+const CraneRightMobile = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset: number }>`
+  position: ${({ isFixed, reachedEnd }) => (reachedEnd ? "absolute" : isFixed ? "fixed" : "absolute")};
+  top: ${({ isFixed, reachedEnd, topOffset }) =>
+    reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3vh" : `${topOffset}px`};
+  right: 5vw;
+  width: clamp(25vw, 40vw, 50vw);
+  height: auto;
+  z-index: 2;
+  object-fit: cover;
+  max-width: 100%;
+  
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
 
+const CraneLeftMobile = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset: number }>`
+  position: ${({ isFixed, reachedEnd }) => (reachedEnd ? "absolute" : isFixed ? "fixed" : "absolute")};
+  top: ${({ isFixed, reachedEnd, topOffset }) =>
+    reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3vh" : `${topOffset}px`};
+  right: 5vw;
+  width: clamp(25vw, 40vw, 50vw);
+  height: auto;
+  z-index: 2;
+  object-fit: cover;
+  max-width: 100%;
+  
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
 const RightDiv = styled(ChildDiv)`
 
 `;
