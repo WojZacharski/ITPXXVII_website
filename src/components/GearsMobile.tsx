@@ -8,7 +8,7 @@ import gear_4 from "../images/gears/g4.svg";
 import gear_5 from "../images/gears/g5.svg";
 import gear_6 from "../images/gears/g6.svg";
 import gear_7 from "../images/gears/g7.svg";
-import gear_8 from "../images/gears/g8.svg"; // Upewnienie się, że mamy dokładnie 8 zębatek
+import gear_8 from "../images/gears/g8.svg";
 
 const Container = styled.div`
     display: grid;

@@ -372,9 +372,29 @@ const PreviousSponsorsText = styled(SabreText)`
   text-align: center;
   
   @media (max-width: 768px) {
-    font-size: clamp(1rem, 10vw, 3rem);
-    width: auto;
-    display: none;  
+    top: 1%;
+    font-size: 4vw;
+    margin-bottom: 1rem;
+    left: 50%;
+    top: 1%;
+    font-weight: bold;
+    color: #ee8b10;
+    text-align: center;
+    width: 100%; /* Upewnienie się, że tekst dostosowuje się do szerokości */
+    max-width: 90vw; /* Ograniczenie szerokości na większych ekranach */
+    white-space: normal; /* Pozwala tekstowi przechodzić do nowej linii */
+    word-wrap: break-word; /* Zapewnia łamanie długich słów */
+    overflow-wrap: break-word; /* Alternatywnie, jeśli \`word-wrap\` nie działa */
+    padding: 0 1rem; /* Dodatkowy padding dla bezpieczeństwa */
+    @media (max-width: 768px) {
+      top: 1%;
+      font-size: clamp(1rem, 6vw, 1.5rem); /* Dynamiczna czcionka */
+      max-width: 80vw; /* Ograniczenie szerokości na mniejszych ekranach */
+      margin-top: 0.5rem;
+    }
+    font-size: clamp(1rem, 6vw, 2rem); /* Dostosowanie do mobilnych ekranów */
+    max-width: 80vw; /* Mniejsze szerokości na telefonach */
+    margin-top: 0.5rem;
   }
 `;
 

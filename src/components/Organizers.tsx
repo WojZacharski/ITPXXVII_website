@@ -101,8 +101,7 @@ const FooterContainer = styled.div`
   padding: 2rem 0;
   font-weight: 400;
   line-height: 1.5;
-  //margin-top: 5rem;
-
+  
   @media (max-width: 768px) {
     display: none;
   } ;
