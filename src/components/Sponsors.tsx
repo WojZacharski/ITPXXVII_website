@@ -6,8 +6,8 @@ import PartnerGears from "./PartnerGears";
 import background from "../images/desktop_backgrounds/buildings_bg.svg";
 import crane_left from "../images/desktop_backgrounds/crane-left.svg";
 import crane_right from "../images/desktop_backgrounds/crane-right.svg";
-import crane_left_mobile from "../images/mobile_backgrounds/crane-left-mobile.svg";
-import crane_right_mobile from "../images/mobile_backgrounds/crane-right-mobile.svg";
+import crane_left_mobile from "../images/mobile_backgrounds/crane-left-mobile-cropped.svg";
+import crane_right_mobile from "../images/mobile_backgrounds/crane-right-mobile-cropped.svg";
 import useResponsiveScroll from "./SponsorsScroll";
 
 
@@ -98,14 +98,7 @@ const CraneLeft = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset:
   max-width: 100%;
   
   @media (max-width: 768px) {
-    left: -42%;
-    top: ${({ isFixed, reachedEnd, topOffset }) =>
-        reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3.5vh" : `${topOffset}px`};
-    width: 90vw; 
-    height: auto; 
-    object-position: left center; 
-    clip-path: inset(0 0 0 45%); 
-    transition: top 0.1s ease-in-out, width 0.1s ease-in-out;
+    display: none;
   }
 `;
 
@@ -121,29 +114,22 @@ const CraneRight = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset
   max-width: 100%;
   
   @media (max-width: 768px) {
-    right: -40%;
-    top: ${({ isFixed, reachedEnd, topOffset }) =>
-        reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3vh" : `${topOffset}px`};
-    width: 90vw; 
-    height: auto; 
-    object-position: left center;
-    clip-path: inset(0 50% 0 0);
-    transition: top 0.1s ease-in-out, width 0.1s ease-in-out;
-    overflow-x: hidden;
+    display: none;
   }
 `;
 
 const CraneRightMobile = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset: number }>`
   position: ${({ isFixed, reachedEnd }) => (reachedEnd ? "absolute" : isFixed ? "fixed" : "absolute")};
   top: ${({ isFixed, reachedEnd, topOffset }) =>
-    reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3vh" : `${topOffset}px`};
-  right: 5vw;
-  width: clamp(25vw, 40vw, 50vw);
+      reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3vh" : `${topOffset}px`};
+  right: 0; /* Wyrównanie do prawej krawędzi */
+  max-width: 100%; /* Zapobieganie wychodzeniu poza ekran */
+  width: clamp(25vw, 47vw, 50vw);
   height: auto;
   z-index: 2;
   object-fit: cover;
-  max-width: 100%;
-  
+  //overflow: hidden; 
+
   @media (min-width: 769px) {
     display: none;
   }
@@ -152,9 +138,9 @@ const CraneRightMobile = styled.img<{ isFixed: boolean; reachedEnd: boolean; top
 const CraneLeftMobile = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset: number }>`
   position: ${({ isFixed, reachedEnd }) => (reachedEnd ? "absolute" : isFixed ? "fixed" : "absolute")};
   top: ${({ isFixed, reachedEnd, topOffset }) =>
-    reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3vh" : `${topOffset}px`};
-  right: 5vw;
-  width: clamp(25vw, 40vw, 50vw);
+    reachedEnd ? `calc(100% - 40vh)` : isFixed ? "3vh" : `${topOffset}px`};
+  left: 0;
+  width: clamp(25vw, 47vw, 50vw);
   height: auto;
   z-index: 2;
   object-fit: cover;
@@ -201,7 +187,7 @@ const EmptyCard = styled.div`
   //border: solid 2px black;
 
   @media (max-width: 768px) {
-    height:clamp(18em, 40vw, 60vh);
+    height:clamp(10vh, 20vh, 25vh);
   } ;
 `;
 
@@ -280,8 +266,8 @@ const PartnershipText = styled.span`
   justify-self: center;
   @media (max-width: 768px) {
     font-size: clamp(1rem, 5vw, 1.5rem); /* Zmniejszenie rozmiaru czcionki na urządzeniach mobilnych */
-    //margin-bottom: 1.5rem; /* Zwiększenie marginesu na mobilnych urządzeniach */
-    //padding: 0 1rem; /* Dodanie paddingu dla tekstu, aby zapewnić przestrzeń */
+    margin-top: 1rem; /* Zwiększenie marginesu na mobilnych urządzeniach */
+    padding: 0 1rem; /* Dodanie paddingu dla tekstu, aby zapewnić przestrzeń */
   } ;
 `;
 
@@ -292,8 +278,8 @@ const SponsorImg = styled.img`
   object-fit: contain;
   
   @media (max-width: 768px) {
-    max-width: 80%;  /* Zmniejszenie szerokości obrazu na urządzenia mobilne */
-    height: auto;  /* Zapewnienie, że obraz zachowa proporcje */
+    max-width: 80%;  
+    height: auto;  
   }
 `;
 
@@ -406,9 +392,12 @@ const Sponsors: React.FC = () => {
           </LeftDiv>
 
           <RightDiv>
-            *{/*<CraneRight src={crane_right} isFixed={isFixed} reachedEnd={reachedEnd} topOffset={topOffset} /> */}
+            <CraneRight src={crane_right} isFixed={isFixed} reachedEnd={reachedEnd} topOffset={topOffset} />
             <Ground isVisible={isVisibleGround}> </Ground>
           </RightDiv>
+
+          <CraneRightMobile src={crane_right_mobile} isFixed={isFixed} reachedEnd={reachedEnd} topOffset={topOffset} />
+          <CraneLeftMobile  src={crane_left_mobile} isFixed={isFixed} reachedEnd={reachedEnd} topOffset={topOffset} />
 
           <CenterDiv>
             <EmptyCard></EmptyCard>

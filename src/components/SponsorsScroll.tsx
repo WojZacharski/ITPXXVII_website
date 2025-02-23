@@ -87,13 +87,13 @@ useEffect(() => {
 
         if (isMobile) {
             // Dostosowanie logiki dla mobilnych
-            if (bottom <= windowHeight * 0.5) {
+            if (bottom <= windowHeight * 0.3) {
                 setReachedEnd(true);
             } else {
                 setReachedEnd(false);
             }
 
-            if (top <= 0 && !reachedEnd) {
+            if (top <= windowHeight && !reachedEnd) {
                 setIsFixedCard(true);
             } else {
                 setIsFixedCard(false);

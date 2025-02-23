@@ -32,14 +32,14 @@ const DesktopGears = styled.div`
 
 const MobileGears = styled.div`
     display: flex;
-    justify-content: center; /* Wyśrodkowanie poziome */
-    align-items: center; /* Wyśrodkowanie pionowe */
-    width: 100%; /* Pełna szerokość */
-    max-width: 90vw; /* Ograniczenie szerokości */
-    margin: 2rem auto; /* Centrowanie i dodanie marginesu */
-    right: -50%;
+    justify-content: center; 
+    align-items: center; 
+    width: 90%; 
+    max-width: 100%; 
+    margin: 2rem auto; 
+    right:0;
     //z-index: -1;
-    //overflow: hidden; /* Zapobieganie overflow */
+    //overflow: hidden;
 
     @media (min-width: 768px) {
         display: none;

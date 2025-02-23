@@ -14,17 +14,17 @@ const Container = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr); /* 4 kolumny */
     grid-template-rows: repeat(2, auto);  /* 2 rzędy */
-    gap: 15px; /* Odstępy między zębatkami */
+    gap: 5px; /* Odstępy między zębatkami */
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 90vw;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 1rem;
+    //padding: 1rem;
 
     @media (max-width: 768px) {
-        grid-template-columns: repeat(4, 1fr); /* Na mobilkach 2 kolumny */
-        grid-template-rows: repeat(2, auto);  /* 4 rzędy */
+        grid-template-columns: repeat(4, 1fr); 
+        grid-template-rows: repeat(2, auto);  
         max-width: 80vw;
     }
 `;
