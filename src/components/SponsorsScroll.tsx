@@ -6,7 +6,8 @@ const useResponsiveScroll = (parentRef: React.RefObject<HTMLDivElement>) => {
     const [reachedEnd, setReachedEnd] = useState(false);
     const [isFixedCard, setIsFixedCard] = useState(false);
     const [isVisibleGround, setIsVisibleGround] = useState(true);
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+    const [isMobile, setIsMobile] = useState(false);
+
 
     //DEBUG
     /*
@@ -32,16 +33,20 @@ const useResponsiveScroll = (parentRef: React.RefObject<HTMLDivElement>) => {
     }, []);
 */
 
-useEffect(() => {
-    const handleResize = () => {
-        setIsMobile(window.innerWidth < 768);
-    };
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            setIsMobile(window.innerWidth < 768);
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-}, []);
+            const handleResize = () => setIsMobile(window.innerWidth < 768);
+            window.addEventListener("resize", handleResize);
+
+            return () => window.removeEventListener("resize", handleResize);
+        }
+    }, []);
 
 useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const handleScroll = () => {
         if (!parentRef.current) return;
         const { top, bottom, height } = parentRef.current.getBoundingClientRect();

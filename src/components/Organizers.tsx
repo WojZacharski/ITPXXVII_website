@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 //@ts-ignore
 import img8_desktop from "../images/desktop_backgrounds/organizatorzy bez napisow 2_Obszar roboczy 1.jpg";
 //@ts-ignore
@@ -12,8 +12,23 @@ const EmptyElement = styled.div`
 
 const Img = styled.img`
   width: 100%;
-  height: 100%;
+  height: auto;
   position: relative;
+  display: block;
+`;
+
+const DesktopImg = styled(Img)`
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+const MobileImg = styled(Img)`
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: block;
+  }
 `;
 
 const Container = styled.div`
@@ -26,18 +41,18 @@ const ContactBoxTitle = styled.h2`
   top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: clamp(5rem, 2vw, 8rem);
+  font-size: clamp(1.5rem, 2vw, 8rem);
   text-align: center;
   line-height: 1.2;
+  
   @media (max-width: 768px) {
     display: none;
-  } ;
+  }
 `;
 
 const TextBox = styled.div`
   position: absolute;
   width: 22%;
-  height: auto;
   font-size: 1.15vw;
   line-height: 130%;
   color: #d2764a;
@@ -49,7 +64,7 @@ const TextBox = styled.div`
   
   @media (max-width: 768px) {
     display: none;
-  } ;
+  }
 `;
 
 const Picture = styled.picture`
@@ -91,11 +106,11 @@ const TextBoxFR = styled(TextBox)`
   top: clamp(60%, 85vw, 85%);
 `;
 
-// stylizacja stopki
+// Stylizacja stopki
 const FooterContainer = styled.div`
   width: 100%;
-  background-color: #c8beb3; // Kolor tła
-  color: white; //Kolor tekstu
+  background-color: #c8beb3;
+  color: white;
   text-align: center;
   font-size: clamp(1rem, 2vw, 2rem);
   padding: 2rem 0;
@@ -104,33 +119,21 @@ const FooterContainer = styled.div`
   
   @media (max-width: 768px) {
     display: none;
-  } ;
+  }
 `;
 
 const Organizers: React.FC = () => {
-  const [selectedImage, setSelectedImage] = useState(window.innerWidth <= 768 ? img6_mobile : img8_desktop);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setSelectedImage(window.innerWidth <= 768 ? img6_mobile : img8_desktop);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-
   return (
       <>
         <EmptyElement />
         <Container id="organizers">
           <Picture>
-            <Img src={selectedImage} alt="last page" />
+            <DesktopImg src={img8_desktop} alt="Organizatorzy - Desktop" />
+            <MobileImg src={img6_mobile} alt="Organizatorzy - Mobile" />
           </Picture>
 
-          <ContactBoxTitle>
-            Kontakt z organizatorami
-          </ContactBoxTitle>
+          <ContactBoxTitle>Kontakt z organizatorami</ContactBoxTitle>
+
           <TextBoxLG>
             <NameText>TOMASZ KOLBUSZ</NameText>
             <DescText>

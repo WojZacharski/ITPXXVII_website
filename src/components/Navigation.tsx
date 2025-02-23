@@ -95,7 +95,7 @@ const ITPLogo = styled.img`
 const BESTLogoContainer = styled.img`
   position: absolute;
   width: clamp(13rem, 24vw, 20rem);
-  left: 60%;
+  right: 10%;
   user-select: none;
 
   @media (max-width: 768px) {
