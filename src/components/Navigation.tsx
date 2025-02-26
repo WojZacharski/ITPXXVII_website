@@ -18,130 +18,6 @@ const socialLinks = {
   linkedin: "https://www.linkedin.com/company/in%C5%BCynierskie-targi-pracy/",
 };
 
-const NavContainer = styled.div`
-  position: relative;
-  height: 60vh;
-  min-height: 12em;
-
-  @media (max-width: 768px) {
-    height: 30vh;
-  }
-`;
-
-const Nav = styled.nav`
-  position: absolute;
-  
-  left: 6%;
-  right: 6%;
-  bottom: 0%;
-  height: 8vh;
-
-  min-height: 2rem;
-
-  background-color: #e5821a;
-  left: 0;
-  right: 0;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 5;
-  
-  border-radius: 0;
-
-  a {
-    text-decoration: none;
-    color: #fffffa;
-  }
-
-  @media (max-width: 768px) {
-    height: 4vh;
-    border-radius: 0;
-    left: 0;
-    right: 0;
-  }
-`;
-
-const LinkContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 2.5em;
-  flex-direction: inherit;
-  text-align: center;
-  text-transform: none;
-  @media (max-width: 768px) {
-    gap: 0.2em;
-    width: 95%;
-    height: 100%;
-  }
-`;
-
-const ITPLogo = styled.img`
-  position: absolute;
-  width: clamp(16rem, 32vw, 24rem);
-;
-  left: 10%;
-  user-select: none;
-  @media (max-width: 768px) {
-    width: clamp(8rem, 40vw, 24rem);
-    top: 25%;
-  }
-  @media (min-width: 769px) {
-    top: calc(30.5% + 0.9vw);
-  }
-`;
-
-const BESTLogoContainer = styled.img`
-  position: absolute;
-  width: clamp(13rem, 24vw, 20rem);
-  left: 60%;
-  user-select: none;
-
-  @media (max-width: 768px) {
-    width: clamp(8rem, 24vw, 20rem);
-    top: 20%;
-  }
-
-  @media (min-width: 769px) {
-    top: calc(20.5% + 0.9vw);
-  }
-`;
-
-const SocialsContainer = styled.div`
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  
-  top: 65%;
-  gap: 1rem;
-  left: 50%;
-  transform: translateX(-50%);
-
-;
-  a {
-    min-height: 2rem;
-    height: 8vh;
-  }
-
-  img {
-    display: block;
-    height: 100%;
-    cursor: pointer;
-  }
-
-  @media (max-width: 768px) {
-    & {
-      top: 70%;
-      width: clamp(20vw, 30vw, 50vw);
-      a {
-        height: 4vh;
-      }
-    }
-  }
-`;
-
 interface ILink {
   name: String;
   path: string;
@@ -163,6 +39,146 @@ const popUpLinks: ILink[] = [
   { name: "Regulaminy konkursów", path: "https://itp.best.krakow.pl/[ITP2024] Regulaminy konkursow.pdf" },
   { name: "RODO", path: "https://itp.best.krakow.pl/[ITP2024] RODO.pdf" },
 ];
+
+const NavContainer = styled.div`
+  position: relative;
+  height: 200px;
+  display:block;
+
+  @media (max-width: 768px) {
+    height: 300px;
+  }
+`;
+
+const Nav = styled.nav`
+  position: absolute;
+
+  left: 6%;
+  right: 6%;
+  bottom: 0%;
+  height: 50px;
+
+  background-color: #e5821a;
+  left: 0;
+  right: 0;
+  border-radius: 0;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  
+  a {
+    text-decoration: none;
+    color: #fffffa;
+  }
+
+  @media (max-width: 768px) {
+    height: 25px;
+  }
+`;
+
+const LinkContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 2.5em;
+  flex-direction: inherit;
+  text-align: center;
+  text-transform: none;
+
+  @media (max-width: 768px) {
+    gap: 0.2em;
+    width: 95%;
+    height: 100%;
+  }
+`;
+
+const BlockContainer = styled.div`
+  position:relative;
+  width:20%;
+  height:50%;
+  min-height:1px;
+  min-width:300px;
+  left:10%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  transform:translateY(-50%);
+  top:40%;
+
+  @media (max-width: 768px) {
+    width:100%;
+    height:50%;
+    left:0;
+    right:0;
+    top:25%;
+    justify-content:center;
+  }
+`;
+
+const ITPBlock = styled.div`
+  position:relative;
+  width:auto;
+`;
+
+const ITPLogo = styled.img`
+  max-width:100%;
+  vertical-align:middle;
+`;
+
+const BESTBlock = styled.div`
+  position:relative;
+  width:160px;
+`;
+
+const BESTLogo = styled.img`
+  max-width:100%;
+  vertical-align:middle;
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+`;
+
+const SocialsContainer = styled.div`
+  position: absolute;
+  width:20%;
+  height:50%;
+  min-height:1px;
+  right:10%;
+  top:40%;
+  transform:translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap:10px;
+
+  a {
+    min-height:40px;
+    height:20%;
+    max-height:60px;
+  }
+
+  img {
+    display: block;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    & {
+      width:100%;
+      right:auto;
+      transform:transformX(-50%);
+      top:75%;
+      justify-content: center; /* Ikonki na środku */
+      a {
+        height: 8vh;
+      }
+    }
+  }
+`;
 
 const PopUpContainer = styled.div`
   position: fixed;
@@ -240,8 +256,16 @@ const Navigation: React.FC = () => {
         </PopUpContainer>
       )}
       <NavContainer>
-        <ITPLogo src={itp_logo} alt="XXVI ITP" />
-        <BESTLogoContainer src={BEST_logo} alt="BEST" />
+        <BlockContainer>
+          <ITPBlock>
+            <ITPLogo src={itp_logo} alt="XXVII ITP" />
+          </ITPBlock>
+          <BESTBlock>
+              <a href="https://www.newsite.best.krakow.pl" target="_blank" rel="noopener noreferrer">
+                <BESTLogo src={BEST_logo} alt="BEST" />
+              </a>
+          </BESTBlock>
+        </BlockContainer>
         <SocialsContainer>
           <a href={socialLinks["facebook"]}>
             <img src={fb_icon} alt="facebook" />
