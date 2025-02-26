@@ -1,0 +1,102 @@
+<svg viewBox="26.404056795131847 16.5095 253.47894523326573 289.90682" xmlns="http://www.w3.org/2000/svg" data-name="Warstwa 1" id="Warstwa_1" style="max-height: 500px" width="253.47894523326573" height="289.90682">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-width: 2px;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
+        stroke: #263339;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-1, .cls-2, .cls-5, .cls-6 {
+        fill: none;
+      }
+
+      .cls-3 {
+        fill: #ee851a;
+      }
+
+      .cls-4, .cls-7 {
+        fill: #263339;
+      }
+
+      .cls-7 {
+        stroke-width: 0px;
+      }
+
+      .cls-5 {
+        stroke-width: 3px;
+      }
+
+      .cls-6 {
+        stroke-width: 6px;
+      }
+    </style>
+  </defs>
+  <line y2="19.01" x2="303.5" y1="51.54" x1="89.68" class="cls-2"/>
+  <polyline points="192.66 51.54 303.5 19.01 233.52 50.55" class="cls-2"/>
+  <line y2="65.34" x2="287.57" y1="51.54" x1="279.85" class="cls-1"/>
+  <polyline points="109.81 65.34 120.65 51.54 279.85 51.54" class="cls-1"/>
+  <line y2="65.34" x2="33.23" y1="65.34" x1="287.57" class="cls-1"/>
+  <g>
+    <polyline points="120.65 51.54 120.65 64.84 133.46 52.03" class="cls-1"/>
+    <polyline points="133.96 51.54 133.96 64.84 146.77 52.03" class="cls-1"/>
+    <polyline points="147.26 51.54 147.26 64.84 160.08 52.03" class="cls-1"/>
+    <polyline points="160.57 51.54 160.57 64.84 173.39 52.03" class="cls-1"/>
+    <polyline points="173.88 51.54 173.88 64.84 186.69 52.03" class="cls-1"/>
+    <polyline points="187.19 51.54 187.19 64.84 200 52.03" class="cls-1"/>
+    <polyline points="200.49 51.54 200.49 64.84 213.31 52.03" class="cls-1"/>
+    <polyline points="213.8 51.54 213.8 64.84 226.62 52.03" class="cls-1"/>
+    <polyline points="227.11 51.54 227.11 64.84 239.92 52.03" class="cls-1"/>
+    <polyline points="240.42 51.54 240.42 64.84 253.23 52.03" class="cls-1"/>
+    <polyline points="253.72 51.54 253.72 64.84 266.54 52.03" class="cls-1"/>
+    <polyline points="267.03 51.54 267.03 64.84 279.85 52.03" class="cls-1"/>
+  </g>
+  <line y2="51.54" x2="196.8" y1="51.54" x1="42.39" class="cls-1"/>
+  <line y2="65.34" x2="28.59" y1="65.34" x1="204.57" class="cls-1"/>
+  <g>
+    <line y2="51.54" x2="42.39" y1="65.34" x1="28.59" class="cls-1"/>
+    <polyline points="42.39 51.54 42.39 64.84 55.21 52.03" class="cls-1"/>
+    <polyline points="55.7 51.54 55.7 64.84 68.52 52.03" class="cls-1"/>
+    <polyline points="69.01 51.54 69.01 64.84 81.82 52.03" class="cls-1"/>
+    <polyline points="82.32 51.54 82.32 64.84 95.13 52.03" class="cls-1"/>
+    <polyline points="95.62 51.54 95.62 64.84 108.44 52.03" class="cls-1"/>
+  </g>
+  <line y2="64.84" x2="109.12" y1="51.54" x1="109.12" class="cls-1"/>
+  <g>
+    <g>
+      <line y2="85.02" x2="89.7" y1="269.75" x1="89.7" class="cls-2"/>
+      <line y2="85.02" x2="101.98" y1="269.75" x1="101.98" class="cls-2"/>
+    </g>
+    <rect height="15.77" width="31.93" y="64.63" x="79.52" class="cls-4"/>
+    <polygon points="108.25 89.63 82.71 89.63 79.52 80.4 111.44 80.4 108.25 89.63" class="cls-4"/>
+    <g>
+      <rect height="12.15" width="24.2" y="62.24" x="83.67" class="cls-3"/>
+      <g>
+        <polygon points="87.73 62.24 84.02 62.24 96.16 74.39 99.88 74.39 87.73 62.24" class="cls-7"/>
+        <polygon points="88.47 74.39 92.19 74.39 83.67 65.88 83.67 69.6 88.47 74.39" class="cls-7"/>
+        <polygon points="95.43 62.24 91.71 62.24 103.86 74.39 107.57 74.39 95.43 62.24" class="cls-7"/>
+        <polygon points="103.12 62.24 99.4 62.24 107.88 70.72 107.88 67 103.12 62.24" class="cls-7"/>
+      </g>
+    </g>
+    <g>
+      <g>
+        <path d="M96.06,284.54v2.47c0,1.89-2.23,3.82-3.22,5.27-2.79,4.08-1.13,11.66,4.63,11.76,4.92.09,6.09-4.6,5.52-8.57" class="cls-5"/>
+        <path d="M96.06,277v7.54" class="cls-6"/>
+      </g>
+      <g>
+        <rect transform="translate(368.07 176.39) rotate(90)" height="12.28" width="16.72" y="266.09" x="87.48" class="cls-3"/>
+        <g>
+          <polygon points="101.85 266.67 101.85 264.1 89.7 272.5 89.7 275.06 101.85 266.67" class="cls-7"/>
+          <polygon points="89.7 267.18 89.7 269.75 98.22 263.87 94.5 263.87 89.7 267.18" class="cls-7"/>
+          <polygon points="101.85 271.99 101.85 269.42 89.7 277.81 89.7 280.38 101.85 271.99" class="cls-7"/>
+          <polygon points="101.85 277.3 101.85 274.73 93.37 280.59 97.09 280.59 101.85 277.3" class="cls-7"/>
+        </g>
+      </g>
+    </g>
+    <path d="M95.48,95.02h0c-1.38,0-2.5-1.12-2.5-2.5v-4.04h5v4.04c0,1.38-1.12,2.5-2.5,2.5Z" class="cls-3"/>
+  </g>
+</svg>

@@ -32,12 +32,14 @@ const DesktopGears = styled.div`
 
 const MobileGears = styled.div`
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 140%;
-    max-width: 300px;
-    //margin: 1rem 0;
-    z-index: -1;
+    justify-content: center; 
+    align-items: center; 
+    width: 90%; 
+    max-width: 100%; 
+    margin: 2rem auto; 
+    right:0;
+    //z-index: -1;
+    //overflow: hidden;
 
     @media (min-width: 768px) {
         display: none;

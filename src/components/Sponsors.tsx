@@ -6,6 +6,8 @@ import PartnerGears from "./PartnerGears";
 import background from "../images/desktop_backgrounds/buildings_bg.svg";
 import crane_left from "../images/desktop_backgrounds/crane-left.svg";
 import crane_right from "../images/desktop_backgrounds/crane-right.svg";
+import crane_left_mobile from "../images/mobile_backgrounds/crane-left-mobile-cropped.svg";
+import crane_right_mobile from "../images/mobile_backgrounds/crane-right-mobile-cropped.svg";
 import useResponsiveScroll from "./SponsorsScroll";
 
 
@@ -30,7 +32,8 @@ const Background = styled.div<{ isFixed: boolean; topOffset: number }>`
   position: ${({ isFixed }) => (isFixed ? "fixed" : "absolute")};
   top: ${({ isFixed, topOffset }) => (isFixed ? "0px" : `${topOffset}px`)};
   left: 0;
-  width: 100vw;
+  width: 100%;
+  max-width: 100vw;
   height: 100vh;
   background-image: url(${background});
   background-size: cover;
@@ -39,9 +42,9 @@ const Background = styled.div<{ isFixed: boolean; topOffset: number }>`
   z-index: -1;
 
   @media (max-width: 768px) {
-    background-size: contain; /* Ustawienie tła w "contain" na urządzenia mobilne, aby dopasowało się do ekranu */
-    background-position: top center; /* Ustawienie tła na górze ekranu na urządzeniach mobilnych */
-    //height: auto; /* Wysokość tła dostosowuje się do zawartości */
+    background-size: contain; 
+    background-position: top center; 
+    //height: auto; 
   }
 `;
 
@@ -52,6 +55,14 @@ const ParentDiv = styled.div`
   flex-direction: column;
   position: relative;
   align-items: center;
+  //border: solid 2px black; //debug
+
+
+  @media (max-width: 768px) {
+    min-height: auto;
+    height: auto;
+    //padding: 0 1rem;
+  }
 `;
 
 
@@ -61,11 +72,17 @@ const ChildDiv = styled.div`
 
 const CenterDiv = styled(ChildDiv)`
   position: relative;
-  //top: 5rem;
   padding: 0 0.5rem 0 0.5rem;
   display:grid;
   grid-template-rows: auto 1fr;
-  //height: auto;
+
+  @media (max-width: 768px) {
+    padding: 0; 
+    width: 100%; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 
@@ -77,17 +94,11 @@ const CraneLeft = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset:
   width: clamp(25vw, 40vw, 50vw);
   height: auto;
   z-index: 2;
-  object-fit: cover; /* To make sure image fills the area properly */
+  object-fit: cover;
+  max-width: 100%;
   
   @media (max-width: 768px) {
-    left: -42%;
-    top: ${({ isFixed, reachedEnd, topOffset }) =>
-        reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3.5vh" : `${topOffset}px`};
-    width: 90vw; /* Ustalenie szerokości obrazu na urządzeniach mobilnych */
-    height: auto; /* Zachowanie proporcji obrazu */
-    object-position: left center; /* Zapewnienie, że część obrazu zaczyna się od lewej strony */
-    clip-path: inset(0 0 0 45%); /* Przycięcie dolnej części obrazu na urządzeniach mobilnych */
-    transition: top 0.1s ease-in-out, width 0.1s ease-in-out;
+    display: none;
   }
 `;
 
@@ -100,22 +111,49 @@ const CraneRight = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset
   height: auto;
   z-index: 2;
   object-fit: cover;
+  max-width: 100%;
   
   @media (max-width: 768px) {
-    right: -40%;
-    top: ${({ isFixed, reachedEnd, topOffset }) =>
-        reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3vh" : `${topOffset}px`};
-    width: 90vw; /* Ustalenie szerokości obrazu na urządzeniach mobilnych */
-    height: auto; /* Zachowanie proporcji obrazu */
-    object-position: left center; /* Zapewnienie, że część obrazu zaczyna się od lewej strony */
-    clip-path: inset(0 45% 0 0); /* Przycięcie dolnej części obrazu na urządzeniach mobilnych */
-    transition: top 0.1s ease-in-out, width 0.1s ease-in-out;
+    display: none;
   }
 `;
 
+const CraneRightMobile = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset: number }>`
+  position: ${({ isFixed, reachedEnd }) => (reachedEnd ? "absolute" : isFixed ? "fixed" : "absolute")};
+  top: ${({ isFixed, reachedEnd, topOffset }) =>
+      reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3vh" : `${topOffset}px`};
+  right: 0; /* Wyrównanie do prawej krawędzi */
+  max-width: 100%; /* Zapobieganie wychodzeniu poza ekran */
+  width: clamp(25vw, 47vw, 50vw);
+  height: auto;
+  z-index: 2;
+  object-fit: cover;
+  //overflow: hidden; 
 
-const RightDiv = styled(ChildDiv)`
+  @media (min-width: 769px) {
+    display: none;
+  }
 `;
+
+const CraneLeftMobile = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset: number }>`
+  position: ${({ isFixed, reachedEnd }) => (reachedEnd ? "absolute" : isFixed ? "fixed" : "absolute")};
+  top: ${({ isFixed, reachedEnd, topOffset }) =>
+    reachedEnd ? `calc(100% - 40vh)` : isFixed ? "3vh" : `${topOffset}px`};
+  left: 0;
+  width: clamp(25vw, 47vw, 50vw);
+  height: auto;
+  z-index: 2;
+  object-fit: cover;
+  max-width: 100%;
+  
+  @media (min-width: 769px) {
+    display: none;
+  }
+`;
+const RightDiv = styled(ChildDiv)`
+
+`;
+
 const LeftDiv = styled(ChildDiv)`
 `;
 
@@ -133,12 +171,12 @@ const Card = styled.div<{ isFixed: boolean; reachedEnd: boolean }>`
   border: solid 2px black;
   z-index: 3;
   transition: top 0.3s ease-in-out;
-  padding: 1rem;
+  //padding: 1rem;
 
   @media (max-width: 768px) {
-    width: 80vw;  /* Zmniejszenie szerokości karty na urządzenia mobilne */
-    height: 250px;  /* Ustalenie stałej wysokości karty dla mobilnych urządzeń */
-    padding: 0.5rem;  /* Zmniejszenie paddingu na mobilnych */
+    width: 80vw;  
+    height: 250px;  
+    //padding: 0.5rem;  
   }
 `;
 const EmptyCard = styled.div`
@@ -146,9 +184,10 @@ const EmptyCard = styled.div`
   display:flex;
   flex-direction: column;
   position:sticky;
+  //border: solid 2px black;
 
   @media (max-width: 768px) {
-    height:clamp(18em, 40vw, 60vh);
+    height:clamp(10vh, 20vh, 25vh);
   } ;
 `;
 
@@ -197,7 +236,8 @@ const Container = styled.div`
   width: 100%;
   padding-top: 5vh;
   @media (max-width: 768px) {
-    padding-top: 10vh; /* Adjust for mobile */
+    min-height: auto;
+    height: auto;
   }
 `;
 
@@ -226,7 +266,7 @@ const PartnershipText = styled.span`
   justify-self: center;
   @media (max-width: 768px) {
     font-size: clamp(1rem, 5vw, 1.5rem); /* Zmniejszenie rozmiaru czcionki na urządzeniach mobilnych */
-    //margin-bottom: 1.5rem; /* Zwiększenie marginesu na mobilnych urządzeniach */
+    margin-top: 1rem; /* Zwiększenie marginesu na mobilnych urządzeniach */
     padding: 0 1rem; /* Dodanie paddingu dla tekstu, aby zapewnić przestrzeń */
   } ;
 `;
@@ -238,8 +278,8 @@ const SponsorImg = styled.img`
   object-fit: contain;
   
   @media (max-width: 768px) {
-    max-width: 80%;  /* Zmniejszenie szerokości obrazu na urządzenia mobilne */
-    height: auto;  /* Zapewnienie, że obraz zachowa proporcje */
+    max-width: 80%;  
+    height: auto;  
   }
 `;
 
@@ -332,8 +372,29 @@ const PreviousSponsorsText = styled(SabreText)`
   text-align: center;
   
   @media (max-width: 768px) {
-    font-size: clamp(1rem, 10vw, 3rem);
-    width: auto;
+    top: 1%;
+    font-size: 4vw;
+    margin-bottom: 1rem;
+    left: 50%;
+    top: 1%;
+    font-weight: bold;
+    color: #ee8b10;
+    text-align: center;
+    width: 100%; /* Upewnienie się, że tekst dostosowuje się do szerokości */
+    max-width: 90vw; /* Ograniczenie szerokości na większych ekranach */
+    white-space: normal; /* Pozwala tekstowi przechodzić do nowej linii */
+    word-wrap: break-word; /* Zapewnia łamanie długich słów */
+    overflow-wrap: break-word; /* Alternatywnie, jeśli \`word-wrap\` nie działa */
+    padding: 0 1rem; /* Dodatkowy padding dla bezpieczeństwa */
+    @media (max-width: 768px) {
+      top: 1%;
+      font-size: clamp(1rem, 6vw, 1.5rem); /* Dynamiczna czcionka */
+      max-width: 80vw; /* Ograniczenie szerokości na mniejszych ekranach */
+      margin-top: 0.5rem;
+    }
+    font-size: clamp(1rem, 6vw, 2rem); /* Dostosowanie do mobilnych ekranów */
+    max-width: 80vw; /* Mniejsze szerokości na telefonach */
+    margin-top: 0.5rem;
   }
 `;
 
@@ -350,7 +411,15 @@ const Sponsors: React.FC = () => {
             <CraneLeft src={crane_left} isFixed={isFixed} reachedEnd={reachedEnd} topOffset={topOffset} />
           </LeftDiv>
 
-          <CenterDiv ref={parentRef}>
+          <RightDiv>
+            <CraneRight src={crane_right} isFixed={isFixed} reachedEnd={reachedEnd} topOffset={topOffset} />
+            <Ground isVisible={isVisibleGround}> </Ground>
+          </RightDiv>
+
+          <CraneRightMobile src={crane_right_mobile} isFixed={isFixed} reachedEnd={reachedEnd} topOffset={topOffset} />
+          <CraneLeftMobile  src={crane_left_mobile} isFixed={isFixed} reachedEnd={reachedEnd} topOffset={topOffset} />
+
+          <CenterDiv>
             <EmptyCard></EmptyCard>
 
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd} >
@@ -472,10 +541,7 @@ const Sponsors: React.FC = () => {
             <EmptyCardLast isFixed={isFixedCard} reachedEnd={reachedEnd}></EmptyCardLast>
           </CenterDiv>
 
-          <RightDiv>
-            <CraneRight src={crane_right} isFixed={isFixed} reachedEnd={reachedEnd} topOffset={topOffset} />
-            <Ground isVisible={isVisibleGround}> </Ground>
-          </RightDiv>
+
         </ParentDiv>
       </Container>
 

@@ -8,43 +8,43 @@ import gear_4 from "../images/gears/g4.svg";
 import gear_5 from "../images/gears/g5.svg";
 import gear_6 from "../images/gears/g6.svg";
 import gear_7 from "../images/gears/g7.svg";
+import gear_8 from "../images/gears/g8.svg";
 
 const Container = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 80%;
-  max-width: 1200px;
-  margin: 2rem auto;
-  aspect-ratio: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 kolumny */
+    grid-template-rows: repeat(2, auto);  /* 2 rzędy */
+    gap: 5px; /* Odstępy między zębatkami */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    //padding: 1rem;
 
-  @media (max-width: 768px) {
-    width: 95%;
-    //margin-top: 5%;
-    //margin-bottom: 5%;
-  }
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(4, 1fr); 
+        grid-template-rows: repeat(2, auto);  
+        max-width: 80vw;
+    }
 `;
 
-const Gear = styled.img<{ size: string; top: string; left?: string; right?: string }>`
-  position: absolute;
-  object-fit: contain;
-  width: ${({ size }) => size};
-  height: auto;
-  top: ${({ top }) => top};
-  left: ${({ left }) => (left ? left : "auto")};
-  right: ${({ right }) => (right ? right : "auto")};
-  transition: transform 0.3s ease-out;
+const Gear = styled.img<{ size: string }>`
+    width: ${({ size }) => size};
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.3s ease-out;
 `;
 
 const gearsData = [
-    { src: gear_1, size: "22%", top: "69%", left: "50%" },
-    { src: gear_2, size: "22%", top: "66%", left: "68%" },
-    { src: gear_3, size: "22%", top: "63%", left: "14%" },
-    { src: gear_4, size: "22%", top: "60%", left: "86%" },
-    { src: gear_5, size: "25%", top: "40%", left: "36%" },
-    { src: gear_6, size: "25%", top: "29%", left: "74%" },
-    { src: gear_7, size: "25%", top: "25%", left: "18%" },
+    { src: gear_1, size: "80px" },
+    { src: gear_2, size: "80px" },
+    { src: gear_3, size: "80px" },
+    { src: gear_4, size: "90px" },
+    { src: gear_5, size: "100px" },
+    { src: gear_6, size: "90px" },
+    { src: gear_7, size: "80px" },
+    { src: gear_8, size: "85px" },
 ];
 
 const Gears: React.FC = () => {
@@ -72,8 +72,6 @@ const Gears: React.FC = () => {
                     key={index}
                     src={gear.src}
                     size={gear.size}
-                    top={gear.top}
-                    left={gear.left}
                     ref={(el) => (gearRefs.current[index] = el)}
                 />
             ))}

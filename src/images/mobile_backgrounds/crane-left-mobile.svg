@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Warstwa_1" data-name="Warstwa 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 333.86 330.19">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-width: 2px;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
+        stroke: #263339;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .cls-1, .cls-2, .cls-5, .cls-6 {
+        fill: none;
+      }
+
+      .cls-3 {
+        fill: #ee851a;
+      }
+
+      .cls-4, .cls-7 {
+        fill: #263339;
+      }
+
+      .cls-7 {
+        stroke-width: 0px;
+      }
+
+      .cls-5 {
+        stroke-width: 3px;
+      }
+
+      .cls-6 {
+        stroke-width: 6px;
+      }
+    </style>
+  </defs>
+  <line class="cls-2" x1="247.18" y1="51.54" x2="33.36" y2="19.01"/>
+  <polyline class="cls-2" points="144.2 51.54 33.36 19.01 103.35 50.55"/>
+  <line class="cls-1" x1="57.02" y1="51.54" x2="49.29" y2="65.34"/>
+  <polyline class="cls-1" points="227.06 65.34 216.21 51.54 57.02 51.54"/>
+  <line class="cls-1" x1="49.29" y1="65.34" x2="303.63" y2="65.34"/>
+  <g>
+    <polyline class="cls-1" points="216.21 51.54 216.21 64.84 203.4 52.03"/>
+    <polyline class="cls-1" points="202.91 51.54 202.91 64.84 190.09 52.03"/>
+    <polyline class="cls-1" points="189.6 51.54 189.6 64.84 176.78 52.03"/>
+    <polyline class="cls-1" points="176.29 51.54 176.29 64.84 163.48 52.03"/>
+    <polyline class="cls-1" points="162.98 51.54 162.98 64.84 150.17 52.03"/>
+    <polyline class="cls-1" points="149.68 51.54 149.68 64.84 136.86 52.03"/>
+    <polyline class="cls-1" points="136.37 51.54 136.37 64.84 123.55 52.03"/>
+    <polyline class="cls-1" points="123.06 51.54 123.06 64.84 110.25 52.03"/>
+    <polyline class="cls-1" points="109.75 51.54 109.75 64.84 96.94 52.03"/>
+    <polyline class="cls-1" points="96.45 51.54 96.45 64.84 83.63 52.03"/>
+    <polyline class="cls-1" points="83.14 51.54 83.14 64.84 70.32 52.03"/>
+    <polyline class="cls-1" points="69.83 51.54 69.83 64.84 57.02 52.03"/>
+  </g>
+  <line class="cls-1" x1="294.47" y1="51.54" x2="140.06" y2="51.54"/>
+  <line class="cls-1" x1="132.29" y1="65.34" x2="308.27" y2="65.34"/>
+  <g>
+    <line class="cls-1" x1="308.27" y1="65.34" x2="294.47" y2="51.54"/>
+    <polyline class="cls-1" points="294.47 51.54 294.47 64.84 281.65 52.03"/>
+    <polyline class="cls-1" points="281.16 51.54 281.16 64.84 268.35 52.03"/>
+    <polyline class="cls-1" points="267.85 51.54 267.85 64.84 255.04 52.03"/>
+    <polyline class="cls-1" points="254.55 51.54 254.55 64.84 241.73 52.03"/>
+    <polyline class="cls-1" points="241.24 51.54 241.24 64.84 228.42 52.03"/>
+  </g>
+  <line class="cls-1" x1="227.74" y1="51.54" x2="227.74" y2="64.84"/>
+  <g>
+    <g>
+      <line class="cls-2" x1="247.16" y1="269.75" x2="247.16" y2="85.02"/>
+      <line class="cls-2" x1="234.88" y1="269.75" x2="234.88" y2="85.02"/>
+    </g>
+    <rect class="cls-4" x="225.42" y="64.63" width="31.93" height="15.77" transform="translate(482.77 145.03) rotate(180)"/>
+    <polygon class="cls-4" points="228.61 89.63 254.15 89.63 257.35 80.4 225.42 80.4 228.61 89.63"/>
+    <g>
+      <rect class="cls-3" x="228.99" y="62.24" width="24.2" height="12.15" transform="translate(482.18 136.64) rotate(180)"/>
+      <g>
+        <polygon class="cls-7" points="249.13 62.24 252.85 62.24 240.7 74.39 236.98 74.39 249.13 62.24"/>
+        <polygon class="cls-7" points="248.39 74.39 244.68 74.39 253.19 65.88 253.19 69.6 248.39 74.39"/>
+        <polygon class="cls-7" points="241.43 62.24 245.15 62.24 233.01 74.39 229.29 74.39 241.43 62.24"/>
+        <polygon class="cls-7" points="233.74 62.24 237.46 62.24 228.99 70.72 228.99 67 233.74 62.24"/>
+      </g>
+    </g>
+    <g>
+      <g>
+        <path class="cls-5" d="M240.81,284.54v2.47c0,1.89,2.23,3.82,3.22,5.27,2.79,4.08,1.13,11.66-4.63,11.76-4.92.09-6.09-4.6-5.52-8.57"/>
+        <path class="cls-6" d="M240.81,277v7.54"/>
+      </g>
+      <g>
+        <rect class="cls-3" x="232.66" y="266.09" width="16.72" height="12.28" transform="translate(513.25 31.21) rotate(90)"/>
+        <g>
+          <polygon class="cls-7" points="235.01 266.67 235.01 264.1 247.16 272.5 247.16 275.06 235.01 266.67"/>
+          <polygon class="cls-7" points="247.16 267.18 247.16 269.75 238.65 263.87 242.37 263.87 247.16 267.18"/>
+          <polygon class="cls-7" points="235.01 271.99 235.01 269.42 247.16 277.81 247.16 280.38 235.01 271.99"/>
+          <polygon class="cls-7" points="235.01 277.3 235.01 274.73 243.49 280.59 239.77 280.59 235.01 277.3"/>
+        </g>
+      </g>
+    </g>
+    <path class="cls-3" d="M241.38,95.02h0c1.38,0,2.5-1.12,2.5-2.5v-4.04h-5v4.04c0,1.38,1.12,2.5,2.5,2.5Z"/>
+  </g>
+</svg>
