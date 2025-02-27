@@ -35,9 +35,9 @@ const links: ILink[] = [
 ];
 
 const popUpLinks: ILink[] = [
-  { name: "Regulamin wydarzenia", path: "https://itp.best.krakow.pl/[ITP2024] Regulamin wydarzenia.pdf" },
-  { name: "Regulaminy konkursów", path: "https://itp.best.krakow.pl/[ITP2024] Regulaminy konkursow.pdf" },
-  { name: "RODO", path: "https://itp.best.krakow.pl/[ITP2024] RODO.pdf" },
+  { name: "Regulamin wydarzenia", path: "https://itp.best.krakow.pl/[ITP2025] Regulamin wydarzenia.pdf" },
+  { name: "Regulaminy konkursów", path: "https://itp.best.krakow.pl/[ITP2025] Regulaminy konkursow.pdf" },
+  { name: "RODO", path: "https://itp.best.krakow.pl/[ITP2025] RODO.pdf" },
 ];
 
 const NavContainer = styled.div`
