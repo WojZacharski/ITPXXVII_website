@@ -46,8 +46,12 @@ const Container = styled.div`
     padding: 2rem 0;
 
     @media (max-width: 769px) {
-        height: auto;
-        min-height: 50vh;   
+        //height: auto;
+        min-height: 50vh;
+    }
+    
+    @media (max-width: 769px) and (orientation: landscape) {
+        min-height: 120vh; 
     }
 `;
 
@@ -76,8 +80,8 @@ const MapLegend = styled.img`
     left: 7.5%;
       top: 55%;
       width: 80%;
-      width: 80vw;  /* Dostosowanie szerokości legendy do szerokości ekranu */
-      height: auto;  /* Dostosowanie wysokości legendy */
+      max-width: 80vw;  
+      height: auto;  
   }
 `;
 

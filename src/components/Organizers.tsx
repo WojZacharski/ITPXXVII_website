@@ -28,6 +28,7 @@ const MobileImg = styled(Img)`
   
   @media (max-width: 768px) {
     display: block;
+    z-index: 1;
   }
 `;
 
@@ -41,7 +42,8 @@ const ContactBoxTitle = styled.h2`
   top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: clamp(1.5rem, 2vw, 8rem);
+  font-size: 4vw;
+  font-weight: 600;
   text-align: center;
   line-height: 1.2;
   
@@ -91,24 +93,29 @@ const DescText = styled.div`
 const TextBoxLG = styled(TextBox)`
   left: 20%;
   transform: translate(-50%, -50%);
-  top: clamp(60%, 65vw, 85%);
+  //top: clamp(60%, 65vw, 85%);
+  top: 87%
 `;
 
 const TextBoxMO = styled(TextBox)`
   left: 50%;
   transform: translate(-50%, -50%);
-  top: clamp(60%, 65vw, 85%);
+  //top: clamp(60%, 65vw, 85%);
+  top: 87%;
 `;
 
 const TextBoxFR = styled(TextBox)`
   left: 80%;
   transform: translate(-50%, -50%);
-  top: clamp(60%, 85vw, 85%);
+  //top: clamp(60%, 80%, 85%);
+  top: 87%
+  ;
 `;
 
 // Stylizacja stopki
 const FooterContainer = styled.div`
   width: 100%;
+  
   background-color: #c8beb3;
   color: white;
   text-align: center;

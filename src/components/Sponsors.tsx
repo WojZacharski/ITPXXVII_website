@@ -55,9 +55,7 @@ const ParentDiv = styled.div`
   flex-direction: column;
   position: relative;
   align-items: center;
-  //border: solid 2px black; //debug
-
-
+  
   @media (max-width: 768px) {
     min-height: auto;
     height: auto;
@@ -116,12 +114,17 @@ const CraneRight = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset
   @media (max-width: 768px) {
     display: none;
   }
+
+  @media (max-width: 768px) and (orientation: landscape) {
+    display: none;
+    z-index: -1;
+  }
 `;
 
 const CraneRightMobile = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset: number }>`
   position: ${({ isFixed, reachedEnd }) => (reachedEnd ? "absolute" : isFixed ? "fixed" : "absolute")};
   top: ${({ isFixed, reachedEnd, topOffset }) =>
-      reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3vh" : `${topOffset}px`};
+      reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3vh" : `calc(${topOffset}px + 3vh)`};
   right: 0; /* Wyrównanie do prawej krawędzi */
   max-width: 100%; /* Zapobieganie wychodzeniu poza ekran */
   width: clamp(25vw, 47vw, 50vw);
@@ -138,7 +141,7 @@ const CraneRightMobile = styled.img<{ isFixed: boolean; reachedEnd: boolean; top
 const CraneLeftMobile = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset: number }>`
   position: ${({ isFixed, reachedEnd }) => (reachedEnd ? "absolute" : isFixed ? "fixed" : "absolute")};
   top: ${({ isFixed, reachedEnd, topOffset }) =>
-    reachedEnd ? `calc(100% - 40vh)` : isFixed ? "3vh" : `${topOffset}px`};
+    reachedEnd ? `calc(100% - 40vh)` : isFixed ? "3vh" : `calc(${topOffset}px + 3vh)`};
   left: 0;
   width: clamp(25vw, 47vw, 50vw);
   height: auto;
@@ -149,6 +152,7 @@ const CraneLeftMobile = styled.img<{ isFixed: boolean; reachedEnd: boolean; topO
   @media (min-width: 769px) {
     display: none;
   }
+
 `;
 const RightDiv = styled(ChildDiv)`
 
@@ -171,12 +175,19 @@ const Card = styled.div<{ isFixed: boolean; reachedEnd: boolean }>`
   border: solid 2px black;
   z-index: 3;
   transition: top 0.3s ease-in-out;
-  //padding: 1rem;
 
   @media (max-width: 768px) {
-    width: 80vw;  
-    height: 250px;  
-    //padding: 0.5rem;  
+    width: 70vw;  
+    max-width: 500px;
+    height: clamp(15vh, 20vh, 40vh);
+    top: 15vh; 
+  }
+  
+  @media (max-width: 768px) and (orientation: landscape) {
+    width: 70vw;
+    max-width: 500px;
+    height: clamp(15vh, 40vh, 70vh);
+    top: 15vh;
   }
 `;
 const EmptyCard = styled.div`
@@ -235,9 +246,15 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   padding-top: 5vh;
+  
   @media (max-width: 768px) {
     min-height: auto;
     height: auto;
+  }
+
+  @media (max-width: 768px) and (orientation: landscape) {
+    min-height: 95vh; 
+    //padding-bottom: 5vh; 
   }
 `;
 
@@ -248,13 +265,18 @@ const SponsorsPanel = styled.div`
   display: grid;
   grid-template-columns: repeat(3, calc(1/3 * 100%));
   align-content: center;
-  // background: #bb25de44;
   justify-content: space-around;
   gap: 2.5%;
+  
   @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 50%);
-    
-  };
+    ggrid-template-columns: repeat(3, calc(1/3 * 100%));
+    padding: 15%
+  }
+
+  @media (max-width: 768px) and (orientation: landscape) {
+    ggrid-template-columns: repeat(3, calc(1/3 * 100%));
+    padding: 27%
+}
 `;
 
 // ELEMENTS
@@ -265,10 +287,26 @@ const PartnershipText = styled.span`
   grid-column: span 3;
   justify-self: center;
   @media (max-width: 768px) {
-    font-size: clamp(1rem, 5vw, 1.5rem); /* Zmniejszenie rozmiaru czcionki na urządzeniach mobilnych */
-    margin-top: 1rem; /* Zwiększenie marginesu na mobilnych urządzeniach */
-    padding: 0 1rem; /* Dodanie paddingu dla tekstu, aby zapewnić przestrzeń */
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    margin-top: 0.4rem; 
+    padding: 0 1rem; 
   } ;
+`;
+
+const CardHeader = styled.div`
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  font-size: 2.2vw;
+  font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    top: 5px; 
+  }
 `;
 
 const SponsorImg = styled.img`
@@ -423,17 +461,14 @@ const Sponsors: React.FC = () => {
             <EmptyCard></EmptyCard>
 
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd} >
-              <div style={{textAlign: 'center', marginBottom: '0.5rem'}}>
-
-                <SabreText>Sponsor główny</SabreText>
-              </div>
+                <CardHeader>Sponsor Główny</CardHeader>
               <Sabre href="https://www.sabre.com/locations/poland/" target="_blank">
                 <SabreImg src={logos[0].default} alt="Sabre"/>
               </Sabre>
             </Card>
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
               <SponsorsPanel>
-                <PartnershipText>Sponsorzy</PartnershipText>
+                <CardHeader>Sponsorzy</CardHeader>
                 <Pega href="https://www.pega.com/" target="_blank">
                   <SponsorImg src={logos[2].default} alt="Pega"/>
                 </Pega>
@@ -461,25 +496,25 @@ const Sponsors: React.FC = () => {
               </SponsorsPanel>
             </Card>
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
-              <PMIText>Partner Strefy Studenta</PMIText>
+              <CardHeader>Partner Strefy Studenta</CardHeader>
               <PMI href="https://www.pmi.com/markets/poland/pl/about-us/overview" target="_blank">
                 <PMIImg src={logos[17].default} alt="PMI"/>
               </PMI>
             </Card>
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
-              <KMSText>Partner merytoryczny</KMSText>
+              <CardHeader>Partner merytoryczny</CardHeader>
               <KMS href="https://kms.org.pl/" target="_blank">
                 <KMSImg src={logos[13].default} alt="KMS"/>
               </KMS>
             </Card>
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
-              <SatrentText>Partner techniczny</SatrentText>
+              <CardHeader>Partner techniczny</CardHeader>
               <Satrent href="https://satrent.pl/" target="_blank">
                 <SatrentImg src={logos[20].default} alt="Satrent"/>
               </Satrent>
             </Card>
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
-              <DKMSText>Fundacja charytatywna</DKMSText>
+              <CardHeader>Fundacja charytatywna</CardHeader>
               <DKMS href="https://www.dkms.pl/" target="_blank">
                 <DKMSImg src={logos[18].default} alt="DKMS"/>
               </DKMS>
@@ -487,7 +522,7 @@ const Sponsors: React.FC = () => {
 
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
               <SponsorsPanel>
-                <PartnershipText>Patroni medialni</PartnershipText>
+                <CardHeader>Patroni medialni</CardHeader>
                 <ParentLink href="http://www.podajdalej.info.pl/" target="_blank">
                   <SponsorImg src={logos[10].default} alt="Podaj Dalej"/>
                 </ParentLink>
@@ -514,7 +549,7 @@ const Sponsors: React.FC = () => {
 
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
               <SponsorsPanel>
-                <PartnershipText>Partnerzy medialni</PartnershipText>
+                <CardHeader>Partnerzy medialni</CardHeader>
                 <ParentLink href="https://www.facebook.com/AllInUJ/" target="_blank">
                   <SponsorImg src={logos[22].default} alt="All In UJ"/>
                 </ParentLink>
