@@ -16,6 +16,8 @@ const mapImages = importAll(
 
 const MapText = styled.p`
     position: absolute;
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
     top: 4%;
     left: 50%;
     transform: translateX(-50%);
@@ -29,8 +31,9 @@ const MapText = styled.p`
     text-align: center;
 
     @media (max-width: 769px) {
-        font-size: clamp(1rem, 12vw, 3rem); /* Zwiększenie rozmiaru czcionki dla mobilnych */
-        padding-bottom: 10%; /* Dopasowanie przestrzeni do ekranu */
+        font-size: clamp(1rem, 12vw, 3rem); 
+        margin-bottom: 1.5rem;
+        margin-top: 0.5rem;
     }
 `;
 
@@ -63,9 +66,8 @@ const MapImg = styled.img`
   width: 80%;
   z-index: 2;
   @media (max-width: 769px) {
-      top: 30%;
+      top: 35%;
       width: 100%;
-      //height: 140%;
       height: auto;
   }
 `;
