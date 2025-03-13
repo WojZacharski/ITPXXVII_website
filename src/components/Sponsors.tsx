@@ -494,9 +494,24 @@ const Sponsors: React.FC = () => {
                   <Image src={logos[30].default} alt={"CareEr"} />
                 </Link>
 
-
-
               </SponsorsPanel>
+            </Card>
+
+            <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
+                <CardHeader>Organizacja charytatywna</CardHeader>
+
+                <Link href="https://www.dkms.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[18].default} alt={"DKMS"} />
+                </Link>
+
+            </Card>
+
+            <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
+                <CardHeader>Uczelnia wspierająca</CardHeader>
+
+                <Link href="https://www.agh.edu.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[35].default} alt={"AGH"} />
+                </Link>
             </Card>
 
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
@@ -513,6 +528,14 @@ const Sponsors: React.FC = () => {
 
                 <Link href="https://www.eurostudent.pl" target="_blank" rel="noopener noreferrer">
                   <Image src={logos[34].default} alt={"Eurostudent"} />
+                </Link>
+
+                <Link target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[33].default} alt={"BLANK"} />
+                </Link>
+
+                <Link href="https://www.otouczelnie.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[25].default} alt={"OtoUczelnie"} />
                 </Link>
 
               </SponsorsPanel>

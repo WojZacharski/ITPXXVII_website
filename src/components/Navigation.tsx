@@ -32,12 +32,13 @@ const links: ILink[] = [
   { name: "Oferty", path: "/offers" },
   { name: "Wyślij CV", path: "https://forms.gle/Us7y6EFSiXoRWgKq7" },
   { name: "O Beście", path: "https://www.newsite.best.krakow.pl/" },
+  { name: "Harmonogram", path: "https://itp.best.krakow.pl/[ITP2025] Harmonogram wydarzenia.pdf" },
 ];
 
 const popUpLinks: ILink[] = [
-  { name: "Regulamin wydarzenia", path: "https://itp.best.krakow.pl/[ITP2024] Regulamin wydarzenia.pdf" },
-  { name: "Regulaminy konkursów", path: "https://itp.best.krakow.pl/[ITP2024] Regulaminy konkursow.pdf" },
-  { name: "RODO", path: "https://itp.best.krakow.pl/[ITP2024] RODO.pdf" },
+  { name: "Regulamin wydarzenia", path: "https://itp.best.krakow.pl/[ITP2025] Regulamin konkursow.pdf" },
+  { name: "Regulaminy konkursów", path: "https://itp.best.krakow.pl/[ITP2025] Regulamin wydarzenia.pdf" },
+  { name: "RODO", path: "https://itp.best.krakow.pl/[ITP2025] RODO.pdf" },
 ];
 
 const NavContainer = styled.div`
