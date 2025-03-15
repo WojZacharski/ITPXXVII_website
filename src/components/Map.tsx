@@ -36,16 +36,16 @@ const Container = styled.div`
 `;
 
 const MapHeader = styled.div`
-  position: absolute;
-  top: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.8); 
-  padding: 1rem 0;
-  z-index: 2;
-    
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.8); 
+    padding: 1rem 0;
+    z-index: 2;
+
     @media (max-width: 769px) {
         display: none;
     }
@@ -90,18 +90,18 @@ const MapImg = styled.img`
 `;
 
 const MapLegend = styled.img`
-  position: absolute;
-  left: 9%;
-  top: 77.5%;
-  width: 25%;
-  z-index: 2;
-  @media (max-width: 769px) {
-    left: 7.5%;
-      top: 55%;
-      width: 80%;
-      max-width: 80vw;  
-      height: auto;  
-  }
+    position: absolute;
+    left: 9%;
+    top: 77.5%;
+    width: 25%;
+    z-index: 2;
+    @media (max-width: 769px) {
+        left: 7.5%;
+        top: 55%;
+        width: 80%;
+        max-width: 80vw;  
+        height: auto;  
+    }
 `;
 
 const Map: React.FC = () => {

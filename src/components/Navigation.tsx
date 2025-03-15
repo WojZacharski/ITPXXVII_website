@@ -36,8 +36,8 @@ const links: ILink[] = [
 ];
 
 const popUpLinks: ILink[] = [
-  { name: "Regulamin wydarzenia", path: "https://itp.best.krakow.pl/[ITP2025] Regulamin konkursow.pdf" },
-  { name: "Regulaminy konkursów", path: "https://itp.best.krakow.pl/[ITP2025] Regulamin wydarzenia.pdf" },
+  { name: "Regulamin konkursów", path: "https://itp.best.krakow.pl/[ITP2025] Regulamin konkursow.pdf" },
+  { name: "Regulaminy wydarzenia", path: "https://itp.best.krakow.pl/[ITP2025] Regulamin wydarzenia.pdf" },
   { name: "RODO", path: "https://itp.best.krakow.pl/[ITP2025] RODO.pdf" },
 ];
 
@@ -144,7 +144,8 @@ const BESTLogo = styled.img`
 
 const SocialsContainer = styled.div`
   position: absolute;
-  width:20%;
+  width:10%;
+  min-width:200px;
   height:50%;
   min-height:1px;
   right:10%;
@@ -173,7 +174,8 @@ const SocialsContainer = styled.div`
       right:auto;
       transform:transformX(-50%);
       top:75%;
-      justify-content: center; /* Ikonki na środku */
+      min-width:unset;
+      justify-content:center;
       a {
         height: 8vh;
       }
@@ -189,7 +191,7 @@ const PopUpContainer = styled.div`
   padding: 5rem;
   background-color: #fff;
   border-radius: 1vh;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
   z-index: 1000;
 
   display: flex;
@@ -217,7 +219,7 @@ const PopUpContainer = styled.div`
     flex-basis: 100%;
     align-self: center;
     white-space: nowrap;
-    margin-bottom: 1rem;
+    margin: 1rem;
     z-index: 1000;
   }`;
 

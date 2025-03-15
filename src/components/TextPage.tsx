@@ -9,21 +9,17 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100%;
-    min-height: 130vh;
-  padding-top: 2rem;
-    @media (max-width: 768px){
-        min-height: auto;
-        height: auto;
-        padding-bottom: 3rem;
-    }
+  @media (max-width: 768px){
+    min-height: auto;
+    height: auto;
+  }
 `;
 
 const DesktopGears = styled.div`
-    position: absolute;
-    width: 100%;
-    top: 20vh;
-    left: 0;
-    z-index: -1;
+  position: absolute;
+  width: 100%;
+  top: 12%;
+  z-index: -2;
 
   @media (max-width: 768px) {
     display: none; 
@@ -31,19 +27,17 @@ const DesktopGears = styled.div`
 `;
 
 const MobileGears = styled.div`
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    width: 90%; 
-    max-width: 100%; 
-    margin: 2rem auto; 
-    right:0;
-    //z-index: -1;
-    //overflow: hidden;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  width: 90%; 
+  max-width: 100%; 
+  margin: 2rem auto; 
+  right:0;
 
-    @media (min-width: 768px) {
-        display: none;
-    }
+  @media (min-width: 768px) {
+      display: none;
+  }
 `;
 
 
@@ -55,7 +49,7 @@ const HeroTextContainer = styled.div`
   width: clamp(8rem, 80vw, 40rem);
   margin-top: 2rem;
   position: relative;
-    padding: 1rem 0;
+  padding: 1rem 0;
 
   &::before {
     content: "";
@@ -64,54 +58,43 @@ const HeroTextContainer = styled.div`
     left: 50%;
     transform: translateX(-50%);
     width: 100vw;
-    height: 80%;
+    height: 100%;
     background-color: #fce8cf;
     z-index: -1;
-    border-radius: 5px;
-    padding: 1rem;
   }
-    @media (max-width: 768px) {
-        //width: 50%;
-        margin-top: 1rem;
-
-        &::before {
-            padding: 1rem 0;
-        }
-    }
 `;
 
 const H2 = styled.h2`
   font-size: clamp(2rem, 5vw, 7rem);
-    top: 2vh;
+  top: 2vh;
   font-weight: bold;
   color: #000;
-    @media (max-width: 768px){
-        
-    }
+  @media (max-width: 768px){
+      
+  }
 `;
 
 const H3 = styled.h3`
   font-size: clamp(1.5rem, 3vw, 3rem);
-    top: 10%;
+  top: 10%;
   color: #D2764A;
   font-weight: bold;
 `;
 
 
 const TextContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 90%;
-    max-width: 1200px;
-    text-align: center;
-    gap: 3rem;
-    margin-top: 2rem;
-    margin-bottom: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+  text-align: center;
+  gap: 5rem;
+  margin: 2rem 0;
 
-    @media (max-width: 768px) {
-        gap: 1rem;
-    }
+  @media (max-width: 768px) {
+      gap: 1rem;
+  }
 `;
 
 const TextBox = styled.div`
@@ -120,12 +103,10 @@ const TextBox = styled.div`
   color: #d2764a;
   text-align: justify;
 
-    @media (max-width: 768px){
-        width: 80vw;
-    }
+  @media (max-width: 768px){
+      width: 80vw;
+  }
 `;
-
-
 
 const TextPage: React.FC = () => {
     return (
