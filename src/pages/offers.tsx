@@ -503,99 +503,99 @@ const OffersPage: React.FC<PageProps> = () => {
 };
 
 const GridContainer = styled.div`
-  margin-top: 1rem;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
-  @media screen and (max-width: 769px) {
-    // background-color: #ada;
-    grid-template-columns: repeat(4, 1fr);
-    margin: auto;
-    gap: 0;
-  }
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    @media screen and (max-width: 769px) {
+        // background-color: #ada;
+        grid-template-columns: repeat(4, 1fr);
+        margin: auto;
+        gap: 0;
+    }
 `;
 
 const GridItem = styled.div`
-@media screen and (max-width: 769px) {
-    // background-color: #aba;
-    width: fit-content;
-  }
+    @media screen and (max-width: 769px) {
+        // background-color: #aba;
+        width: fit-content;
+    }
 `;
 
 const SImage = styled.img`
-  cursor: pointer;
-  display: block;
-  align-self: center;
-  width: 20vw;
-  height: 15vh;
-  aspect-ratio: 3/2;
-  object-fit: contain;
-  box-sizing: border-box;
-  border: 0.2rem solid;
-  border-radius: 3.5rem;
-  border-color: #e5821a;
-  background-color: #fffffa;
-  padding: 0.12em;
-  @media screen and (max-width: 769px) {
-    // background-color: #afa;
-    height: 100%;
-    width: 100%;
-    border: 0.15rem solid;
+    cursor: pointer;
+    display: block;
+    align-self: center;
+    width: 20vw;
+    height: 15vh;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    box-sizing: border-box;
+    border: 0.2rem solid;
+    border-radius: 3.5rem;
     border-color: #e5821a;
-  }
+    background-color: #fffffa;
+    padding: 0.12em;
+    @media screen and (max-width: 769px) {
+        // background-color: #afa;
+        height: 100%;
+        width: 100%;
+        border: 0.15rem solid;
+        border-color: #e5821a;
+    }
 `;
 
 const ParentDiv = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  margin-top: 3rem;
-  aspect-ratio: 1;
-  position: relative;
-  @media screen and (max-width: 769px) {
-    flex-direction: column;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-  }
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 3rem;
+    aspect-ratio: 1;
+    position: relative;
+    @media screen and (max-width: 769px) {
+        flex-direction: column;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+}
 `;
 
 const LeftDiv = styled.div`
-  padding: 0 0.5rem 0 0.5rem;
-  border: 0.2rem solid;
-  border-radius: 3.5rem;
-  border-color: #e5821a;
-  margin-left: 6%;
-  min-width: auto; /* Reset min-width */
-  display: inline-block;
-  width: 20%;
-  height: 66%;
-  @media screen and (max-width: 769px) {
-    width: 94%;
-    height: 20%;
-    margin-left: 0;
-    margin-right: 0;
-    padding: 0;
-    margin: 0 auto;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-  }
+    padding: 0 0.5rem 0 0.5rem;
+    border: 0.2rem solid;
+    border-radius: 3.5rem;
+    border-color: #e5821a;
+    margin-left: 6%;
+    min-width: auto; /* Reset min-width */
+    display: inline-block;
+    width: 20%;
+    height: 66%;
+    @media screen and (max-width: 769px) {
+        width: 94%;
+        height: 20%;
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0;
+        margin: 0 auto;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+    }
 `;
 
 const RightDiv = styled.div`
-  margin-right: 6%;
-  margin-left: 3%;
-  width: 80%;
-  display:flex;
-  height: 66%;
-  position: relative;
-  @media screen and (max-width: 769px) {
-    margin-left: 9%;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    height: 88%;
-  }
+    margin-right: 6%;
+    margin-left: 3%;
+    width: 80%;
+    display:flex;
+    height: 66%;
+    position: relative;
+    @media screen and (max-width: 769px) {
+        margin-left: 9%;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        height: 88%;
+    }
 `;
 
 const Picture = styled.picture`
@@ -604,98 +604,97 @@ const Picture = styled.picture`
 `;
 
 const Img = styled.img`
-  width: 100%;
-  height: 100%;
-  position: relative;
+    width: 100%;
+    height: 100%;
+    position: relative;
 `;
 
 const BtnImg = styled.img`
-  width: 100%;
-  aspect-ratio:1;
-  display: block;
-  height: auto;
-  transition: transform 2s ease;
+    width: 100%;
+    aspect-ratio:1;
+    display: block;
+    height: auto;
+    transition: transform 2s ease;
 `;
 
 const JobOffersPanel = styled.div`
-  top: 7%;
-  bottom: 7%;
-  left: 18%;
-  right: 18%;
-  overflow: auto; /* Allow the panel to become scrollable */
-  max-height: 90%;
-  position: absolute;
+    top: 7%;
+    bottom: 7%;
+    left: 18%;
+    right: 18%;
+    overflow: auto; /* Allow the panel to become scrollable */
+    max-height: 90%;
+    position: absolute;
 `;
 
 const JobOfferCard = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 20px;
+    display: flex;
+    align-items: center;
+    padding: 20px;
 `;
 
 const JobOfferContent = styled.div`
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 `;
 
 const Field = styled.div`
-  display: flex;
-  justify-content: space-between; /* Align title to left and content to right */
-  margin-bottom: 10px;
-  
+    display: flex;
+    justify-content: space-between; /* Align title to left and content to right */
+    margin-bottom: 10px;
 `;
 
 const Title = styled.div`
-  font-weight: bold;
-  flex: 1; /* Ensure title takes minimum space */
-  @media screen and (max-width: 769px) {
-    font-size: 0.7rem;
-  }
+    font-weight: bold;
+    flex: 1; /* Ensure title takes minimum space */
+    @media screen and (max-width: 769px) {
+        font-size: 0.7rem;
+    }
 `;
 
 const Content = styled.div`
-  color: #110B11;
-  flex: 2; /* Ensure content takes more space */
-  @media screen and (max-width: 769px) {
-    font-size: 0.7rem;
-  }
+    color: #110B11;
+    flex: 2; /* Ensure content takes more space */
+    @media screen and (max-width: 769px) {
+        font-size: 0.7rem;
+    }
 `;
 
 const ButtonContainer = styled.div`
-  position: absolute;
-  top: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+    position: absolute;
+    top: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 `;
 
 const PrevButton = styled.button`
-  position: absolute;
-  cursor: pointer;
-  left: 0%;
-  width: 10%;
-  background:none;
-  border: none;
-  box-shadow: none;
-  @media screen and (max-width: 769px) {
-    width: 18%;
-    left: -9%;
+    position: absolute;
+    cursor: pointer;
+    left: 0%;
+    width: 10%;
+    background:none;
+    border: none;
+    box-shadow: none;
+    @media screen and (max-width: 769px) {
+        width: 18%;
+        left: -9%;
   }
 `;
 
 const NextButton = styled.button`
-  position: absolute;
-  background:none;
-  cursor: pointer;
-  right: 5%;
-  width: 10%;
-  border: none;
-  box-shadow: none;
-  @media screen and (max-width: 769px) {
-    width: 18%;
-    right: -9%;
-  }
+    position: absolute;
+    background:none;
+    cursor: pointer;
+    right: 5%;
+    width: 10%;
+    border: none;
+    box-shadow: none;
+    @media screen and (max-width: 769px) {
+        width: 18%;
+        right: -9%;
+    }
 `;
 
 export default OffersPage;
