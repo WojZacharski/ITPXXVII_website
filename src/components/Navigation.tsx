@@ -51,6 +51,8 @@ const NavContainer = styled.div<{ isOpen: boolean }>`
     @media (max-width: 768px) {
         min-height: ${({ isOpen }) => (isOpen ? "55vh" : "30vh")}; // Zmiana na auto, gdy otwarte
         height: ${({ isOpen }) => (isOpen ? "35vh" : "20vh")}; // Ustawienie auto, gdy otwarte.
+        margin-top: 100px;
+        margin-bottom: 40%;
     }
 `;
 
@@ -82,9 +84,10 @@ const Nav = styled.nav<{ isOpen: boolean }>`
         display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
         flex-direction: column;
         align-items: center;
-        position: absolute; 
-        // margin-top: 100px; // Dodanie marginesu
-        bottom: 0%;
+        position: relative; 
+        margin-top: 100px; // Dodanie marginesu
+        top: 40%;
+        
         
         a {
             // font-size: 10;
@@ -102,12 +105,13 @@ const LinkContainer = styled.div`
   flex-direction: inherit;
   text-align: center;
   text-transform: none;
-
+  
   @media (max-width: 768px) {
       gap: 0;
       width: 100%;
       height: auto;
       flex-direction: column;
+      z-index: 100;
   }
 `;
 
@@ -130,7 +134,7 @@ const BlockContainer = styled.div`
     height:50%;
     left:0;
     right:0;
-    top: 25%;
+    top: 0%;
     justify-content:center;
   }
 `;
@@ -186,14 +190,16 @@ const SocialsContainer = styled.div`
 
     @media (max-width: 768px) {
         & {
+            //position: relative;
             width:100%;
             right:auto;
             transform:transformX(-50%);
-            top:75%;
-            //left: 50%;
+            top:25%;
+            //margin-top: 20px;
             min-width:unset;
             justify-content:center;
-            //z-index: 100;
+            z-index: 100;
+            
             a {
                 height: 8vh;
             }
@@ -233,7 +239,8 @@ const PopUpContainer = styled.div`
         display: block;
         text-decoration: none;
         padding: 0.33em;
-        font-size: clamp(1.33rem, 1.9vw, 2rem);
+        //font-size: clamp(1.33rem, 1.9vw, 2rem);
+        font-size: 6vw;
         flex-basis: 100%;
         align-self: center;
         white-space: nowrap;
@@ -247,12 +254,16 @@ const LinkStyled = styled(Link)`
     flex-basis: auto;
     align-self: center;
     white-space: nowrap;
+    flex: 0 0 auto; // Dodano flex-basis
+
 
     @media (max-width: 769px) {
-        font-size: 1rem;
+        font-size: 1.2rem;
         height: 100%;
         align-items: center;
         display: flex;
+        padding-top: 1vh;
+        padding-bottom: 0.5vh;
     }
 `;
 
@@ -272,7 +283,7 @@ const BurgerButton = styled.button`
 
 const Navigation: React.FC = () => {
     const [showPopUp, setShowPopUp] = useState(false)
-    const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(true);
 
     const togglePopUp = () => {
         setShowPopUp(!showPopUp);
@@ -301,17 +312,6 @@ const Navigation: React.FC = () => {
                 </PopUpContainer>
             )}
             <NavContainer isOpen={isOpen}>
-                <BurgerButton onClick={toggleMenu}
-                    style={{
-                        position: "relative",
-                        zIndex: 9999,
-                        background: "none"
-                    }}>
-                    <img src={burger_menu} alt="Burger Menu" style={{
-                        height: "50px"
-                    }} />
-                </BurgerButton>
-
                 <BlockContainer>
                     <ITPBlock>
                         <ITPLogo src={itp_logo} alt="XXVII ITP" />

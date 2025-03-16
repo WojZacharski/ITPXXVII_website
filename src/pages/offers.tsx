@@ -655,6 +655,9 @@ const Title = styled.div`
 const Content = styled.div`
     color: #110B11;
     flex: 2; /* Ensure content takes more space */
+    max-width: 600px; // Ustaw maksymalną szerokość na 600 pikseli (dostosuj do potrzeb)
+    word-wrap: break-word; // Łam długie słowa
+    white-space: pre-line; // zachowanie znaków nowej linii.
     @media screen and (max-width: 769px) {
         font-size: 0.7rem;
     }
@@ -687,7 +690,7 @@ const NextButton = styled.button`
     position: absolute;
     background:none;
     cursor: pointer;
-    right: 0%;
+    right: 4%;
     width: 10%;
     border: none;
     box-shadow: none;
