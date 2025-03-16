@@ -43,40 +43,39 @@ const popUpLinks: ILink[] = [
     { name: "RODO", path: "https://itp.best.krakow.pl/[ITP2025] RODO.pdf" },
 ];
 
-const NavContainer = styled.div<{ isOpen: boolean}>`
-  position: relative;
-  height: 200px;
-  display:block;
+const NavContainer = styled.div<{ isOpen: boolean }>`
+    position: relative;
+    height: 200px;
+    display:block;
 
-  @media (max-width: 768px) {
-      min-height: ${({ isOpen }) => (isOpen ? "55vh" : "30vh")}; // Zmiana na auto, gdy otwarte
-      height: ${({ isOpen }) => (isOpen ? "35vh" : "20vh")}; // Ustawienie auto, gdy otwarte.
-  }
-  }
+    @media (max-width: 768px) {
+        min-height: ${({ isOpen }) => (isOpen ? "55vh" : "30vh")}; // Zmiana na auto, gdy otwarte
+        height: ${({ isOpen }) => (isOpen ? "35vh" : "20vh")}; // Ustawienie auto, gdy otwarte.
+    }
 `;
 
-const Nav = styled.nav<{ isOpen: boolean}>`
-  position: absolute;
+const Nav = styled.nav<{ isOpen: boolean }>`
+    position: absolute;
 
-  left: 6%;
-  right: 6%;
-  bottom: 0%;
-  height: 50px;
+    left: 6%;
+    right: 6%;
+    bottom: 0%;
+    height: 50px;
 
-  background-color: #e5821a;
-  left: 0;
-  right: 0;
-  border-radius: 0;
-  
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 5;
-  
-  a {
-    text-decoration: none;
-    color: #fffffa;
-  }
+    background-color: #e5821a;
+    left: 0;
+    right: 0;
+    border-radius: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+
+    a {
+        text-decoration: none;
+        color: #fffffa;
+    }
 
     @media (max-width: 768px) {
         height: auto;
@@ -84,10 +83,11 @@ const Nav = styled.nav<{ isOpen: boolean}>`
         flex-direction: column;
         align-items: center;
         position: absolute; 
-        //margin-top: 100px; // Dodanie marginesu
+        // margin-top: 100px; // Dodanie marginesu
         bottom: 0%;
+        
         a {
-            //font-size: 10;
+            // font-size: 10;
             text-decoration: none;
             color: #fffffa;
         }
@@ -123,39 +123,39 @@ const BlockContainer = styled.div`
   justify-content:space-between;
   gap:10px;
   transform:translateY(-50%);
-  top:7%;
+  top:40%;
 
   @media (max-width: 768px) {
     width:100%;
     height:50%;
     left:0;
     right:0;
-    top: 10%;
+    top: 25%;
     justify-content:center;
   }
 `;
 
 const ITPBlock = styled.div`
-  position:relative;
-  width:auto;
+    position:relative;
+    width:auto;
 `;
 
 const ITPLogo = styled.img`
-  max-width:100%;
-  vertical-align:middle;
+    max-width:100%;
+    vertical-align:middle;
 `;
 
 const BESTBlock = styled.div`
-  position:relative;
-  width:160px;
+    position:relative;
+    width:160px;
 `;
 
 const BESTLogo = styled.img`
-  max-width:100%;
-  vertical-align:middle;
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
+    max-width:100%;
+    vertical-align:middle;
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
 `;
 
 const SocialsContainer = styled.div`
@@ -165,7 +165,7 @@ const SocialsContainer = styled.div`
     height:50%;
     min-height:1px;
     right:10%;
-    top:10%;
+    top:40%;
     transform:translateY(-50%);
     display: flex;
     align-items: center;
@@ -176,8 +176,6 @@ const SocialsContainer = styled.div`
         min-height:40px;
         height:20%;
         max-height:60px;
-
-        
     }
 
     img {
@@ -188,11 +186,10 @@ const SocialsContainer = styled.div`
 
     @media (max-width: 768px) {
         & {
-
             width:100%;
             right:auto;
             transform:transformX(-50%);
-            top:25%;
+            top:75%;
             //left: 50%;
             min-width:unset;
             justify-content:center;
@@ -205,71 +202,71 @@ const SocialsContainer = styled.div`
 `;
 
 const PopUpContainer = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 5rem;
-  background-color: #fff;
-  border-radius: 1vh;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  .closeButton {
-    position: absolute;
-    top: 3.5%;
-    right: 3.5%;
-    cursor: pointer;
-    font-size: 2rem;
-    color: #888;
-    border: none;
-    background: none;
-    padding: 0.33em;
-    z-index: 1001;
-  }
-
-  a {
-    display: block;
-    text-decoration: none;
-    padding: 0.33em;
-    font-size: clamp(1.33rem, 1.9vw, 2rem);
-    flex-basis: 100%;
-    align-self: center;
-    white-space: nowrap;
-    margin: 1rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 5rem;
+    background-color: #fff;
+    border-radius: 1vh;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-  }`;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .closeButton {
+        position: absolute;
+        top: 3.5%;
+        right: 3.5%;
+        cursor: pointer;
+        font-size: 2rem;
+        color: #888;
+        border: none;
+        background: none;
+        padding: 0.33em;
+        z-index: 1001;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+        padding: 0.33em;
+        font-size: clamp(1.33rem, 1.9vw, 2rem);
+        flex-basis: 100%;
+        align-self: center;
+        white-space: nowrap;
+        margin: 1rem;
+        z-index: 1000;
+    }
+`;
 
 const LinkStyled = styled(Link)`
-  font-size: clamp(0.7rem, 2.2vw, 1.9rem);
-  flex-basis: auto;
-  align-self: center;
-  white-space: nowrap;
+    font-size: clamp(0.7rem, 2.2vw, 1.9rem);
+    flex-basis: auto;
+    align-self: center;
+    white-space: nowrap;
 
-  @media (max-width: 769px) {
-      
-    font-size: 1rem;
-    height: 100%;
-    align-items: center;
-    display: flex;
-  }
+    @media (max-width: 769px) {
+        font-size: 1rem;
+        height: 100%;
+        align-items: center;
+        display: flex;
+    }
 `;
 
 const BurgerButton = styled.button`
-  display: none; // Domyślnie ukryty na desktopie
+    display: none; // Domyślnie ukryty na desktopie
 
-  @media (max-width: 768px) {
-      position: absolute; 
-      top: 20vh;
-    display: block; 
-    background: none;
-    border: none;
-    cursor: pointer;  
-      z-index: 100
+    @media (max-width: 768px) {
+        position: absolute; 
+        top: 20vh;
+        display: block; 
+        background: none;
+        border: none;
+        cursor: pointer;  
+        z-index: 100;
   }
 `;
 
@@ -300,33 +297,41 @@ const Navigation: React.FC = () => {
                     ))}
                 </PopUpContainer>
             )}
+            <NavContainer isOpen={isOpen}>
+                <BurgerButton onClick={toggleMenu}
+                    style={{
+                        position: "relative",
+                        zIndex: 9999,
+                        background: "none"
+                    }}>
+                    <img src={burger_menu} alt="Burger Menu" style={{
+                        height: "50px"
+                    }} />
+                </BurgerButton>
+                
                 <BlockContainer>
                     <ITPBlock>
-                        <ITPLogo src={itp_logo} alt="XXVII ITP"/>
+                        <ITPLogo src={itp_logo} alt="XXVII ITP" />
                     </ITPBlock>
                     <BESTBlock>
                         <a href="https://www.newsite.best.krakow.pl" target="_blank" rel="noopener noreferrer">
-                            <BESTLogo src={BEST_logo} alt="BEST"/>
+                            <BESTLogo src={BEST_logo} alt="BEST" />
                         </a>
                     </BESTBlock>
                 </BlockContainer>
                 <SocialsContainer>
                     <a href={socialLinks["facebook"]}>
-                        <img src={fb_icon} alt="facebook"/>
+                        <img src={fb_icon} alt="facebook" />
                     </a>
                     <a href={socialLinks["instagram"]}>
-                        <img src={ig_icon} alt="instagram"/>
+                        <img src={ig_icon} alt="instagram" />
                     </a>
                     <a href={socialLinks["linkedin"]}>
-                        <img src={li_icon} alt="linkedin"/>
+                        <img src={li_icon} alt="linkedin" />
                     </a>
                 </SocialsContainer>
 
-            <NavContainer isOpen={isOpen}>
-                <BurgerButton onClick={toggleMenu} style={{ position: "relative", zIndex: 9999, background: "none" }}>
-                    <img src={burger_menu} alt="Burger Menu" style={{ height: "25px" }} />
-                </BurgerButton>
-                <Nav isOpen={isOpen}  key={isOpen ? "open" : "closed"}>
+                <Nav isOpen={isOpen} key={isOpen ? "open" : "closed"}>
                     <LinkContainer className="links">
                         {links.map((link, i) => (
                             <LinkStyled
