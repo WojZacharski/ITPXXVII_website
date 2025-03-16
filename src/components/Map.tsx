@@ -24,7 +24,7 @@ const Container = styled.div`
     justify-content: center;
     //width: 100%;
     min-height: 100vh;
-    max-width: 100%; //99% za mało 100% za dużo
+        max-width: 100%; //99% za mało 100% za dużo
 
 
     @media (max-width: 769px) {
