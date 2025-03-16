@@ -267,16 +267,19 @@ grid-template-columns: repeat(3, calc(1/3 * 100%));
 align-content: center;
 justify-content: space-around;
 gap: 2.5%;
+  padding-top: 20%;
   
 
 @media (max-width: 768px) {
   ggrid-template-columns: repeat(3, calc(1/3 * 100%));
-  padding: 15%
+  //padding: 15%;
+  padding-top: 10%;
+  
 }
 
 @media (max-width: 768px) and (orientation: landscape) {
   ggrid-template-columns: repeat(3, calc(1/3 * 100%));
-  padding: 27%
+  padding: 27%;
 }
   `;
 
@@ -384,12 +387,12 @@ const SponsorsText = styled(SabreText)`
 `;
 
 const Image = styled.img`
-  width: 100%;
+  width: 90%;
   height: auto;
   object-fit: contain;
   border-radius: 8px;
   cursor: pointer;
-  padding-top: 3vh;
+  padding-top: 20%;
 `;
 
 const Link = styled.a`
@@ -492,8 +495,8 @@ const Sponsors: React.FC = () => {
               <SponsorsPanel>
                 <CardHeader>Patroni medialni</CardHeader>
 
-                <Link href="https://www.fxmag.pl" target="_blank" rel="noopener noreferrer">
-                  <Image src={logos[14].default} alt={"Fxmag"} />
+                <Link href="https://www.otouczelnie.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[25].default} alt={"OtoUczelnie"} />
                 </Link>
 
                 <Link href="https://krakow.tvp.pl" target="_blank" rel="noopener noreferrer">
@@ -508,8 +511,8 @@ const Sponsors: React.FC = () => {
                   <Image src={logos[33].default} alt={"BLANK"} />
                 </Link>
 
-                <Link href="https://www.otouczelnie.pl" target="_blank" rel="noopener noreferrer">
-                  <Image src={logos[25].default} alt={"OtoUczelnie"} />
+                <Link href="https://www.fxmag.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[14].default} alt={"Fxmag"} />
                 </Link>
 
               </SponsorsPanel>
