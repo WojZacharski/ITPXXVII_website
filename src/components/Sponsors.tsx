@@ -267,6 +267,7 @@ grid-template-columns: repeat(3, calc(1/3 * 100%));
 align-content: center;
 justify-content: space-around;
 gap: 2.5%;
+  
 
 @media (max-width: 768px) {
   ggrid-template-columns: repeat(3, calc(1/3 * 100%));
@@ -314,6 +315,7 @@ const SponsorImg = styled.img`
   display: block;
   aspect-ratio: 3/2;
   object-fit: contain;
+  //padding-top: 0 1rem;
   
   @media (max-width: 768px) {
     max-width: 80%;  
@@ -387,6 +389,7 @@ const Image = styled.img`
   object-fit: contain;
   border-radius: 8px;
   cursor: pointer;
+  padding-top: 3vh;
 `;
 
 const Link = styled.a`
@@ -396,9 +399,6 @@ const Link = styled.a`
   align-items: center;
   text-decoration: none;
 `;
-
-
-
 
 
 const Sponsors: React.FC = () => {
@@ -470,32 +470,6 @@ const Sponsors: React.FC = () => {
               </Link>
             </Card>
 
-            <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
-              <SponsorsPanel>
-                <CardHeader>Patroni medialni</CardHeader>
-
-                <Link href="https://radio17.pl" target="_blank" rel="noopener noreferrer">
-                  <Image src={logos[6].default} alt={"Radio17"} />
-                </Link>
-
-                <Link href="https://www.podajdalej.info.pl" target="_blank" rel="noopener noreferrer">
-                  <Image src={logos[10].default} alt={"PodajDalej"} />
-                </Link>
-
-                <Link href="https://www.dlastudenta.pl.pl" target="_blank" rel="noopener noreferrer">
-                  <Image src={logos[11].default} alt={"dlaStudenta"} />
-                </Link>
-
-                <Link target="_blank" rel="noopener noreferrer">
-                  <Image src={logos[33].default} alt={"BLANK"} />
-                </Link>
-
-                <Link href="https://care-er.pl" target="_blank" rel="noopener noreferrer">
-                  <Image src={logos[30].default} alt={"CareEr"} />
-                </Link>
-
-              </SponsorsPanel>
-            </Card>
 
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
                 <CardHeader>Organizacja charytatywna</CardHeader>
@@ -536,6 +510,33 @@ const Sponsors: React.FC = () => {
 
                 <Link href="https://www.otouczelnie.pl" target="_blank" rel="noopener noreferrer">
                   <Image src={logos[25].default} alt={"OtoUczelnie"} />
+                </Link>
+
+              </SponsorsPanel>
+            </Card>
+
+            <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
+              <SponsorsPanel>
+                <CardHeader>Patroni medialni</CardHeader>
+
+                <Link href="https://radio17.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[6].default} alt={"Radio17"} />
+                </Link>
+
+                <Link href="https://www.podajdalej.info.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[10].default} alt={"PodajDalej"} />
+                </Link>
+
+                <Link href="https://www.dlastudenta.pl.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[11].default} alt={"dlaStudenta"} />
+                </Link>
+
+                <Link target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[33].default} alt={"BLANK"} />
+                </Link>
+
+                <Link href="https://care-er.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[30].default} alt={"CareEr"} />
                 </Link>
 
               </SponsorsPanel>

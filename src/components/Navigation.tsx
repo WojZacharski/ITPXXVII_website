@@ -11,47 +11,51 @@ import fb_icon from "../images/navbar/FB_black.svg";
 import ig_icon from "../images/navbar/INSTA_black.svg";
 // @ts-ignore
 import li_icon from "../images/navbar/LNKDN_black.svg";
+// @ts-ignore
+import burger_menu from "../images/navbar/burger-menu.svg";
 
 const socialLinks = {
-  facebook: "https://www.facebook.com/BEST.itp",
-  instagram: "https://www.instagram.com/itp_best/",
-  linkedin: "https://www.linkedin.com/company/in%C5%BCynierskie-targi-pracy/",
+    facebook: "https://www.facebook.com/BEST.itp",
+    instagram: "https://www.instagram.com/itp_best/",
+    linkedin: "https://www.linkedin.com/company/in%C5%BCynierskie-targi-pracy/",
 };
 
 interface ILink {
-  name: String;
-  path: string;
+    name: String;
+    path: string;
 }
 
 const links: ILink[] = [
-  { name: "Strona główna", path: "/" },
-  { name: "Mapa", path: "/#map" },
-  { name: "Sponsorzy", path: "/#sponsors" },
-  { name: "Organizatorzy", path: "/#organizers" },
-  //{ name: "Katalog", path: "https://itp.best.krakow.pl/Katalog.pdf" }, //NA RAZIE NIE MA
-  { name: "Oferty", path: "/offers" },
-  { name: "Wyślij CV", path: "https://forms.gle/Us7y6EFSiXoRWgKq7" },
-  { name: "O Beście", path: "https://www.newsite.best.krakow.pl/" },
-  { name: "Harmonogram", path: "https://itp.best.krakow.pl/[ITP2025] Harmonogram wydarzenia.pdf" },
+    { name: "Strona główna", path: "/" },
+    { name: "Mapa", path: "/#map" },
+    { name: "Sponsorzy", path: "/#sponsors" },
+    { name: "Organizatorzy", path: "/#organizers" },
+    { name: "Katalog", path: "https://itp.best.krakow.pl/Katalog.pdf" },
+    { name: "Oferty", path: "/offers" },
+    { name: "Wyślij CV", path: "https://forms.gle/Us7y6EFSiXoRWgKq7" },
+    { name: "O Beście", path: "https://www.newsite.best.krakow.pl/" },
+    { name: "Harmonogram", path: "https://itp.best.krakow.pl/[ITP2025] Harmonogram wydarzenia.pdf" },
 ];
 
 const popUpLinks: ILink[] = [
-  { name: "Regulamin konkursów", path: "https://itp.best.krakow.pl/[ITP2025] Regulamin konkursow.pdf" },
-  { name: "Regulaminy wydarzenia", path: "https://itp.best.krakow.pl/[ITP2025] Regulamin wydarzenia.pdf" },
-  { name: "RODO", path: "https://itp.best.krakow.pl/[ITP2025] RODO.pdf" },
+    { name: "Regulamin konkursów", path: "https://itp.best.krakow.pl/[ITP2025] Regulamin konkursow.pdf" },
+    { name: "Regulaminy wydarzenia", path: "https://itp.best.krakow.pl/[ITP2025] Regulamin wydarzenia.pdf" },
+    { name: "RODO", path: "https://itp.best.krakow.pl/[ITP2025] RODO.pdf" },
 ];
 
-const NavContainer = styled.div`
+const NavContainer = styled.div<{ isOpen: boolean}>`
   position: relative;
   height: 200px;
   display:block;
 
   @media (max-width: 768px) {
-    height: 300px;
+      min-height: ${({ isOpen }) => (isOpen ? "55vh" : "30vh")}; // Zmiana na auto, gdy otwarte
+      height: ${({ isOpen }) => (isOpen ? "35vh" : "20vh")}; // Ustawienie auto, gdy otwarte.
+  }
   }
 `;
 
-const Nav = styled.nav`
+const Nav = styled.nav<{ isOpen: boolean}>`
   position: absolute;
 
   left: 6%;
@@ -74,9 +78,20 @@ const Nav = styled.nav`
     color: #fffffa;
   }
 
-  @media (max-width: 768px) {
-    height: 25px;
-  }
+    @media (max-width: 768px) {
+        height: auto;
+        display: ${({ isOpen }) => (isOpen ? "flex" : "none")};
+        flex-direction: column;
+        align-items: center;
+        position: absolute; 
+        //margin-top: 100px; // Dodanie marginesu
+        bottom: 0%;
+        a {
+            //font-size: 10;
+            text-decoration: none;
+            color: #fffffa;
+        }
+    }
 `;
 
 const LinkContainer = styled.div`
@@ -89,14 +104,15 @@ const LinkContainer = styled.div`
   text-transform: none;
 
   @media (max-width: 768px) {
-    gap: 0.2em;
-    width: 95%;
-    height: 100%;
+      gap: 0;
+      width: 100%;
+      height: auto;
+      flex-direction: column;
   }
 `;
 
 const BlockContainer = styled.div`
-  position:relative;
+  position:absolute;
   width:20%;
   height:50%;
   min-height:1px;
@@ -107,14 +123,14 @@ const BlockContainer = styled.div`
   justify-content:space-between;
   gap:10px;
   transform:translateY(-50%);
-  top:40%;
+  top:7%;
 
   @media (max-width: 768px) {
     width:100%;
     height:50%;
     left:0;
     right:0;
-    top:25%;
+    top: 10%;
     justify-content:center;
   }
 `;
@@ -143,44 +159,49 @@ const BESTLogo = styled.img`
 `;
 
 const SocialsContainer = styled.div`
-  position: absolute;
-  width:10%;
-  min-width:200px;
-  height:50%;
-  min-height:1px;
-  right:10%;
-  top:40%;
-  transform:translateY(-50%);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap:10px;
+    position: absolute;
+    width:10%;
+    min-width:200px;
+    height:50%;
+    min-height:1px;
+    right:10%;
+    top:10%;
+    transform:translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap:10px;
 
-  a {
-    min-height:40px;
-    height:20%;
-    max-height:60px;
-  }
+    a {
+        min-height:40px;
+        height:20%;
+        max-height:60px;
 
-  img {
-    display: block;
-    height: 100%;
-    cursor: pointer;
-  }
-
-  @media (max-width: 768px) {
-    & {
-      width:100%;
-      right:auto;
-      transform:transformX(-50%);
-      top:75%;
-      min-width:unset;
-      justify-content:center;
-      a {
-        height: 8vh;
-      }
+        
     }
-  }
+
+    img {
+        display: block;
+        height: 100%;
+        cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+        & {
+
+            width:100%;
+            right:auto;
+            transform:transformX(-50%);
+            top:25%;
+            //left: 50%;
+            min-width:unset;
+            justify-content:center;
+            //z-index: 100;
+            a {
+                height: 8vh;
+            }
+        }
+    }
 `;
 
 const PopUpContainer = styled.div`
@@ -230,75 +251,99 @@ const LinkStyled = styled(Link)`
   white-space: nowrap;
 
   @media (max-width: 769px) {
-    font-size: 0.8rem;
+      
+    font-size: 1rem;
     height: 100%;
     align-items: center;
     display: flex;
   }
 `;
 
+const BurgerButton = styled.button`
+  display: none; // Domyślnie ukryty na desktopie
+
+  @media (max-width: 768px) {
+      position: absolute; 
+      top: 20vh;
+    display: block; 
+    background: none;
+    border: none;
+    cursor: pointer;  
+      z-index: 100
+  }
+`;
+
 const Navigation: React.FC = () => {
-  const [showPopUp, setShowPopUp] = useState(false);
+    const [showPopUp, setShowPopUp] = useState(false)
+    const [isOpen, setIsOpen] = useState(false);
 
-  const togglePopUp = () => {
-    setShowPopUp(!showPopUp);
-  };
+    const togglePopUp = () => {
+        setShowPopUp(!showPopUp);
+    };
 
-  return (
-    <>
-      {showPopUp && (
-        <PopUpContainer>
-          <button className="closeButton" onClick={togglePopUp}>
-            &times;
-          </button>
-          {popUpLinks.map((link, i) => (
-            <Link key={i} to={link.path}>
-              {link.name}
-            </Link>
-          ))}
-        </PopUpContainer>
-      )}
-      <NavContainer>
-        <BlockContainer>
-          <ITPBlock>
-            <ITPLogo src={itp_logo} alt="XXVII ITP" />
-          </ITPBlock>
-          <BESTBlock>
-              <a href="https://www.newsite.best.krakow.pl" target="_blank" rel="noopener noreferrer">
-                <BESTLogo src={BEST_logo} alt="BEST" />
-              </a>
-          </BESTBlock>
-        </BlockContainer>
-        <SocialsContainer>
-          <a href={socialLinks["facebook"]}>
-            <img src={fb_icon} alt="facebook" />
-          </a>
-          <a href={socialLinks["instagram"]}>
-            <img src={ig_icon} alt="instagram" />
-          </a>
-          <a href={socialLinks["linkedin"]}>
-            <img src={li_icon} alt="linkedin" />
-          </a>
-        </SocialsContainer>
+    const toggleMenu = () => {
+        setIsOpen((prev) => !prev);
+        console.log(isOpen);
+    };
 
-        <Nav>
-          <LinkContainer className="links">
-            {links.map((link, i) => (
-              <LinkStyled
-                to={link.path}
-                key={i}>
-                {link.name}
-              </LinkStyled>
-            ))}
-            <LinkStyled
-              to={"#"}
-              onClick={togglePopUp}>
-              Regulaminy
-            </LinkStyled>
-          </LinkContainer>
-        </Nav>
-      </NavContainer>
-    </>
-  );
+    return (
+        <>
+            {showPopUp && (
+                <PopUpContainer>
+                    <button className="closeButton" onClick={togglePopUp}>
+                        &times;
+                    </button>
+                    {popUpLinks.map((link, i) => (
+                        <Link key={i} to={link.path}>
+                            {link.name}
+                        </Link>
+                    ))}
+                </PopUpContainer>
+            )}
+                <BlockContainer>
+                    <ITPBlock>
+                        <ITPLogo src={itp_logo} alt="XXVII ITP"/>
+                    </ITPBlock>
+                    <BESTBlock>
+                        <a href="https://www.newsite.best.krakow.pl" target="_blank" rel="noopener noreferrer">
+                            <BESTLogo src={BEST_logo} alt="BEST"/>
+                        </a>
+                    </BESTBlock>
+                </BlockContainer>
+                <SocialsContainer>
+                    <a href={socialLinks["facebook"]}>
+                        <img src={fb_icon} alt="facebook"/>
+                    </a>
+                    <a href={socialLinks["instagram"]}>
+                        <img src={ig_icon} alt="instagram"/>
+                    </a>
+                    <a href={socialLinks["linkedin"]}>
+                        <img src={li_icon} alt="linkedin"/>
+                    </a>
+                </SocialsContainer>
+
+            <NavContainer isOpen={isOpen}>
+                <BurgerButton onClick={toggleMenu} style={{ position: "relative", zIndex: 9999, background: "none" }}>
+                    <img src={burger_menu} alt="Burger Menu" style={{ height: "25px" }} />
+                </BurgerButton>
+                <Nav isOpen={isOpen}  key={isOpen ? "open" : "closed"}>
+                    <LinkContainer className="links">
+                        {links.map((link, i) => (
+                            <LinkStyled
+                                to={link.path}
+                                key={i}>
+                                {link.name}
+                            </LinkStyled>
+                        ))}
+                        <LinkStyled
+                            to={"#"}
+                            onClick={togglePopUp}>
+                            Regulaminy
+                        </LinkStyled>
+                    </LinkContainer>
+                </Nav>
+            </NavContainer>
+        </>
+    );
 };
 export default Navigation;
