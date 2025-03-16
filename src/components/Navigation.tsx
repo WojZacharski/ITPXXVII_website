@@ -291,7 +291,10 @@ const Navigation: React.FC = () => {
                         &times;
                     </button>
                     {popUpLinks.map((link, i) => (
-                        <Link key={i} to={link.path}>
+                        <Link
+                            key={i}
+                            to={link.path}
+                            target="_blank">
                             {link.name}
                         </Link>
                     ))}
@@ -308,7 +311,7 @@ const Navigation: React.FC = () => {
                         height: "50px"
                     }} />
                 </BurgerButton>
-                
+
                 <BlockContainer>
                     <ITPBlock>
                         <ITPLogo src={itp_logo} alt="XXVII ITP" />
@@ -320,13 +323,13 @@ const Navigation: React.FC = () => {
                     </BESTBlock>
                 </BlockContainer>
                 <SocialsContainer>
-                    <a href={socialLinks["facebook"]}>
+                    <a href={socialLinks["facebook"]} target="_blank" rel="noopener noreferrer">
                         <img src={fb_icon} alt="facebook" />
                     </a>
-                    <a href={socialLinks["instagram"]}>
+                    <a href={socialLinks["instagram"]} target="_blank" rel="noopener noreferrer">
                         <img src={ig_icon} alt="instagram" />
                     </a>
-                    <a href={socialLinks["linkedin"]}>
+                    <a href={socialLinks["linkedin"]} target="_blank" rel="noopener noreferrer">
                         <img src={li_icon} alt="linkedin" />
                     </a>
                 </SocialsContainer>
