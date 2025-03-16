@@ -49,10 +49,8 @@ const NavContainer = styled.div<{ isOpen: boolean }>`
     display:block;
 
     @media (max-width: 768px) {
-        min-height: ${({ isOpen }) => (isOpen ? "55vh" : "30vh")}; // Zmiana na auto, gdy otwarte
-        height: ${({ isOpen }) => (isOpen ? "35vh" : "20vh")}; // Ustawienie auto, gdy otwarte.
-        margin-top: 100px;
-        margin-bottom: 40%;
+        height:500px;    
+        min-height:60vh;
     }
 `;
 
@@ -98,45 +96,45 @@ const Nav = styled.nav<{ isOpen: boolean }>`
 `;
 
 const LinkContainer = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 2.5em;
-  flex-direction: inherit;
-  text-align: center;
-  text-transform: none;
-  
-  @media (max-width: 768px) {
-      gap: 0;
-      width: 100%;
-      height: auto;
-      flex-direction: column;
-      z-index: 100;
-  }
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 2.5em;
+    flex-direction: inherit;
+    text-align: center;
+    text-transform: none;
+    
+    @media (max-width: 768px) {
+        gap: 0;
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+        z-index: 100;
+    }
 `;
 
 const BlockContainer = styled.div`
-  position:absolute;
-  width:20%;
-  height:50%;
-  min-height:1px;
-  min-width:300px;
-  left:10%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  transform:translateY(-50%);
-  top:40%;
-
-  @media (max-width: 768px) {
-    width:100%;
+    position:absolute;
+    width:20%;
     height:50%;
-    left:0;
-    right:0;
-    top: 0%;
-    justify-content:center;
-  }
+    min-height:1px;
+    min-width:300px;
+    left:10%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    transform:translateY(-50%);
+    top:40%;
+
+    @media (max-width: 768px) {
+        width:100%;
+        height:25%;
+        left:0;
+        right:0;
+        top: 0%;
+        justify-content:center;
+    }
 `;
 
 const ITPBlock = styled.div`
@@ -192,10 +190,11 @@ const SocialsContainer = styled.div`
         & {
             //position: relative;
             width:100%;
+            height:25%;
             right:auto;
             transform:transformX(-50%);
             top:25%;
-            //margin-top: 20px;
+            // margin-top: 20px;
             min-width:unset;
             justify-content:center;
             z-index: 100;
