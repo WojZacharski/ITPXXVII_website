@@ -47,7 +47,7 @@ const Gear = styled.img<{ size: string; top: string; left?: string; right?: stri
 
 //Definicje pozycji i rozmiarów zębatek
 const gearsData = [
-    { src: gear_1, size: "clamp(8%, 12vw, 12%)", top: "11%", left: "-5%" },
+    { src: gear_12, size: "clamp(9%, 13vw, 13%)", top: "11%", left: "-5%" },
     { src: gear_2, size: "clamp(10%, 15vw, 15%)", top: "18%", left: "0%" },
     { src: gear_3, size: "clamp(12%, 20vw, 20%)", top: "27%", left: "-10%" },
     { src: gear_4, size: "clamp(10%, 14vw, 14%)", top: "39.5%", left: "3%" },
@@ -57,8 +57,8 @@ const gearsData = [
     { src: gear_8, size: "clamp(7%, 10vw, 10%)", top: "32%", right: "4.7%" },
     { src: gear_9, size: "clamp(10%, 15vw, 15%)", top: "37%", right: "-3%" },
     { src: gear_10, size: "clamp(10%, 16vw, 16%)", top: "49%", right: "-6%" },
-    { src: gear_11, size: "clamp(12%, 20vw, 20%)", top: "55.5%", right: "2.5%" },
-    { src: gear_12, size: "clamp(10%, 14vw, 14%)", top: "69%", right: "-1.5%" },
+    { src: gear_11, size: "clamp(12%, 20vw, 19%)", top: "55.5%", right: "2.5%" },
+    // { src: gear_12, size: "clamp(10%, 14vw, 14%)", top: "69%", right: "-1.5%" },
 ];
 
 // 📌 Komponent Gears

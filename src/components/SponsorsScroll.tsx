@@ -54,10 +54,10 @@ useEffect(() => {
 
         if (isMobile) {
             // Dostosowane wartości dla wersji mobilnej
-            if (bottom <= windowHeight * 0.2) {
+            if (bottom <= windowHeight * 0.4) {
                 setReachedEnd(true);
                 setIsFixed(false);
-            } else if (top <= 0 && bottom > windowHeight * 0.2) {
+            } else if (top <= 0 && bottom > windowHeight * 0.4) {
                 setReachedEnd(false);
                 setIsFixed(true);
                 setTopOffset(Math.abs(top));

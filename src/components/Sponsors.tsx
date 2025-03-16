@@ -55,9 +55,7 @@ const ParentDiv = styled.div`
   flex-direction: column;
   position: relative;
   align-items: center;
-  //border: solid 2px black; //debug
-
-
+  
   @media (max-width: 768px) {
     min-height: auto;
     height: auto;
@@ -116,12 +114,17 @@ const CraneRight = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset
   @media (max-width: 768px) {
     display: none;
   }
+
+  @media (max-width: 768px) and (orientation: landscape) {
+    display: none;
+    z-index: -1;
+  }
 `;
 
 const CraneRightMobile = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset: number }>`
   position: ${({ isFixed, reachedEnd }) => (reachedEnd ? "absolute" : isFixed ? "fixed" : "absolute")};
   top: ${({ isFixed, reachedEnd, topOffset }) =>
-      reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3vh" : `${topOffset}px`};
+      reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3vh" : `calc(${topOffset}px + 3vh)`};
   right: 0; /* Wyrównanie do prawej krawędzi */
   max-width: 100%; /* Zapobieganie wychodzeniu poza ekran */
   width: clamp(25vw, 47vw, 50vw);
@@ -138,7 +141,7 @@ const CraneRightMobile = styled.img<{ isFixed: boolean; reachedEnd: boolean; top
 const CraneLeftMobile = styled.img<{ isFixed: boolean; reachedEnd: boolean; topOffset: number }>`
   position: ${({ isFixed, reachedEnd }) => (reachedEnd ? "absolute" : isFixed ? "fixed" : "absolute")};
   top: ${({ isFixed, reachedEnd, topOffset }) =>
-    reachedEnd ? `calc(100% - 40vh)` : isFixed ? "3vh" : `${topOffset}px`};
+    reachedEnd ? `calc(100% - 40vh)` : isFixed ? "3vh" : `calc(${topOffset}px + 3vh)`};
   left: 0;
   width: clamp(25vw, 47vw, 50vw);
   height: auto;
@@ -149,6 +152,7 @@ const CraneLeftMobile = styled.img<{ isFixed: boolean; reachedEnd: boolean; topO
   @media (min-width: 769px) {
     display: none;
   }
+
 `;
 const RightDiv = styled(ChildDiv)`
 
@@ -171,12 +175,19 @@ const Card = styled.div<{ isFixed: boolean; reachedEnd: boolean }>`
   border: solid 2px black;
   z-index: 3;
   transition: top 0.3s ease-in-out;
-  //padding: 1rem;
 
   @media (max-width: 768px) {
-    width: 80vw;  
-    height: 250px;  
-    //padding: 0.5rem;  
+    width: 70vw;  
+    max-width: 500px;
+    height: clamp(15vh, 20vh, 40vh);
+    top: 15vh; 
+  }
+  
+  @media (max-width: 768px) and (orientation: landscape) {
+    width: 70vw;
+    max-width: 500px;
+    height: clamp(15vh, 40vh, 70vh);
+    top: 15vh;
   }
 `;
 const EmptyCard = styled.div`
@@ -235,27 +246,42 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   padding-top: 5vh;
+  
   @media (max-width: 768px) {
     min-height: auto;
     height: auto;
   }
+
+  @media (max-width: 768px) and (orientation: landscape) {
+    min-height: 95vh; 
+    //padding-bottom: 5vh; 
+  }
 `;
 
 const SponsorsPanel = styled.div`
-  height: 100%;
-  box-sizing: border-box;
-  padding: 10%;
-  display: grid;
-  grid-template-columns: repeat(3, calc(1/3 * 100%));
-  align-content: center;
-  // background: #bb25de44;
-  justify-content: space-around;
-  gap: 2.5%;
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(2, 50%);
-    
-  };
-`;
+height: 100%;
+box-sizing: border-box;
+padding: 10%;
+display: grid;
+grid-template-columns: repeat(3, calc(1/3 * 100%));
+align-content: center;
+justify-content: space-around;
+gap: 2.5%;
+  padding-top: 20%;
+  
+
+@media (max-width: 768px) {
+  ggrid-template-columns: repeat(3, calc(1/3 * 100%));
+  //padding: 15%;
+  padding-top: 10%;
+  
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  ggrid-template-columns: repeat(3, calc(1/3 * 100%));
+  padding: 27%;
+}
+  `;
 
 // ELEMENTS
 
@@ -265,10 +291,26 @@ const PartnershipText = styled.span`
   grid-column: span 3;
   justify-self: center;
   @media (max-width: 768px) {
-    font-size: clamp(1rem, 5vw, 1.5rem); /* Zmniejszenie rozmiaru czcionki na urządzeniach mobilnych */
-    margin-top: 1rem; /* Zwiększenie marginesu na mobilnych urządzeniach */
-    padding: 0 1rem; /* Dodanie paddingu dla tekstu, aby zapewnić przestrzeń */
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    margin-top: 0.4rem; 
+    padding: 0 1rem; 
   } ;
+`;
+
+const CardHeader = styled.div`
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  font-size: 2.2vw;
+  font-weight: 600;
+
+  @media (max-width: 768px) {
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    top: 5px; 
+  }
 `;
 
 const SponsorImg = styled.img`
@@ -276,6 +318,7 @@ const SponsorImg = styled.img`
   display: block;
   aspect-ratio: 3/2;
   object-fit: contain;
+  //padding-top: 0 1rem;
   
   @media (max-width: 768px) {
     max-width: 80%;  
@@ -305,63 +348,8 @@ const SabreImg = styled.img`
   margin: 0 auto;
 `;
 
-const PMIImg = styled(SabreImg)``;
-const PMIText = styled(SabreText)``;
 
-const KMSImg = styled(SabreImg)``;
-const KMSText = styled(SabreText)``;
-
-const DKMSImg = styled(SabreImg)``;
-const DKMSText = styled(SabreText)``;
-
-const SatrentImg = styled(SabreImg)``;
-const SatrentText = styled(SabreText)``;
-
-// SPONSORS
-
-const ParentLink = styled.a`
-  align-self: center;
-  width: 100%;
-`;
-
-const Sabre = styled.a`
-  width: 100%;
-  position: absolute;
-  align-self: center;
-  transform: translate(-50%, -50%);
-  left: 50%;
-  top: 50%;
-`;
-
-const PMI = styled(Sabre)`
-  width: 50%;
-  top: 55%;
-`;
-
-const KMS = styled(Sabre)``;
-const DKMS = styled(Sabre)``;
-const Satrent = styled(Sabre)``;
-
-const GE = styled(ParentLink)``;
-const Woodward = styled(ParentLink)``;
-const IBM = styled(ParentLink)``;
-const Aptiv = styled(ParentLink)``;
-const Pega = styled(ParentLink)``;
-const Mars = styled(ParentLink)``;
-const Motorola = styled(ParentLink)``;
-const FXMAG = styled(ParentLink)`
-  grid-column:2;
-  @media (max-width: 768px) {
-    grid-column:1;
-  }
-`;
-const PodPrad = styled(ParentLink)`
-  grid-column:2;
-  @media (max-width: 768px) {
-    grid-column:1;
-  }
-`;
-const PreviousSponsorsText = styled(SabreText)`
+const SponsorsText = styled(SabreText)`
   font-size: 4vw;
   margin-bottom: 1rem;
   left: 50%;
@@ -398,13 +386,32 @@ const PreviousSponsorsText = styled(SabreText)`
   }
 `;
 
+const Image = styled.img`
+  width: 90%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: pointer;
+  padding-top: 20%;
+`;
+
+const Link = styled.a`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+`;
+
+
 const Sponsors: React.FC = () => {
   const parentRef = useRef<HTMLDivElement>(null);
   const { isFixed, topOffset, reachedEnd, isFixedCard, isVisibleGround } = useResponsiveScroll(parentRef);
+  console.log("Załadowane logotypy:", logos);
 
   return (
       <Container id="sponsors">
-        <PreviousSponsorsText style={{marginBottom: '0.5rem' }}>Sponsorzy poprzedniej edycji</PreviousSponsorsText>
+        <SponsorsText style={{marginBottom: '0.5rem' }}>Nasi Partnerzy</SponsorsText>
         <ParentDiv ref={parentRef}>
           <Background isFixed={isFixed} topOffset={topOffset}  />
           <LeftDiv>
@@ -423,119 +430,147 @@ const Sponsors: React.FC = () => {
             <EmptyCard></EmptyCard>
 
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd} >
-              <div style={{textAlign: 'center', marginBottom: '0.5rem'}}>
-
-                <SabreText>Sponsor główny</SabreText>
-              </div>
-              <Sabre href="https://www.sabre.com/locations/poland/" target="_blank">
-                <SabreImg src={logos[0].default} alt="Sabre"/>
-              </Sabre>
+                <CardHeader>Sponsor Główny</CardHeader>
+                 <Link href="https://www.sabre.com/locations/poland/" target="_blank" rel="noopener noreferrer"/>
+                <Image src={logos[0].default} alt={"Sabre"} />
             </Card>
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
               <SponsorsPanel>
-                <PartnershipText>Sponsorzy</PartnershipText>
-                <Pega href="https://www.pega.com/" target="_blank">
-                  <SponsorImg src={logos[2].default} alt="Pega"/>
-                </Pega>
+                <CardHeader>Sponsorzy</CardHeader>
 
-                <Woodward href="https://www.woodward.com/" target="_blank">
-                  <SponsorImg src={logos[1].default} alt="Woodward"/>
-                </Woodward>
+                <Link href="https://www.pega.com/" target="_blank" rel="noopener noreferrer">
+                <Image src={logos[2].default} alt={"Pega"} />
+                </Link>
 
-                <Mars href="https://www.mars.com/" target="_blank">
-                  <SponsorImg src={logos[3].default} alt="Mars"/>
-                </Mars>
+                <Link href="https://www.mars.com/" target="_blank" rel="noopener noreferrer">
+                <Image src={logos[3].default} alt={"Mars"} />
+                </Link>
 
-                <GE href="https://www.ge.com/" target="_blank">
-                  <SponsorImg src={logos[7].default} alt="GE"/>
-                </GE>
+                <Link href="hhttps://www.aptiv.com" target="_blank" rel="noopener noreferrer">
+                <Image src={logos[4].default} alt={"Aptiv"} />
+                </Link>
 
-                <IBM href="https://www.ibm.com/blogs/ibm-poland/" target="_blank">
-                  <SponsorImg src={logos[16].default} alt="IBM"/>
-                </IBM>
+                <Link href="https://www.ibm.com/blogs/ibm-poland/" target="_blank" rel="noopener noreferrer">
+                <Image src={logos[16].default} alt={"IBM"} />
+                </Link>
 
-                <Motorola href="https://www.motorolasolutions.com/pl_pl.html" target="_blank">
-                  <SponsorImg src={logos[19].default} alt="Motorola"/>
-                </Motorola>
+                <Link href="https://kza.krakow.pl" target="_blank" rel="noopener noreferrer">
+                <Image src={logos[28].default} alt={"KZA"} />
+                </Link>
+
+                <Link href="https://www.woodward.com/" target="_blank" rel="noopener noreferrer">
+                <Image src={logos[1].default} alt={"Woodward"} />
+                </Link>
 
               </SponsorsPanel>
             </Card>
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
-              <PMIText>Partner Strefy Studenta</PMIText>
-              <PMI href="https://www.pmi.com/markets/poland/pl/about-us/overview" target="_blank">
-                <PMIImg src={logos[17].default} alt="PMI"/>
-              </PMI>
+              <CardHeader>Partner Strefy Studenta</CardHeader>
+
+              <Link href="https://www.gehealthcare.pl" target="_blank" rel="noopener noreferrer">
+                <Image
+                    src={logos[7].default} alt={"GEHealthCare"} />
+              </Link>
             </Card>
+
+
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
-              <KMSText>Partner merytoryczny</KMSText>
-              <KMS href="https://kms.org.pl/" target="_blank">
-                <KMSImg src={logos[13].default} alt="KMS"/>
-              </KMS>
+                <CardHeader>Organizacja charytatywna</CardHeader>
+
+                <Link href="https://www.dkms.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[18].default} alt={"DKMS"} />
+                </Link>
+
             </Card>
+
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
-              <SatrentText>Partner techniczny</SatrentText>
-              <Satrent href="https://satrent.pl/" target="_blank">
-                <SatrentImg src={logos[20].default} alt="Satrent"/>
-              </Satrent>
-            </Card>
-            <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
-              <DKMSText>Fundacja charytatywna</DKMSText>
-              <DKMS href="https://www.dkms.pl/" target="_blank">
-                <DKMSImg src={logos[18].default} alt="DKMS"/>
-              </DKMS>
+                <CardHeader>Uczelnia wspierająca</CardHeader>
+
+                <Link href="https://www.agh.edu.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[35].default} alt={"AGH"} />
+                </Link>
             </Card>
 
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
               <SponsorsPanel>
-                <PartnershipText>Patroni medialni</PartnershipText>
-                <ParentLink href="http://www.podajdalej.info.pl/" target="_blank">
-                  <SponsorImg src={logos[10].default} alt="Podaj Dalej"/>
-                </ParentLink>
-                <ParentLink href="https://www.eska.pl/" target="_blank">
-                  <SponsorImg src={logos[9].default} alt="ESKA"/>
-                </ParentLink>
-                <ParentLink href="https://www.dlastudenta.pl/" target="_blank">
-                  <SponsorImg src={logos[11].default} alt="Dla Studenta"/>
-                </ParentLink>
-                <ParentLink href="https://eurostudent.pl/" target="_blank">
-                  <SponsorImg src={logos[12].default} alt="Eurostudent"/>
-                </ParentLink>
-                <ParentLink href="https://radio17.pl/" target="_blank">
-                  <SponsorImg src={logos[6].default} alt="Radio 1.7"/>
-                </ParentLink>
-                <ParentLink href="https://dziennikpolski24.pl/" target="_blank">
-                  <SponsorImg src={logos[21].default} alt="Dziennik Polski"/>
-                </ParentLink>
-                <FXMAG href="https://fxmag.pl/" target="_blank">
-                  <SponsorImg src={logos[14].default} alt="FXMAG"/>
-                </FXMAG>
+                <CardHeader>Patroni medialni</CardHeader>
+
+                <Link href="https://www.otouczelnie.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[25].default} alt={"OtoUczelnie"} />
+                </Link>
+
+                <Link href="https://krakow.tvp.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[31].default} alt={"TVP3"} />
+                </Link>
+
+                <Link href="https://www.eurostudent.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[34].default} alt={"Eurostudent"} />
+                </Link>
+
+                <Link target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[33].default} alt={"BLANK"} />
+                </Link>
+
+                <Link href="https://www.fxmag.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[14].default} alt={"Fxmag"} />
+                </Link>
+
               </SponsorsPanel>
             </Card>
 
             <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
               <SponsorsPanel>
-                <PartnershipText>Partnerzy medialni</PartnershipText>
-                <ParentLink href="https://www.facebook.com/AllInUJ/" target="_blank">
-                  <SponsorImg src={logos[22].default} alt="All In UJ"/>
-                </ParentLink>
-                <ParentLink href="https://inzynieria.com/" target="_blank">
-                  <SponsorImg src={logos[23].default} alt="Inzynieria"/>
-                </ParentLink>
-                <ParentLink href="https://krakow.dlawas.info/" target="_blank">
-                  <SponsorImg src={logos[24].default} alt="Krakow DlaWas"/>
-                </ParentLink>
-                <ParentLink href="https://www.otouczelnie.pl/" target="_blank">
-                  <SponsorImg src={logos[25].default} alt="Otouczelnie"/>
-                </ParentLink>
-                <ParentLink href="https://www.infopraca.pl/" target="_blank">
-                  <SponsorImg src={logos[26].default} alt="infopraca"/>
-                </ParentLink>
-                <ParentLink href="https://perspektywy.pl/portal/" target="_blank">
-                  <SponsorImg src={logos[27].default} alt="Perspektywy"/>
-                </ParentLink>
-                <PodPrad href="https://podprad.pl/" target="_blank">
-                  <SponsorImg src={logos[28].default} alt="Plyn Pod Prad"/>
-                </PodPrad>
+                <CardHeader>Patroni medialni</CardHeader>
+
+                <Link href="https://radio17.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[6].default} alt={"Radio17"} />
+                </Link>
+
+                <Link href="https://www.podajdalej.info.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[10].default} alt={"PodajDalej"} />
+                </Link>
+
+                <Link href="https://www.dlastudenta.pl.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[11].default} alt={"dlaStudenta"} />
+                </Link>
+
+                <Link target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[33].default} alt={"BLANK"} />
+                </Link>
+
+                <Link href="https://care-er.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[30].default} alt={"CareEr"} />
+                </Link>
+
+              </SponsorsPanel>
+            </Card>
+
+            <Card isFixed={isFixedCard} reachedEnd={reachedEnd}>
+              <SponsorsPanel>
+                <CardHeader>Partnerzy medialni</CardHeader>
+
+                <Link href="https://www.facebook.com/AllInUJ/?locale=pl_PL" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[22].default} alt={"AllInUJ"} />
+                </Link>
+
+
+                <Link href="https://perspektywy.pl/portal/" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[27].default} alt={"Perpsektywy"} />
+                </Link>
+
+                <Link href="https://podprad.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[29].default} alt={"PodPrad"} />
+                </Link>
+
+                <Link target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[33].default} alt={"BLANK"} />
+                </Link>
+
+                <Link href="https://bis.agh.edu.pl" target="_blank" rel="noopener noreferrer">
+                  <Image src={logos[32].default} alt={"BIS"} />
+                </Link>
+
+
               </SponsorsPanel>
             </Card>
             <EmptyCardLast isFixed={isFixedCard} reachedEnd={reachedEnd}></EmptyCardLast>

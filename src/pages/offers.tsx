@@ -5,6 +5,8 @@ import "../styles/global.scss";
 import styled, { keyframes } from "styled-components";
 //@ts-ignore
 import offerBackground from "../images/offers_elements/background.png";
+import arrow_left from "../images/offers_elements/arrow_left.png";
+import arrow_right from "../images/offers_elements/arrow_right.png";
 //@ts-ignore
 import movingGear from "../images/offers_elements/zebatka_ruchoma.png";
 //@ts-ignore
@@ -20,53 +22,109 @@ const logos = importAll(
 const sponsorsData = [
     {
         id: 1,
-        name: 'IBM',
+        name: 'Woodward',
         img: 0,
         jobOffers: [
             {
                 id: 1,
-                company_name: 'IBM',
-                position: 'Python Engineer - Programista Python',
+                company_name: 'Woodward Poland Sp z o.o.',
+                position: 'Electrical Component Intern',
                 type: 'hybrydowa',
-                lease: 'Umowa o pracę',
-                location: 'Kraków',
-                job: 'Pełny etat',
-                description: 'IBM to firma technologiczna obecna w ponad 170 krajach. Jesteśmy pionierami w rewolucyjnych rozwiązaniach biznesowych i technologicznych, takich jak usługi chmurowe, sztuczna inteligencja, analiza danych. Nasza siła tkwi w pracownikach, których zachęcamy do poszerzania wiedzy i ciekawości, otwierając nowe perspektywy na świat. <br> Dołącz do naszego zespołu na stanowisku Programista Python i pomóż nam w tworzeniu i rozwijaniu produktów IBM, wykorzystując najnowocześniejsze technologie i najwyższe standardy inżynierskie. <br> Miej swój wkład w zakresie projektowania, kodowania, testowania i dostarczania wiodących w branży rozwiązań, które sprawiają, że dzisiejszy świat działa - samoloty i pociągi są o czasie, transakcje bankowe są realizowane w mgnieniu oka, a cyfrowy świat pozostaje bezpieczny. <br> W IBM będziesz współpracować z czołowymi umysłami w branży, aby tworzyć rozwiązania, z których możesz być dumny.',
-                requirements: 'Dobra znajomość i doświadczenie w programowaniu w języku Python.<br> Pasja do technologii i rozwoju oprogramowania.<br> Silne umiejętności techniczne i krytycznego myślenia.<br> Dobra współpraca i komunikacja - praca z zespołami z całego świata.<br> Silne umiejętności pracy zespołowej.<br> Entuzjazm oraz zdolność do samodzielnej pracy i poszukiwania potencjalnych rozwiązań problemów.<br> Wykazywanie się umiejętnościami analitycznymi. ',
-                duties: 'Zbieranie wymagań, projektowanie i przegląd techniczny, wspierające realizację celów biznesowych w projekcie. <br> Uczestniczenie we wdrażaniu zaawansowanych systemów oprogramowania z naciskiem na programowanie w języku Python, Java i React. <br> Udział w przeglądach kodu. Przeglądy obejmują innych inżynierów oprogramowania i są przeprowadzane w celu zapewnienia wysokiego poziomu jakości programowania oraz dzielenia się wiedzą z członkami zespołu. <br> Przestrzeganie praktyk inżynierii oprogramowania przy użyciu takich narzędzi i metodologii jak Agile.',
-                company_offer: 'Pracę w firmie IT z pierwszej piątki najlepszych pracodawców według rankingu Forbes 2022. <br> Szeroki zakres szkoleń i certyfikatów IBM. <br> Nielimitowany dostęp do Udemy, Harvard Business Review, Safari O\'Reilly, getAbstract, IBM AI Skills Academy. <br> Konkurencyjne wynagrodzenie uzależnione od umiejętności i doświadczenia. <br> Możliwość ubiegania się o 50% koszty uzyskania przychodu na prace kreatywne R&D. <br> Prywatna opieka medyczna i ubezpieczenie na życie. <br> Program pomocy dla pracowników. <br> Grupy sportowe, charytatywne i networkingowe. <br> Zniżki z identyfikatorem pracownika IBM. <br> Program premii za polecenie.',
-                payment: '',
-                contact: 'https://ibm.biz/startyourcareer',
+                lease: 'Umowa zlecenia',
+                location: 'Kraków lub Niepołomice',
+                job: 'Minimum 20h tygodniowo',
+                description: 'Woodward is the global leader in the design,\n' +
+                    'manufacturing, and service of energy conversion\n' +
+                    'and control solutions for the aerospace and\n' +
+                    'industrial equipment markets. Together with our\n' +
+                    'customers, we are enabling the path to a cleaner,\n' +
+                    'decarbonized world. We prioritize the growth of\n' +
+                    'our employees, providing comprehensive support\n' +
+                    'for personal and professional development. Trust\n' +
+                    'is at the core of our relationships.',
+                requirements: '• Electrical/Electronics engineering or similar study background (we are looking for a student after 3-rd year)\n' +
+                    '<br></br>• Availability to work for at least 20 hours a week\n' +
+                    '<br></br>• Basic know-how of electronics\n' +
+                    '<br></br>• Good communication skills both in Polish and English\n' +
+                    '<br></br>• Competent in the use of PCs and associated software\n' +
+                    '<br></br>• Competent in problem solving for electrical components\n' +
+                    '<br></br>• Ability to effectively operate in the team environment and communicate with multi-site team members ',
+                duties: '• Drive the Electrical Parts Product Change Notice process\n' +
+                    '<br></br>• Support the Electrical Parts Obsolescence process\n' +
+                    '<br></br>• Execute the engineering changes in the Woodward ERP systems\n' +
+                    '<br></br>• Create and maintain electrical parts database in Woodward ERP systems\n' +
+                    '<br></br>• Support electrical components selection for design ',
+                company_offer: ' ',
+                payment: '  31pln za godzinę',
+                contact: 'Krzysztof J. Nowak Krzysztof-Jaroslaw.Nowak@woodward.com +48 785 171 161',
             },
             {
                 id: 2,
-                company_name: 'IBM',
-                position: 'Java Software Developer - Programista Java',
+                company_name: 'Woodward Poland Sp z o.o.',
+                position: 'Industrial Automation Intern',
                 type: 'hybrydowa',
-                lease: 'Umowa o pracę',
-                location: 'Kraków',
-                job: 'Pełny etat',
-                description: 'IBM to firma technologiczna obecna w ponad 170 krajach. Jesteśmy pionierami w rewolucyjnych rozwiązaniach biznesowych i technologicznych, takich jak usługi chmurowe, sztuczna inteligencja, analiza danych. Nasza siła tkwi w pracownikach, których zachęcamy do poszerzania wiedzy i ciekawości, otwierając nowe perspektywy na świat. <br> Dołącz do naszego zespołu na stanowisku Programista Python i pomóż nam w tworzeniu i rozwijaniu produktów IBM, wykorzystując najnowocześniejsze technologie i najwyższe standardy inżynierskie. <br> Miej swój wkład w zakresie projektowania, kodowania, testowania i dostarczania wiodących w branży rozwiązań, które sprawiają, że dzisiejszy świat działa - samoloty i pociągi są o czasie, transakcje bankowe są realizowane w mgnieniu oka, a cyfrowy świat pozostaje bezpieczny. <br> W IBM będziesz współpracować z czołowymi umysłami w branży, aby tworzyć rozwiązania, z których możesz być dumny.',
-                requirements: 'Chętnie się uczysz, o czym świadczy Twoja wiedza i doświadczenie w Javie. <br> Masz zrozumienie i praktyczną znajomość architektury mikrousług. <br> Masz doświadczenie w pisaniu / wykonywaniu testów jednostkowych i automatyzacji REST API. <br> Jesteś graczem zespołowym i znasz metodologie Agile i/lub masz doświadczenie w pracy w zespole SCRUM. <br> Interesuje Cię nowa technologia i rozwój oprogramowania. <br> Posiadasz umiejętności techniczne i krytycznego myślenia. <br> Cechuje Cię entuzjazm oraz zdolność do samodzielnej pracy i poszukiwania rozwiązań problemów.',
-                duties: 'Będziesz programistą Java, który wraz ze swoim zespołem będzie projektował, rozwijał i/lub przeprojektowywał złożone komponenty produktów oraz integrował pakiety oprogramowania, programy i obiekty wielokrotnego użytku rezydujące na wielu platformach. <br> Poszukujemy kandydata, który będzie się dobrze rozwijał w otwartym, dynamicznym, elastycznym, zabawnym i opartym na współpracy środowisku. Osoby, która pragnie swobody twórczej i możliwości pracy w fajnym i zgranym zespole.',
-                company_offer: 'Pracę w firmie IT z pierwszej piątki najlepszych pracodawców według rankingu Forbes 2022. <br> Szeroki zakres szkoleń i certyfikatów IBM. <br> Nielimitowany dostęp do Udemy, Harvard Business Review, Safari O\'Reilly, getAbstract, IBM AI Skills Academy. <br> Konkurencyjne wynagrodzenie uzależnione od umiejętności i doświadczenia. <br> Możliwość ubiegania się o 50% koszty uzyskania przychodu na prace kreatywne R&D. <br> Prywatna opieka medyczna i ubezpieczenie na życie. <br> Program pomocy dla pracowników. <br> Grupy sportowe, charytatywne i networkingowe. <br> Zniżki z identyfikatorem pracownika IBM. <br> Program premii za polecenie.',
-                payment: '',
-                contact: 'https://ibm.biz/startyourcareer',
+                lease: 'Umowa zlecenia',
+                location: 'Kraków lub Niepołomice',
+                job: '  Minimum 20h tygodniowo',
+                description: 'We are pleased to offer unique opportunity for\n' +
+                    'students to join our Turbomachinery Systems\n' +
+                    'Applications Engineering Team in Woodward Poland.\n' +
+                    'You will be part of highly skilled Engineering Team with\n' +
+                    'nice opportunity to learn and work in the area of\n' +
+                    'modern industrial control systems (mostly gas or\n' +
+                    'steam turbines and compressors). Our work is very\n' +
+                    'versatile, between HW electrical design and control\n' +
+                    'software development, drawings or schematics\n' +
+                    'creation, through testing of real control systems in the\n' +
+                    'laboratory or the assembly line or potentially at the\n' +
+                    'customer premises. You will be given tasks tailored to\n' +
+                    'your expertise and interest and adjusted to your\n' +
+                    'individual work schedule.',
+                requirements: '• Studies preferably in Automation & Robotics, but also Electrical, Electronics, Computer Sciences or similar;\n' +
+                    '<br></br>• Knowledge of the electrical area – the ability to operate equipment, read schematics, make connections and measurements;\n' +
+                    '<br></br>• Solid computer skills, incl. MS Office;\n' +
+                    '<br></br>• Effective written and verbal communication skills;\n' +
+                    '<br></br>• Ability to effectively operate in a team-work international environment;\n' +
+                    '<br></br>• Current student status and availability to work at least 20 hours a week\n' +
+                    '<br></br>• Communicative English language skills.',
+                duties: 'Cooperate with the local Application Engineering Team on the current projects and specific tasks, for example:\n' +
+                    '<br></br>• components selection;\n' +
+                    '<br></br>• schematics and drawings creation;\n' +
+                    '<br></br>• writing and executing test plans;\n' +
+                    '<br></br>• developing graphical control interfaces (HMI);\n' +
+                    '<br></br>• programming logic diagrams into Woodward Controls.  ',
+                company_offer: ' ',
+                payment: '  31pln za godzinę',
+                contact: 'Krzysztof J. Nowak Krzysztof-Jaroslaw.Nowak@woodward.com +48 785 171 161',
             },
             {
                 id: 3,
-                company_name: 'IBM',
-                position: 'QA Engineer - Inżynier Jakości Oprogramowania',
+                company_name: 'Woodward Poland Sp z o.o.',
+                position: 'Aerospace Mechanical Engineer - INTERNSHIP',
                 type: 'hybrydowa',
-                lease: 'Umowa o pracę',
-                location: 'Kraków',
-                job: 'Pełny etat',
-                description: 'IBM to firma technologiczna obecna w ponad 170 krajach. Jesteśmy pionierami w rewolucyjnych rozwiązaniach biznesowych i technologicznych, takich jak usługi chmurowe, sztuczna inteligencja, analiza danych. Nasza siła tkwi w pracownikach, których zachęcamy do poszerzania wiedzy i ciekawości, otwierając nowe perspektywy na świat. <br> Dołącz do naszego zespołu na stanowisku Programista Python i pomóż nam w tworzeniu i rozwijaniu produktów IBM, wykorzystując najnowocześniejsze technologie i najwyższe standardy inżynierskie. <br> Miej swój wkład w zakresie projektowania, kodowania, testowania i dostarczania wiodących w branży rozwiązań, które sprawiają, że dzisiejszy świat działa - samoloty i pociągi są o czasie, transakcje bankowe są realizowane w mgnieniu oka, a cyfrowy świat pozostaje bezpieczny. <br> W IBM będziesz współpracować z czołowymi umysłami w branży, aby tworzyć rozwiązania, z których możesz być dumny.',
-                requirements: 'Zrozumienie zautomatyzowanej inżynierii jakości, tworzenia oprogramowania, automatyzacji testów. <br> Doświadczenie w tworzeniu oprogramowania w języku Java. <br> Komfortowa obsługa protoków CI/CD i systemów SCM (Jenkins, Github). <br> Ekspozycja na frameworki testowe, takie jak JUnit, JMeter, Selenium. <br> Cechuje Cię entuzjazm oraz zdolność do samodzielnej pracy i poszukiwania rozwiązań problemów.',
-                duties: 'Jako QA Engineer będziesz uczestniczyć w projektowaniu i rozwijaniu komponentów oraz funkcji produktów IBM. Poszukujemy inżyniera do opracowywania i wykonywania testów eksploracyjnych i automatycznych w celu zapewnienia jakości produktu. <br> Poszukujemy osoby, która czuje się komfortowo w przeprowadzaniu testów w metodologii Agile.',
-                company_offer: 'Pracę w firmie IT z pierwszej piątki najlepszych pracodawców według rankingu Forbes 2022. <br> Szeroki zakres szkoleń i certyfikatów IBM. <br> Nielimitowany dostęp do Udemy, Harvard Business Review, Safari O\'Reilly, getAbstract, IBM AI Skills Academy. <br> Konkurencyjne wynagrodzenie uzależnione od umiejętności i doświadczenia. <br> Możliwość ubiegania się o 50% koszty uzyskania przychodu na prace kreatywne R&D. <br> Prywatna opieka medyczna i ubezpieczenie na życie. <br> Program pomocy dla pracowników. <br> Grupy sportowe, charytatywne i networkingowe. <br> Zniżki z identyfikatorem pracownika IBM. <br> Program premii za polecenie.',
-                payment: '',
-                contact: 'https://ibm.biz/startyourcareer',
+                lease: 'Umowa zlecenia',
+                location: 'Kraków lub Niepołomice',
+                job: 'Minimum 20h tygodniowo',
+                description: 'Woodward is the global leader in the design,\n' +
+                    'manufacturing, and service of energy conversion and\n' +
+                    'control solutions for the aerospace and industrial\n' +
+                    'equipment markets. Together with our customers, we are\n' +
+                    'enabling the path to a cleaner, decarbonized world. We\n' +
+                    'prioritize the growth of our employees, providing\n' +
+                    'comprehensive support for personal and professional\n' +
+                    'development. Trust is at the core of our relationships.',
+                requirements: '- Mechanical Engineering student preferred (completed at least the third year of studies)\n' +
+                    '<br></br>- Communicative English skills\n' +
+                    '<br></br>- Valid student status and availability to work for at least 20 hours a week\n' +
+                    '<br></br>- Understanding of Geometric Dimensioning and Tolerance will be an advantage\n' +
+                    '<br></br>- Knowledge of engineering software such as CAD, MES, Matlab, will be an additional asset.',
+                duties: '- Perform simple engineering calculations\n' +
+                    '<br></br>- Responsible for the creation of various testing procedures and reports\n' +
+                    '<br></br>- Analyze raw test data and create reports\n' +
+                    '<br></br>- Review product non-conformances',
+                company_offer: ' ',
+                payment: '  31pln za godzinę',
+                contact: 'Krzysztof J. Nowak Krzysztof-Jaroslaw.Nowak@woodward.com +48 785 171 161',
             },
         ]
     },
@@ -77,125 +135,245 @@ const sponsorsData = [
         jobOffers: [
             {
                 id: 4,
-                company_name: 'MARS',
-                position: 'Program Menedżerski w Inżynierii',
+                company_name: 'Mars Polska',
+                position: 'Program Menedżerski w Inżynierii | Mars Engineering Leadership Experience',
                 type: 'hybrydowa',
                 lease: 'Umowa o pracę na czas nieokreślony',
-                location: 'Sochaczew',
+                location: 'Niepolomice, Sochaczew, Janaszowek, Blonie',
                 job: '40',
-                description: 'Mars Engineering Leadership Experience to: <br> 3-letni, międzynarodowy program, w trakcie którego będziesz pełnić odpowiedzialne funkcje na trzech różnych stanowiskach z obszaru inżynieryjnego;<br><br> Trzy lata, trzy różne, roczne role. Lubimy zapewniać naszym Współpracownikom swobodę działania, dlatego od momentu dołączenia do Mars będziesz odpowiadać za zarządzanie swoim projektem.<br><br> Rok 1 programu to kierowanie własnym projektem <br><br> Rok 2 to projekt realizowany zagranicą  <br><br> Rok 3 to zarządzanie własnym zespołem <br><br> Każdy z rocznych projektów będzie wyzwaniem mającym na celu zwiększenie Twojej wiedzy i ekspertyzy w takich dziedzinach jak robotyka, zaawansowana technologia produkcji czy szybkość i wydajność maszyn oraz przywództwo;<br><br> Każdy projekt będzie dostosowany do Twojej indywidualnej ścieżki rozwoju, dzięki czemu zdobędziesz imponujące doświadczenie, które nada tempa Twojej karierze jako lidera/ liderki w dziedzinie technicznej. ',
-                requirements: 'Poszukujemy osób, które chcą poszerzać kompetencje w zakresie doskonałego przywództwa, równocześnie rozwijając swoją wiedzę inżynieryjną. Musisz mieć pasję do zarządzania ludźmi i projektami oraz zamiłowanie do techniki, a do tego: <br> 1. Kończyć lub mieć ukończone studia magisterskie o profilu technicznym – preferowany obszar to Inżynieria Mechaniczna, Elektrotechnika lub Inżynieria Chemiczna/Procesowa  <br> 2. Biegle mówić po polsku i angielsku<br> 3. Wykazywać się gotowością do międzynarodowej mobilności<br> 4. Posiadać aspiracje do objęcia roli menedżerskiej w zespole',
-                duties: 'Mars Engineering Leadership Experience to program przyspieszonego rozwoju kariery, w ramach którego podczas trzech, rocznych projektów, w Polsce i zagranicą, rozwiniesz umiejętności techniczne i przywódcze. Będziesz doskonalić nasze marki i/lub współtworzyć nowe, a jednocześnie zdobywać wiedzę i kompetencje zarówno twarde, jak i miękkie. <br> W ramach programu rozwoju obszaru inżynieryjnego będziesz mieć realny wpływ na tworzenie sukcesu naszej firmy. Przed Tobą poszukiwanie nowych rozwiązań, promowanie innowacyjnych pomysłów oraz kierowanie kompleksowymi projektami technicznymi w całej Europie.',
+                requirements: '',
+                duties: 'Mars Engineering Leadership Experience to:\n' +
+                    '<br></br>3-letni, międzynarodowy program, w trakcie którego będziesz pełnić odpowiedzialne funkcje na trzech różnych stanowiskach z obszaru inżynieryjnego;\n' +
+                    '<br></br>Trzy lata, trzy różne, roczne role. Lubimy zapewniać naszym Współpracownikom swobodę działania, dlatego od momentu dołączenia do Mars będziesz odpowiadać za zarządzanie swoim projektem.\n' +
+                    '<br></br>Rok 1 programu to kierowanie własnym projektem\n' +
+                    '<br></br>Rok 2 to projekt realizowany zagranicą\n' +
+                    '<br></br>Rok 3 to zarządzanie własnym zespołem\n' +
+                    '<br></br>Każdy z rocznych projektów będzie wyzwaniem mającym na celu zwiększenie Twojej wiedzy i ekspertyzy w takich dziedzinach jak robotyka, zaawansowana technologia produkcji czy szybkość i wydajność maszyn oraz przywództwo;\n' +
+                    '<br></br>Każdy projekt będzie dostosowany do Twojej indywidualnej ścieżki rozwoju, dzięki czemu zdobędziesz imponujące doświadczenie, które nada tempa Twojej karierze jako lidera/ liderki w dziedzinie technicznej.\n' +
+                    '<br></br>Przykładowe role w ramach programu: Inżynier_ka Projektu, Team Leader_ka zmiany produkcyjnej.\n<',
+                description: 'Mars Engineering Leadership Experience (MELE) to program przyspieszonego rozwoju kariery, w ramach którego podczas trzech, rocznych projektów, w Polsce i zagranicą, rozwiniesz swoje umiejętności techniczne i przywódcze. Będziesz doskonalić nasze znane na całym świecie marki i/lub współtworzyć nowe, a równocześnie w zawrotnym tempie zdobywać wiedzę i kompetencje zarówno tzw. twarde, jak i miękkie.\n' +
+                    'W ramach programu rozwoju liderów i liderek obszaru inżynieryjnego będziesz mieć realny wpływ na tworzenie sukcesu naszej firmy. Przed Tobą poszukiwanie nowych rozwiązań inżynieryjnych, promowanie innowacyjnych pomysłów oraz kierowanie kompleksowymi projektami technicznymi w całej Europie.\n',
                 company_offer: 'System premiowy uzależniony od wyników indywidualnych i biznesowych. <br> Benefity, takie jak: najlepsza opiekę medyczna, dofinanasowanie karty sportowej i wydarzeń kulturalnych, ubezpieczenie na życie.<br> Wsparcie doświadczonego mentora, coacha, trenerów i menedżerów. <br> Wsparcie w rozwoju kluczowych kompetencji w postaci cyklu szkoleń, w ramach dedykowenego programu Learning&Development, który pomoże Ci rozwinąć umiejętności niezbędne do tego, by stać się jednym z naszych przyszłych liderów lub liderek. <br> Jeśli dołączenie na Program wymaga od Ciebie relokacji – oferujemy bonus relokacyjny.',
-                payment: '9100zł brutto',
-                contact: 'karolina.chojnacka@effem.com',
+                payment: '  9700 Brutto miesięcznie na start, wynagrodzenie rosnące co roku.',
+                contact: 'https://careers.mars.com/pl/pl/job/R118861/Program-Menedżerski-w-Inżynierii-Mars-Engineering-Leadership-Experience',
             },
             {
                 id: 5,
-                company_name: 'MARS',
-                position: 'Program Menedżerski w obszarze Produkcji',
+                company_name: 'Mars Polska',
+                position: 'Junior Finance Specialist | Mars Young Professionals Program | Mars Wrigley & Royal Canin',
                 type: 'hybrydowa',
-                lease: 'Umowa o pracę na czas nieokreślony',
-                location: 'Sochaczew i Poznań',
-                job: '40',
-                description: 'Mars Supply Chain Leadership Experience to: <br> 3-letni program, w trakcie którego będziesz pełnić odpowiedzialne funkcje na trzech różnych stanowiskach z obszaru Produkcji; <br> Trzy lata, trzy różne, roczne role. Lubimy zapewniać naszym Współpracownikom swobodę działania, dlatego od momentu dołączenia do Mars będziesz zarządzać własnym projektem; <br> Każdy z rocznych projektów będzie wyzwaniem mającym na celu zwiększenie Twojej wiedzy i ekspertyzy oraz rozwój umiejętności przywódczych; <br> Każdy projekt będzie dostosowany do Twojej osobistej ścieżki rozwoju, dzięki czemu zdobędziesz imponujące doświadczenie, które nada tempa Twojej karierze jako lidera w dziedzinie Supply Chain.',
-                requirements: 'Poszukujemy osób, które chcą poszerzać kompetencje przywódcze, równocześnie rozwijając swoją wiedzę techniczną. Musisz mieć pasję do zarządzania ludźmi i projektami oraz zamiłowanie do obszaru Supply Chain, a do tego: <br> Posiadać maksymalnie do 5 lat doświadczenia zawodowego (doświadczenie zdobywane w trakcie studiów jak najbardziej się wlicza!) <br> Biegle mówić po polsku i angielsku <br> Posiadać aspiracje do objęcia roli menedżerskiej w obszarze Supply Chain <br> Być osobą mobilną – gotową na rekolację w ramach kolejnych rotacji.',
-                duties: 'W ramach programu rozwoju liderów i liderek obszaru Produkcji – Mars Supply Chain Leadership Experience, będziesz współtworzyć sukces naszej firmy. Przed Tobą poszukiwanie nowych rozwiązań technicznych, promowanie innowacyjnych pomysłów oraz kierowanie kompleksowymi projektami technicznymi z obszaru Supply Chain – od Planowania Produkcji, przez Logistykę, po Operacje. ',
+                lease: 'Umowa o prace na okres 6/12 miesięcy.',
+                location: 'Niepołomice / Warszawa',
+                job: 'Pełny etat / 4/5 etatu',
+                description: 'Program Mars Young Professionals powstał z myślą o tych, którzy znajdują się na początku swojej kariery zawodowej i od samego jej startu chcą zdobywać kluczowe kompetencje i niezbędne umiejętności, a przy tym nie boją się wyzwań. W ramach programu, na 6/12 miesięcy wcielisz się w rolę specjalisty/specjalistki w dziale finansów i zostaniesz liderem/liderką prawdziwego projektu biznesowego. To pierwszy krok, aby wejść do świata Mars i zostać z nami na dłużej. Dział Finansów to nieoceniony partner biznesowy dla naszych działów rynkowych i fabrycznych. Napędzamy rentowny wzrost i podejmowanie właściwych decyzji inwestycyjnych, zapewniamy wydajność operacji finansowych, generowania i analizowania danych oraz dbamy o zgodność z lokalnymi i korporacyjnymi wytycznymi. Realizujemy naszą misję poprzez dobre zrozumienie wyników biznesowych, analizę trendów oraz planowanie scenariuszowe. Dzięki naszej ekspertyzie zespoły operacyjne mogą podejmować lepsze decyzje i odpowiednio zarządzać ryzykiem.\n' +
+                    '<br></br>W dziale Finansów oferujemy w tym roku dwa stanowiska na programie Mars Young Professionals: jedna rola Junior Finance Specialist w Royal Canin (Niepołomice, 6 msc), druga rola Junior Finance Specialist w Mars Wrigley (Warszawa, 12 msc).\n',
+                requirements: 'Poszukujemy ambitnych, nastawionych na działanie i współpracę osób, które są otwarte na naukę i nowe wyzwania, oraz:\n' +
+                    '<br></br>bardzo dobrze znają język angielski; \n' +
+                    '<br></br>posiadają pierwsze doświadczenie w obszarze finansów (maksymalnie do 5 lat)\n' +
+                    '<br></br>potrafią generować analizy i wyciągać wnioski na podstawie dużych zbiorów danych\n',
+                duties: 'Dołączając do zespołu finansowego w Royal Canin, będziesz wspierać organizację poprzez partnerstwo biznesowe, operacje finansowe, zapewnianie zgodności oraz wdrażanie optymalizacji. Poznasz funkcjonowanie finansów w międzynarodowej firmie, realizując własne projekty i współpracując z ekspertami. Praca w strukturach Royal Canin pozwoli Ci zdobyć doświadczenie na sześciu różnorodnych rynkach, rozwijając umiejętności w dynamicznym, międzynarodowym środowisku.\n' +
+                    '<br></br>Jako Junior Finance Specialist w Mars Wrigley twoim zadaniem podczas programu będzie aktywne wsparcie zespołu w przygotowaniu oraz weryfikacji różnorodnych projektów strategicznych poprzez przygotowanie kluczowych narzędzi do tworzenia scenariuszy, oraz celów biznesowych. Przeprowadzisz weryfikację i standaryzację procesów zachodzących w organizacji oraz dostosujesz je do bieżących działań operacyjnych. W efekcie wypracujesz optymalny kierunek rozwoju poprzez rzetelną analizę finansową i szczegółowe kalkulacje.\n' +
+                    '<br></br>Czego się nauczysz?\n' +
+                    '<br></br>rozwijania umiejętności operacji finansowych i partnerstwa biznesowego w środowisku międzynarodowym;\n' +
+                    '<br></br>generowania i analizowania danych w celu dostarczania wartościowych insightów biznesowych;\n' +
+                    '<br></br>identyfikowania obszarów do poprawy i wdrażania usprawnień w procesach finansowych;\n' +
+                    '<br></br>współpracy z zespołami z różnych rynków i kultur w strukturze międzynarodowej organizacji;\n' +
+                    '<br></br>zapewnienia zgodności i ładu finansowego w działalności operacyjnej firmy. \n',
                 company_offer: 'System premiowy uzależniony od wyników indywidualnych i biznesowych. <br> Benefity, takie jak: najlepsza opiekę medyczna, dofinanasowanie karty sportowej i wydarzeń kulturalnych, ubezpieczenie na życie. <br> Wsparcie doświadczonego mentora, coacha, trenerów i menedżerów. <br> Wsparcie w rozwoju kluczowych kompetencji w postaci cyklu szkoleń, w ramach dedykowenego programu Learning&Development, który pomoże Ci rozwinąć umiejętności niezbędne do tego, by stać się jednym z naszych przyszłych liderów lub liderek. <br> Jeśli dołączenie na Program wymaga od Ciebie relokacji – oferujemy bonus relokacyjny.',
-                payment: '9100zł brutto',
-                contact: 'karolina.chojnacka@effem.com',
+                payment: '  7400 Brutto ',
+                contact: 'https://careers.mars.com/pl/pl/job/R121574/Junior-Finance-Specialist-Mars-Young-Professionals-Program-Mars-Wrigley-Royal-Canin',
             },
             {
                 id: 6,
-                company_name: 'MARS',
-                position: 'Program Menedżerski w obszarze Finansów',
+                company_name: 'Mars Polska',
+                position: 'Junior Quality Specialist (f/m/x) | Mars Young Professionals Program | Royal Canin',
                 type: 'hybrydowa',
                 lease: 'Umowa o pracę na czas nieokreślony',
-                location: 'Warszawa',
-                job: '40',
-                description: 'Mars Finance Leadership Experience (MFLE), czyli program przyspieszonego rozwoju kariery w obszarze finansów, to świetny początek. Program został stworzony, aby kształcić przyszłych liderów i liderki. Po trzech latach będziesz wszechstronnym partnerem biznesowym. Możesz zostać menadżerem, zarządzać zespołem lub realizować się jako indywidualny kontrybutor na strategicznej pozycji.  Absolwenci i absolwentki naszego programu robią karierę jako CFO lub strategiczni partnerzy w wielu segmentach naszego biznesu. W Mars zrealizujesz swoje aspiracje i będziesz rozwijać się na każdym kroku.',
-                requirements: 'Poszukujemy osób, które chcą poszerzać kompetencje w zakresie doskonałego przywództwa, równocześnie rozwijając swoją wiedzę funkcjonalną. Musisz mieć pasję do zarządzania ludźmi oraz zamiłowanie do finansów, a do tego: kończyć lub mieć ukończone studia magisterskie o profilu finansowym, ekonomicznym lub administracyjnym, biegle mówić po angielsku, wykazywać się gotowością do międzynarodowej mobilności, posiadać aspiracje ciągłego rozwoju, zdolności analityczne, oraz łatwość przystosowania się do nowego otoczenia.',
-                duties: 'Mars Finance Leadership Experience to: <br> 3-letni program, w trakcie którego będziesz pełnić odpowiedzialne funkcje w ramach trzech, rocznych rotacji, na trzech różnych stanowiskach; <br> Podczas trzech lat na programie zdobędziesz doświadczenia z różnych obszarów finansów (supply finance, market finance, financial control lub digital); <br> W ramach MFLE będziesz mieć unikalną okazję poznania różnych segmentów naszego biznesu (Mars Wrigley Confectionary, Mars Petcare, Mars Food); <br> Jeden z trzech rocznych projektów możesz zrealizować za granicą.',
+                location: 'Niepołomice',
+                job: 'Pełny etat/ 4/5 etatu',
+                description: 'Program Mars Young Professionals to więcej niż staż. Program powstał z myślą o tych, którzy znajdują się na początku swojej kariery zawodowej i od samego jej startu chcą zdobywać kluczowe kompetencje i niezbędne umiejętności, a przy tym nie boją się wyzwań. W ramach programu, na 6 miesięcy wcielisz się w rolę Młodszego Specjalisty w Dziale Jakości i zostaniesz liderem/ liderką prawdziwego projektu biznesowego. To pierwszy krok, aby wejść do świata Mars i zostać z nami na dłużej.\n' +
+                    '<br></br>O dziale:\n' +
+                    '<br></br>Dział Jakości i Bezpieczeństwa Żywności to serce firmy dbające o najwyższe standardy produkcji. Nasza misja to zapewnienie bezpiecznych i zgodnych z normamami produktów, które spełniają oczekiwania klientów. Dzięki precyzyjnym kontrolom, nowoczesnym technologiom i zaangażowanemu zespołowi gwarantujemy jakość, której możesz ufać.\n',
+                requirements: 'Poszukujemy ambitnych, nastawionych na działanie i współpracę osób, które są otwarte na naukę i nowe wyzwania, oraz:\n' +
+                    '<br></br>posiadają umiejętność analizy ryzyka i identyfikacji zagrożeń,\n' +
+                    '<br></br>posiadają zdolności organizacyjne i planowania, dbałość o szczegóły, zdolności komunikacyjne oraz orientację na jakość i ciągłe doskonalenie,\n' +
+                    '<br></br>bardzo dobrze znają język angielski oraz język polski,\n' +
+                    '<br></br>posiadają doświadczenie zawodowe maksymalnie do 5 lat (doświadczenie w trakcie studiów jak najbardziej się w to wlicza!).\n',
+                duties: 'Twoja rola:\n' +
+                    '<br></br>Poprowadzisz projekt związany z zarządzaniem ciałami obcymi. Projekt ma na celu identyfikację, eliminację i zapobieganie obecności ciał obcych w procesie produkcji. Dzięki wdrożeniu zaawansowanych technologii, procedur kontrolnych i szkoleń zespołu, zapewniamy bezpieczeństwo i najwyższą jakość produktów.\n' +
+                    '<br></br>Czego się nauczysz:\n' +
+                    '<br></br>poznasz proces produkcji karmy oraz standardów jakościowych,\n' +
+                    '<br></br>zarządzania procesami kontrolnymi - wdrażania i doskonalenia procedur wykrywania i eliminacji ciał obcych,\n' +
+                    '<br></br>budowania kultury jakości i bezpieczeństwa - rozwijania świadomości i odpowiedzialności za bezpieczeństwo produktów w zespole,\n' +
+                    '<br></br>współpracy z działami odpowiedzialnymi i wspierającymi proces produkcji karmy.\n',
                 company_offer: 'System premiowy uzależniony od wyników indywidualnych i biznesowych. <br> Benefity, takie jak: najlepsza opiekę medyczna, dofinansowanie karty sportowej i wydarzeń kulturalnych, ubezpieczenie na życie. <br> Wsparcie doświadczonego mentora, coacha, trenerów i menedżerów. <br> Wsparcie w rozwoju kluczowych kompetencji w postaci cyklu szkoleń, w ramach dedykowanego programu Learning&Development, który pomoże Ci rozwinąć umiejętności niezbędne do tego, by stać się jednym z naszych przyszłych liderów lub liderek.<br> Jeśli dołączenie na Program wymaga od Ciebie relokacji – oferujemy bonus relokacyjny.',
-                payment: '9100zł brutto',
-                contact: 'karolina.chojnacka@effem.com',
+                payment: '  7400 brutto ',
+                contact: 'https://careers.mars.com/pl/pl/job/R123412/Junior-Quality-Specialist-f-m-x-Mars-Young-Professionals-Program-Royal-Canin',
             },
             {
                 id: 7,
-                company_name: 'MARS',
-                position: 'Program Menedżerski w obszarze Zakupów',
+                company_name: 'Mars Polska',
+                position: 'Mars Finance Leadership Experience Program',
                 type: 'hybrydowa',
                 lease: 'Umowa o pracę na czas nieokreślony',
-                location: 'Warszawa',
-                job: '40',
-                description: 'Mars Procurement Leadership Experience to trzyletni program składający się z trzech 12-miesięcznych rotacji. Rotacje te oferują bogate doświadczenia w różnych obszarach naszej organizacji. To szansa, aby przyczynić się do rozwoju firmy Mars i naszych renomowanych marek, jednocześnie otrzymując wskazówki dotyczące rozwoju zawodowego i osobistego. Nasz Program Menedżerski w Obszarze Zakupów stanowi doskonałą podstawę do kariery lidera/liderki w naszym globalnym łańcuchu dostaw. Otrzymasz światowej klasy wsparcie i poznasz przyjaciół na całe życie, jednocześnie rozwijając swoją przyszłą karierę już dziś.',
-                requirements: 'Poszukujemy osób, które chcą poszerzać kompetencje w zakresie doskonałego przywództwa, równocześnie rozwijając swoją wiedzę funkcjonalną. Musisz mieć pasję do zarządzania ludźmi oraz zamiłowanie do obszaru zakupów, a do tego: <br> Kończyć lub mieć ukończone studia magisterskie  <br> Biegle mówić po angielsku <br> Posiadać nastawienie na rozwój, wyjątkowe umiejętności interpersonalne i umiejętność budowania zaufania<br> Mieć aspiracje do przyszłej kariery na stanowisku kierowniczym <br> Być nastawionym na naukę i rozwój wykraczający poza strefę komfortu <br> Prezentować innowacyjne i krytyczne myślenie',
-                duties: 'Podczas trwania programu zaangażujesz się w strategiczne decyzje biznesowe, prowadząc projekty, które mają na celu upewnienie się, że kupujemy właściwe produkty, kierując się początkowo jakością, a następnie odpowiednią ceną. Priorytetem jest zrównoważony rozwój i budowanie wzajemnych relacji z dostawcami. Odkryjesz, jak Twoje dzisiejsze decyzje wpływają na naszą działalność w przyszłości.',
+                location: 'Niepołomice/Sochaczew',
+                job: 'Pełny etat',
+                description: 'Do you dream of becoming a finance leader in one of the leading FMCG companies?\n' +
+                    '<br></br>Mars Finance Leadership Experience (MFLE), a program of accelerated career development in finance, is a great start. Graduates pursue careers as CFOs or strategic partners in many segments of our business. At Mars, you will fulfill your aspirations and develop at every step\n',
+                requirements: 'We look for people willing to expand their competencies in the field of excellent leadership while developing their functional knowledge. You must have a passion for managing people and a love of finance, as well as:\n' +
+                    '<br></br>Currently completing or having completed a master\'s degree in finance, economics, or administration no more than 24 months ago\n' +
+                    '<br></br>Fluency in English\n' +
+                    '<br></br>Showing readiness for international mobility - the second or third year of the program may involve relocation to another Mars site in Europe\n' +
+                    '<br></br>Aspiring for continuous development, analytical skills, and adaptability to new environments\n',
+                duties: 'Mars Finance Leadership Experience includes:\n' +
+                    '<br></br>A 3-year program during which you will hold responsible positions in three annual rotations, in three different positions;\n' +
+                    '<br></br>Over the three years, you will gain experience in various areas of finance (supply finance, market finance, financial control, or digital);\n' +
+                    '<br></br>As part of MFLE, you will have a unique opportunity to get to know various segments of our business (Mars Wrigley, Mars Petcare, Mars Food);\n' +
+                    '<br></br>Opportunity for gain international experience through working in regional projects or placement abroad.\n',
                 company_offer: 'System premiowy uzależniony od wyników indywidualnych i biznesowych. Benefity, takie jak: najlepsza opieka medyczna, dofinansowanie karty sportowej i wydarzeń kulturalnych, ubezpieczenie na życie. Wsparcie doświadczonego mentora, coacha, trenerów i menedżerów. Wsparcie w rozwoju kluczowych kompetencji w postaci cyklu szkoleń, w ramach dedykowanego programu Learning&Development, który pomoże Ci rozwinąć umiejętności niezbędne do tego, by stać się jednym z naszych przyszłych liderów lub liderek. Jeśli dołączenie na Program wymaga od Ciebie relokacji – oferujemy bonus relokacyjny.',
-                payment: '9100zł brutto',
-                contact: 'karolina.chojnacka@effem.com',
+                payment: '  9700 Brutto miesięcznies',
+                contact: 'https://careers.mars.com/pl/pl/job/R120981/Mars-Finance-Leadership-Experience-Program',
+            },
+            {
+                id: 8,
+                company_name: 'Mars Polska',
+                position: 'Junior Business Intelligence Engineer (f/m/x) | Mars Young Professionals Program | Royal Canin',
+                type: 'hybrydowa',
+                lease: 'Umowa o prace na czas określony',
+                location: 'Niepołomice',
+                job: 'Pełny Etat / 4/5 etatu',
+                description: 'Program Mars Young Professionals to więcej niż staż. Program powstał z myślą o tych, którzy znajdują się na początku swojej kariery zawodowej i od samego jej startu chcą zdobywać kluczowe kompetencje i niezbędne umiejętności, a przy tym nie boją się wyzwań. W ramach programu, na 6 miesięcy wcielisz się w rolę Młodszego Inżyniera ds. Business Intelligence i zostaniesz liderem/ liderką prawdziwego projektu biznesowego. To pierwszy krok, aby wejść do świata Mars i zostać z nami na dłużej.\n',
+                requirements: 'Poszukujemy ambitnych, nastawionych na działanie i współpracę osób, które są otwarte na naukę i nowe wyzwania, oraz:\n' +
+                    '<br></br>są nastawione na wyniki oraz interesują się obszarem raportowania i analizy danych,\n' +
+                    '<br></br>posiadają pierwsze doświadczenie w tworzeniu modeli danych Power BI/ wizualizacji i KPI/ Power Automate\n' +
+                    '<br></br>bardzo dobrze znają język angielski oraz język polski,\n' +
+                    '<br></br>posiadają doświadczenie zawodowe maksymalnie do 5 lat (doświadczenie w trakcie studiów jak najbardziej się w to wlicza!).\n',
+                duties: 'Podczas trwania programu będziesz odpowiedzialny za wdrożenie innowacyjnych rozwiązań, które usprawnią wizualizację danych w obszarze fabrycznym. Twoim głównym zadaniem będzie analiza istniejących procesów produkcyjnych oraz identyfikacja obszarów, w których można zastosować narzędzia business intelligence, aby poprawić efektywność operacyjną. W ramach projektu będziesz współpracować ze specjalistami z różnych działów. Na podstawie zebranych informacji, zaprojektujesz i wdrożysz rozwiązania, które umożliwią lepsze monitorowanie kluczowych wskaźników wydajności (KPI) oraz szybsze podejmowanie decyzji na podstawie danych. Będziesz również odpowiedzialny za przeprowadzenie szkoleń dla pracowników fabryki, aby zapewnić im umiejętności niezbędne do korzystania z nowych narzędzi i technologii. Twoja praca przyczyni się do zwiększenia transparentności procesów produkcyjnych oraz umożliwi zespołom lepsze zrozumienie danych, co w efekcie wpłynie na poprawę jakości i wydajności produkcji.\n' +
+                    '<br></br>Czego się nauczysz:\n' +
+                    '<br></br>korzystania z nowoczesnych narzędzi business intelligence, takich jak Power BI,\n' +
+                    '<br></br>zarządzania projektami, ucząc się jak planować, wdrażać i monitorować postępy projektów w zespole, a także jak efektywnie współpracować z różnymi działami w organizacji,\n' +
+                    '<br></br>prowadzenia szkoleń i warsztatów dla Współpracowników, co pozwoli Ci rozwijać umiejętności komunikacyjne oraz zdolność do przekazywania wiedzy w przystępny i zrozumiały sposób,\n' +
+                    '<br></br>nalizy danych produkcyjnych oraz tworzenia raportów, które pomogą w identyfikacji kluczowych wskaźników wydajności (KPI) i efektywności procesów.\n',
+                company_offer: ' ',
+                payment: '7400 Brutto miesięcznie',
+                contact: 'https://careers.mars.com/pl/pl/job/R122724/Junior-Business-Intelligence-Engineer-f-m-x-Mars-Young-Professionals-Program-Royal-Canin',
             },
         ]
     },
     {
         id: 3,
-        name: 'Philip Morris Polska S.A.',
+        name: 'GE Healthcare',
         img: 2,
         jobOffers: [
             {
-                id: 8,
-                company_name: 'Philip Morris Polska S.A.',
-                position: 'Staż w dziale IT',
-                type: 'zdalna',
-                lease: 'umowa zlecenie',
-                location: 'Kraków',
-                job: 'min.30 h',
-                description: 'W PMI zdecydowaliśmy się zrobić coś niesamowitego. Całkowicie zmieniamy naszą działalność i budujemy naszą przyszłość na jednym jasnym celu – budowanie przyszłości bez dymu tytoniowego.<br> Ogromna zmiana wiąże się z ogromną szansą. Tak więc, gdziekolwiek do nas dołączysz, będziesz cieszyć się swobodą marzeń i dostarczaniem lepszych, jaśniejszych rozwiązań oraz przestrzenią, aby rozwijać swoją karierę w nieskończenie różnych kierunkach.<br> <br> DOŁĄCZ DO NAS na STAŻ W DZIALE IT :)',
-                requirements: 'Jesteś studentem/ką ostatnich lat studiów lub od Twojej obrony nie upłynęło więcej niż 12 miesięcy  (preferowane kierunki: informatyka, automatyka i robotyka, analiza danych lub pokrewne) <br> Miałeś/miałaś wcześniejsze doświadczenie w pracy z bazami danych<br> Możesz przeznaczyć na staż minimum 30 godzin tygodniowo (w większości stacjonarnie)<br> Znasz narzędzia: SQL, Power BI, Powershell<br> Wychodzisz z inicjatywą, szukasz rozwiązań i nowych informacji<br> Znasz  jęz. ang  na poziomie komunikatywnym (min.  B2)<br> Byłeś/aś częścią projektu IT, gdzie byłeś/aś odpowiedzialna za jego daną część',
-                duties: 'Rozwijanie nowych i wspieranie istniejących systemów informatycznych wykorzystywanych do produkcji i logistyki ( np. AWS Cloud, czy systemy dotyczące logistyki wyrobów gotowych)<br> Opieka nad procesami w projektach, sprawdzanie ich poprawności, wdrażanie usprawnień<br> Zbieranie  feedbacku od użytkowników systemów  <br> Współpraca z zewnętrznymi dostawcami przy wdrożeniach<br> Poszukiwanie nowych technologii i rozwiązań odpowiadających na potrzeby biznesu<br> Testowanie rozwiązań<br> Praca z bazami i hurtowaniami danych, współpraca z developerami',
-                company_offer: 'Umowa  zlecenie na 6 miesięcy z możliwością przedłużenia do 12 miesięcy <br> Wynagrodzenie zależne od przepracowanych godzin, ze stawką nie mniejszą niż 30 zł/h brutto<br> IT HUB z pakietem szkoleń wewnętrznych dostosowanych<br> Dostęp do naszych wewnętrznych platform szkoleniowych, w tym do platformy do nauki języków obcych<br> Udział w projektach wdrażających nowe technologie w firmie (Digitalizacja, migracja do rozwiązań Cloud, Teams.)<br> Możliwość wprowadzania własnych pomysłów i rozwiązań 😊<br> Naukę architektury systemów produkcyjnych Philip Morris i nowych technologii<br> Elastyczny czas pracy',
-                payment: 'nie mniej niż 30zł/h brutto',
-                contact: 'https://www.pmicareers.pl/job-offers/intern-it',
+                id: 9,
+                company_name: 'GE HealthCare',
+                position: 'Information Technology Internship Program',
+                type: 'hybrid',
+                lease: 'Civil contract for 12 months ',
+                location: 'Avia Office, Profesora Michała Życzkowskiego 20, 31-864 Kraków',
+                job: 'min. 20h/weekly',
+                description: 'Information Technology is the backbone of how our global teams operate – connecting people, process, and products to help us create the world where healthcare has no limits. Our Information Technology Internship Program is the early career development program which offers those with a passion to grow their technical skills and business acumen alongside with GE HealthCare professionals.\n' +
+                    '<br></br>You’ll get hands-on exposure to work on challenging healthcare projects and training across a broad range of technology disciplines, while having a chance to put your academic knowledge into practice and get a solid foundation to build your future career.',
+                requirements: 'Basic Qualifications:\n' +
+                    '<br></br>Active student of Computer Science, Management Information Systems, IT Security and Risk Analysis, Project Management, IT in Finance, Data Science or other relevant STEM majors with basic IT experience,\n' +
+                    '<br></br>Fluent in English.\n' +
+                    '<br></br>Desired Characteristics: \n' +
+                    '<br></br>Ability to process data in MS Office tools (Excel, PowerPoint) and present outcomes to respective stakeholders,\n' +
+                    '<br></br>Strong analytical and interpersonal skills,\n' +
+                    '<br></br>Contributes to creative solutions,\n' +
+                    '<br></br>Proactively learns new tools,\n' +
+                    '<br></br>Up to date with current digital technologies, standards, and development methodologies,\n' +
+                    '<br></br>A strong commitment and passion to a career in technology.\n',
+                duties: 'During 12-months internship, you\'ll be working within GE HealthCare business alongside experts in Krakow IT Hub,\n' +
+                    '<br></br>You\'ll gain learning and development experience focusing on supporting project work, technical training and building business acumen. \n' +
+                    '<br></br>As member of program, you\'ll have opportunity to engage in Krakow IT Hub program initiatives and committees.',
+                company_offer: ' ',
+                payment: '',
+                contact: 'Monika Turewicz, Talent Acquisition Partner,  monika.turewicz1@gehealthcare.com \n',
             },
             {
-                id: 9,
-                company_name: 'PMI Service Center Europe Sp. z o.o.',
-                position: 'Intern in P&C Analytics (Employee Listening & Insights team)',
-                type: 'zdalna',
-                lease: 'umowa zlecenie',
-                location: 'Kraków',
-                job: 'min.30 h',
-                description: 'At PMI, we’ve chosen to do something incredible. We’re totally transforming our business, and building our future on smoke-free products with the power to improve the lives of a billion smokers worldwide. <br><br> JOIN US! <br> The Employee Listening & Insights team (EL&I) sits within the P&C Analytics team that helps PMI to become more dynamic business and workforce with more data driven leaders. <br> Employee Listening simply means developing outlets for employees to express themselves openly through multiple channels, improving engagement. ‘Active Listening’ ensures colleagues feel comfortable voicing ideas and opinions, feedback and the best ideas are free to gain traction with the group and wider organization, solving difficulties and challenges that we face individually and collectively.',
-                requirements: 'a student of 3rd, 4th or 5th year or University graduate up to 6 months after graduation in a quantitative field (e.g. data science, economics, statistics, I/O psychology)<br> usage of Qualtrics (or other data visualization tools e.g. dashboards, PowerBI, Tableau) to validate and consolidate data from various sources and visualize respective findings would be a strong asset,<br> knowledge of market research and/or statistics would be an advantage<br> proficiency with MS PowerPoint and Excel - including creating charts/graphs, pivot tables, VLOOKUPs,<br> Fluent in both written and spoken English,',
-                duties: 'become a member of People Analytics team and gather experience in Employee Listening & Insights area,<br> be a part of truly international team,<br> have a chance to learn new technologies like Qualtrics, PowerBI and employee research techniques,<br> analyze current solutions and identify areas for improvement or data issues,<br> participate in ongoing projects and development of People Analytics,<br> contribute to creating data-driven organization within People & Culture function,',
-                company_offer: 'paid internship for 6 months (potentially working with the other P&C Analytics teams after 6 months),<br> hybrid work opportunity and flexible working time that can accommodate your studies (availability min. 30 h per week),<br> work in Agile methodology to deliver products for internal customers based on their needs,<br> learning of new tools, platforms and technologies used in people analytics,<br> training and on-the-job development of analytical skills,<br> getting to know how a company leading in its industry approaches People & Culture (HR) activities from system/data perspective,',
+                id: 10,
+                company_name: 'GE HealthCare',
+                position: 'Information Technology Development Program',
+                type: 'hybrid',
+                lease: 'Employment of contract for 24 months',
+                location: 'Avia Office, Profesora Michała Życzkowskiego 20, 31-864 Kraków',
+                job: '40h/weekly (full-time) ',
+                description: 'GE HealthCare is a leading global medical technology and digital solutions innovator. Our mission is to create a world where healthcare has no limits. Information Technology is at the backbone of how our global teams operate – connecting people, processes, and products to help us make a positive impact on global healthcare. Our Information Technology Development Program is designed to develop the next generation of IT leaders and innovators. If you’re passionate about technology and ready to tackle challenges that matter, this program will empower you to make a difference while growing your career in a supportive and innovative environment.',
+                requirements: 'We’re looking for recent graduates or soon-to-be graduates with a Bachelor’s or Master’s degree in Computer Science, Information Technology, Engineering, Data Science, or related STEM fields, who are: \n' +
+                    '<br></br>• Passionate about a career in technology and driven to make an impact.\n' +
+                    '<br></br>• Curious, proactive, and up to date with the latest trends in IT, data, and software engineering. \n' +
+                    '<br></br>• Strong problem-solvers with analytical skills and a creative mindset. \n' +
+                    '<br></br>• Flexible and ready to navigate an everchanging work environment. \n' +
+                    '<br></br>• Focused on delivering results and effectively prioritizing to meet deadlines. \n' +
+                    '<br></br>• Good team players capable of building relationships across departments. \n' +
+                    '<br></br>• Excellent communicators, able to translate technical challenges into clear, actionable ideas. \n' +
+                    '<br></br>• Customer-focused, with an ability to understand the value proposition for the customer. \n' +
+                    '<br></br>• Willing to challenge the status quo. \n' +
+                    '<br></br>• Available for a full-time job.\n',
+                duties: '• A full-time, two-year technology leadership development program where members work alongside experts around the world. \n' +
+                    '<br></br>• Three, eight-month rotational assignments within the IT organization providing the candidate with an opportunity to experience complex real-world projects across IT domains, especially: AI & Advanced Analytics, Data Science and more. \n' +
+                    '<br></br>• Structured technical and leadership training to build your technology skills, business acumen, and innovation mindset.\n' +
+                    '<br></br> • The chance to participate in program initiatives and committees that foster personal and professional growth. \n' +
+                    '<br></br>• A dynamic, fast-paced work environment that encourages innovation and collaboration.\n',
+                company_offer: ' ',
                 payment: '',
-                contact: 'https://www.pmicareers.pl/job-offers/intern-in-pc-analytics-employee-listening-insights-team',
+                contact: 'Monika Turewicz, Talent Acquisition Partner,  monika.turewicz1@gehealthcare.com\n',
+            },
+            {
+                id: 11,
+                company_name: 'GE HealthCare ',
+                position: 'Field Service Engineer Apprentice',
+                type: 'zdalna',
+                lease: 'Umowa zlecenie na 12 miesięcy ',
+                location: 'w terenie - praktyka wyjazdowa na terenie woj. malopolskiego',
+                job: 'min. 20h/weekly ',
+                description: 'Jeśli:\n' +
+                    '<br></br>jesteś studentką/studentem uczelni technicznej,\n' +
+                    '<br></br>masz „smykałkę” techniczną,\n' +
+                    '<br></br>interesuje Cię nowoczesna medycyna,\n' +
+                    '<br></br>to mamy dla Ciebie propozycję płatnej, rocznej praktyki, która pozwoli Ci poznać pracę Inżyniera Serwisu w jednej z najlepszych i najbardziej rozpoznawalnych firm z sektora sprzętu medycznego! \n' +
+                    '<br></br>Jako Field Service Engineer Apprentice będziesz wpierać doświadczonego Inżyniera Serwisu w przeglądach, naprawach i instalacjach u naszych Klientów. Dzięki tej pracy przyczyniamy się sukcesów w ratowaniu ludzkiego zdrowia i życia. Razem z nami poznasz wielu inspirujących ludzi, pasjonatów oraz leaderów w swojej dziedzinie na skalę Polski i Europy, którzy wybrali GE HealthCare jako partnera do osiągania wybitnych celów. \n',
+                requirements: 'Status studenta na uczelni technicznej (preferowane kierunki: inżynieria biomedyczna, fizyka medyczna, mechatronika, ale nie jest to warunek konieczny),\n' +
+                    '<br></br>JWysoka komunikatywność w języku polskim i angielskim (języka branżowego nauczysz się w pracy).\n' +
+                    '<br></br>JSamodzielność oraz sumienność w podjętych zadaniach.\n' +
+                    '<br></br>JDyspozycyjność uwzględniająca pracę wyjazdową poza województwo.\n' +
+                    '<br></br>JPrawo jazdy kategorii B.\n',
+                duties: 'Asystowanie przy instalacji i serwisie urządzeń medycznych najnowszej generacji firmy GE HealthCare z dziedzin diagnostyki obrazowej, ultrasonografii lub systemów klinicznych\n' +
+                    '<br></br>JPraca w zgodzie z zasadami i procedurami GE Healthcare ze szczególnym naciskiem na bezpieczeństwo.\n' +
+                    '<br></br>JWspółpraca przy osiąganiu celów organizacji poprzez tworzenie relacji z klientami oraz budowanie zaufania do siebie i swojej marki jako przyszłego inżyniera serwisu.\n',
+                company_offer: ' ',
+                payment: '',
+                contact: 'Monika Turewicz, Talent Acquisition Partner,  monika.turewicz1@gehealthcare.com ',
             },
         ]
     },
     {
         id: 4,
-        name: 'GE Healthcare',
+        name: 'IBM',
         img: 3,
         jobOffers: [
             {
-                id: 9,
-                company_name: 'GE Healthcare',
-                position: 'IT Leadership Development Program - Internship',
+                id: 12,
+                company_name: 'IBM Polska Sp. z o.o.',
+                position: ' Internship @ IBM Software Lab\n',
                 type: 'hybrydowa',
-                lease: 'contract of mandate',
-                location: 'Profesora Michała Życzkowskiego 20, Kraków',
-                job: '40h/weekly',
-                description: 'Information Technology is the backbone of how our global teams operate – connecting people, process, and products to help us make a positive impact on global healthcare. The IT Leadership Development Program is the early career development program which offers those with a passion to grow their leadership, business acumen, and technical skills while building a career with unlimited potential. You’ll experience hands-on work on important and challenging healthcare projects and training across a broad range of technology disciplines, ensuring you’re ready to support our vision to be the leading innovator delivering precision health.',
-                requirements: 'A Degree in Computer Science, Computer Engineering, Computer Information Systems, Management Information Systems, IT Security, Informatics, Information Science/Technology, Software Engineering, Security and Risk Analysis, or other relevant STEM majors with IT experience.<br><br>University Graduates up to two years after graduation, or Master\'s degree Students (full time job availability is mandatory)<br><br>Up to date with current digital technologies, standards, and development methodologies  <br><br>A strong commitment and passion to a career in technology.',
-                duties: 'Full-time, two-year leadership development program where members work within a GE HealthCare business alongside experts in various locations.   <br><br>Three, eight-month rotational assignments within IT organization covering diverse projects spanning areas such as project and product management, data analytics, software development, IT operations and more.<br><br>Learning and development experience focused on technical training, leadership, and business acumen.<br><br>Engagement in ITDP program initiatives and committees.',
-                company_offer: 'Flexible working hours and partial home office possibility <br>Community engagement focus groups <br>Learning opportunities and development program ',
-                payment: '',
-                contact: 'monika.turewicz1@gehealthcare.com',
+                lease: 'Umowa zlecenie',
+                location: 'Kraków',
+                job: 'do uzgodnienia',
+                description: 'Zależne od projektu',
+                requirements: 'Pasja do technologii i rozwoju oprogramowania, chęć nauki i poszerzania kompetencji.\n' +
+                    'Wiedza i doświadczenie związane z danym stanowiskiem.\n' +
+                    'Zdolność do kreatywnego myślenia i zgłaszania nieszablonowych pomysłów.\n' +
+                    'Dobra współpraca, cierpliwość i precyzja w dbałości o szczegóły.',
+                duties: 'Zależne od projektu',
+                company_offer: '',
+                payment: 'Do uzgodnienia',
+                contact: 'WeAreIBM.JoinUS@pl.ibm.com',
             },
         ]
-    }
+    },
 ];
 
 const OffersPage: React.FC<PageProps> = () => {
@@ -226,6 +404,18 @@ const OffersPage: React.FC<PageProps> = () => {
         });
     };
     const selectedOffer = sponsorsData.find(sponsor => sponsor.id === selectedSponsor).jobOffers[selectedOfferIndex];
+
+    const renderContact = (contact) => {
+        if (contact.startsWith('http')) {
+            return (
+                <a href={contact} target="_blank" rel="noopener noreferrer">
+                    link
+                </a>
+            );
+        }
+        return contact;
+    };
+
     return (
         <Layout>
             <ParentDiv>
@@ -289,7 +479,7 @@ const OffersPage: React.FC<PageProps> = () => {
                                     </Field>
                                     <Field>
                                         <Title>Kontakt:</Title>
-                                        <Content>{sponsorsData.find(sponsor => sponsor.id === selectedSponsor).jobOffers[selectedOfferIndex].contact}</Content>
+                                        <Content>{renderContact(selectedOffer.contact)}</Content>
                                     </Field>
                                 </JobOfferContent>
                             </JobOfferCard>
@@ -298,10 +488,12 @@ const OffersPage: React.FC<PageProps> = () => {
                     </JobOffersPanel>
                     <ButtonContainer>
                         <PrevButton onClick={handlePrevOffer}>
-                            <BtnImg src={movingGear} alt="Poprzedni" style={{ transform: `rotate(${rotation}deg)` }} />
+                            <source srcSet={arrow_left} media="(min-width: 769px)"/>
+                            <Img src={arrow_left} alt="last page"/>
                         </PrevButton>
                         <NextButton onClick={handleNextOffer}>
-                            <BtnImg src={movingGear} alt="Następny" style={{ transform: `rotate(${rotation}deg)` }} />
+                            <source srcSet={arrow_right} media="(min-width: 769px)"/>
+                            <Img src={arrow_right} alt="last page"/>
                         </NextButton>
                     </ButtonContainer>
                 </RightDiv>
@@ -496,7 +688,7 @@ const NextButton = styled.button`
   position: absolute;
   background:none;
   cursor: pointer;
-  right: 0%;
+  right: 5%;
   width: 10%;
   border: none;
   box-shadow: none;
