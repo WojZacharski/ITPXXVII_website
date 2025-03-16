@@ -680,14 +680,14 @@ const PrevButton = styled.button`
     @media screen and (max-width: 769px) {
         width: 18%;
         left: -9%;
-  }
+    }
 `;
 
 const NextButton = styled.button`
     position: absolute;
     background:none;
     cursor: pointer;
-    right: 5%;
+    right: 0%;
     width: 10%;
     border: none;
     box-shadow: none;
