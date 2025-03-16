@@ -349,6 +349,31 @@ const sponsorsData = [
             },
         ]
     },
+    {
+        id: 4,
+        name: 'IBM',
+        img: 3,
+        jobOffers: [
+            {
+                id: 12,
+                company_name: 'IBM Polska Sp. z o.o.',
+                position: ' Internship @ IBM Software Lab\n',
+                type: 'hybrydowa',
+                lease: 'Umowa zlecenie',
+                location: 'Kraków',
+                job: 'do uzgodnienia',
+                description: 'Zależne od projektu',
+                requirements: 'Pasja do technologii i rozwoju oprogramowania, chęć nauki i poszerzania kompetencji.\n' +
+                    'Wiedza i doświadczenie związane z danym stanowiskiem.\n' +
+                    'Zdolność do kreatywnego myślenia i zgłaszania nieszablonowych pomysłów.\n' +
+                    'Dobra współpraca, cierpliwość i precyzja w dbałości o szczegóły.',
+                duties: 'Zależne od projektu',
+                company_offer: '',
+                payment: 'Do uzgodnienia',
+                contact: 'WeAreIBM.JoinUS@pl.ibm.com',
+            },
+        ]
+    },
 ];
 
 const OffersPage: React.FC<PageProps> = () => {
