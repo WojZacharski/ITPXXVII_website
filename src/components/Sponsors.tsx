@@ -126,12 +126,11 @@ const CraneRightMobile = styled.img<{ isFixed: boolean; reachedEnd: boolean; top
   top: ${({ isFixed, reachedEnd, topOffset }) =>
       reachedEnd ? `calc(100% - 50vh)` : isFixed ? "3vh" : `calc(${topOffset}px + 3vh)`};
   right: 0; /* Wyrównanie do prawej krawędzi */
-  max-width: 100%; /* Zapobieganie wychodzeniu poza ekran */
+  max-width: 90%; /* Zapobieganie wychodzeniu poza ekran */
   width: clamp(25vw, 47vw, 50vw);
   height: auto;
   z-index: 2;
   object-fit: cover;
-  //overflow: hidden; 
 
   @media (min-width: 769px) {
     display: none;
@@ -267,7 +266,7 @@ grid-template-columns: repeat(3, calc(1/3 * 100%));
 align-content: center;
 justify-content: space-around;
 gap: 2.5%;
-  padding-top: 20%;
+padding-top: 20%;
   
 
 @media (max-width: 768px) {
@@ -284,18 +283,6 @@ gap: 2.5%;
   `;
 
 // ELEMENTS
-
-const PartnershipText = styled.span`
-  font-size: 2.2vw;
-  font-weight: 600;
-  grid-column: span 3;
-  justify-self: center;
-  @media (max-width: 768px) {
-    font-size: clamp(1rem, 5vw, 1.5rem);
-    margin-top: 0.4rem; 
-    padding: 0 1rem; 
-  } ;
-`;
 
 const CardHeader = styled.div`
   position: absolute;
@@ -361,28 +348,20 @@ const SponsorsText = styled(SabreText)`
   
   @media (max-width: 768px) {
     top: 1%;
-    font-size: 4vw;
+    font-size: 8vw;
     margin-bottom: 1rem;
     left: 50%;
     top: 1%;
     font-weight: bold;
     color: #ee8b10;
     text-align: center;
-    width: 100%; /* Upewnienie się, że tekst dostosowuje się do szerokości */
-    max-width: 90vw; /* Ograniczenie szerokości na większych ekranach */
+    width: 80%; /* Upewnienie się, że tekst dostosowuje się do szerokości */
+    max-width: 80%; /* Ograniczenie szerokości na większych ekranach */
     white-space: normal; /* Pozwala tekstowi przechodzić do nowej linii */
     word-wrap: break-word; /* Zapewnia łamanie długich słów */
     overflow-wrap: break-word; /* Alternatywnie, jeśli \`word-wrap\` nie działa */
     padding: 0 1rem; /* Dodatkowy padding dla bezpieczeństwa */
-    @media (max-width: 768px) {
-      top: 1%;
-      font-size: clamp(1rem, 6vw, 1.5rem); /* Dynamiczna czcionka */
-      max-width: 80vw; /* Ograniczenie szerokości na mniejszych ekranach */
-      margin-top: 0.5rem;
-    }
-    font-size: clamp(1rem, 6vw, 2rem); /* Dostosowanie do mobilnych ekranów */
-    max-width: 80vw; /* Mniejsze szerokości na telefonach */
-    margin-top: 0.5rem;
+    border: black;
   }
 `;
 
@@ -392,7 +371,7 @@ const Image = styled.img`
   object-fit: contain;
   border-radius: 8px;
   cursor: pointer;
-  padding-top: 20%;
+  padding-top: 15%;
 `;
 
 const Link = styled.a`

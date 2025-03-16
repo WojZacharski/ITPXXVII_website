@@ -22,8 +22,10 @@ const Container = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    //width: 100%;
     min-height: 100vh;
+    max-width: 100%; //99% za mało 100% za dużo
+
 
     @media (max-width: 769px) {
         //height: auto;
@@ -77,16 +79,18 @@ const MapContainer = styled.div`
     justify-content: center;
     overflow: hidden;
     width: 100%;
+    max-width: 100%;
 `;
 
 const MapImg = styled.img`
     //position: absolute;
     //top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     height: 100%;
     object-fit: contain;
     z-index: 0;
+    max-width: 100vw;
 `;
 
 const MapLegend = styled.img`

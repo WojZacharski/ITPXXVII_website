@@ -30,7 +30,7 @@ const MobileGears = styled.div`
   display: flex;
   justify-content: center; 
   align-items: center; 
-  width: 90%; 
+  width: 80%; 
   max-width: 100%; 
   margin: 2rem auto; 
   right:0;
