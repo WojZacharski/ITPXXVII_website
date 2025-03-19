@@ -382,6 +382,55 @@ const Link = styled.a`
   text-decoration: none;
 `;
 
+const HelionImage = styled.img`
+  width: 90%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+  cursor: pointer;
+  padding-top: 15%;
+  max-height: 100px; // Dodajemy max-height, dostosuj wartość
+  
+  @media (max-width: 768px) {
+    max-height: 80px; // Dostosuj dla urządzeń mobilnych
+  }
+`;
+
+const HelionCode = styled.div`
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  //margin-top: 0.5rem;
+  padding: 0 0.5rem;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+`;
+
+const HelionText = styled.div`
+  font-size: 0.9rem;
+  text-align: center;
+  //margin-top: 0.5rem;
+  padding: 0 1rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-line; // Przywrócenie pre-line
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+    padding: 0 0.2rem;
+  }
+`;
+
+const HelionCard = styled(Card)`
+  height: clamp(25vh, 55vh, 75vh); // Zwiększona wysokość
+  
+  @media (max-width: 768px) {
+    height: clamp(20vh, 30vh, 45vh); // Dostosowanie dla urządzeń mobilnych
+  }
+`;
+
+
 
 const Sponsors: React.FC = () => {
   const parentRef = useRef<HTMLDivElement>(null);
@@ -552,6 +601,19 @@ const Sponsors: React.FC = () => {
 
               </SponsorsPanel>
             </Card>
+
+            <HelionCard isFixed={isFixedCard} reachedEnd={reachedEnd} >
+              <CardHeader>Sponsor konkursowy</CardHeader>
+              <Link href="https://helion.pl/" target="_blank" rel="noopener noreferrer"/>
+              <Image src={logos[36].default} alt={"Helion"} />
+              <HelionCode>Z kodem BEST10 10zł zniżki</HelionCode>
+              <HelionText>
+                Można go łączyć z innymi promocjami procentowymi (nie zadziała przy promocjach typu 2za1 oraz z książkami z OUTLETU).
+                Ważny jest w zasadzie od dziś do 31.03.2025.
+                Minimalna wartość zamówienia 60 zł.
+              </HelionText>
+            </HelionCard>
+
             <EmptyCardLast isFixed={isFixedCard} reachedEnd={reachedEnd}></EmptyCardLast>
           </CenterDiv>
 
